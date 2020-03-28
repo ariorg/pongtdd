@@ -1,6 +1,12 @@
-const { Game } = require('./pong')
+const { PongGame } = require('./pong')
 
 test('Create pong game', () => {
-    let g = new Game();
-    expect(typeof g != "undefined").toBeTruthy();
+    let pg = new PongGame();
+    expect(typeof pg != "undefined").toBeTruthy();
 });
+
+test('New PongGame has default sized canvas', () => {
+    let pg = new PongGame();
+    expect(pg.CanvasWidth).toBe(1280);
+    expect(pg.CanvasHeight).toBe(960);
+})
