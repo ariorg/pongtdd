@@ -2,15 +2,27 @@
 
 class PongGame {
     constructor(width, height) {
-        this._canvasWidth = 1280;
-        this._canvasHeight = 960;
-
-        // this._canvasWidth = arguments.length >= 1 ? width : 1280;
-        // this._canvasHeight = arguments.length >= 2 ? height : 960;
+        this._canvasWidth = arguments.length >= 1 ? width : 1280;
+        this._canvasHeight = arguments.length >= 2 ? height : 960;
     }
 
     get CanvasWidth() { return this._canvasWidth };
     get CanvasHeight() { return this._canvasHeight };
 }
 
-module.exports = { PongGame }
+class PongBall {
+    constructor() {
+        this._x = 0;
+        this._y = 0;
+        this._diameter = 10;
+    }
+
+    get X() { return this._x }
+    get Y() { return this._y }
+    get Diameter() { return this._diameter }
+    set X(value) { this._x = value }
+    set Y(value) { this._y = value }
+    set Diameter(value) { this._diameter = value } 
+}
+
+module.exports = { PongGame, PongBall };
