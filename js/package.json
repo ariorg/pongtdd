@@ -1,13 +1,14 @@
 {
   "name": "pong",
   "version": "1.0.0",
-  "description": "",
+  "description": "Pong game to demonstrate TDD",
   "main": "pong.js",
+  "homepage": "https://github.com/arividar/pongtdd",
   "scripts": {
     "test": "jest"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["game", "tdd"],
+  "author": "Ari Johannesson",
   "license": "ISC",
   "devDependencies": {
     "jest": "^25.2.3"
