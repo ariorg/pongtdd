@@ -1,33 +1,6 @@
 const { PongGame, PongBall, Sprite } = require("./pong");
 
-describe("PongGame", () => {
-  test("Create pong game", () => {
-    let pg = new PongGame();
-    expect(typeof pg != "undefined").toBeTruthy();
-  });
 
-  test("New PongGame has default sized canvas", () => {
-    const pg = new PongGame();
-    expect(pg.CanvasWidth).toBeGreaterThan(0);
-    expect(pg.CanvasHeight).toBeGreaterThan(0);
-  });
-
-  test("Create PongGame with nondefault canvas size", () => {
-    const pg1 = new PongGame();
-    const w = pg1.CanvasWidth + 15;
-    const h = pg1.CanvasHeight + 15;
-    const pg = new PongGame(w, h);
-    expect(pg.CanvasWidth).toBe(w);
-    expect(pg.CanvasHeight).toBe(h);
-  });
-
-  test("Game should have an initial score of zero", () => {
-    const g = new PongGame();
-    expect(g.Score).toBe(0);
-  });
-});
-
-// Sprite tests
 describe("Sprite", () => {
   test("should have x,y coordinates and diameter equal to zero after creation", () => {
     const s = new Sprite();
@@ -36,8 +9,6 @@ describe("Sprite", () => {
     expect(s.Diameter).toBe(0);
   });
 });
-
-// Ball tests -------------------------
 
 describe("PongBall", () => {
   test("Create new PongBall should have coords 0,0 and diameter > 0", () => {
@@ -62,3 +33,30 @@ describe("PongBall", () => {
     expect(ball.Diameter).toBe(newD);
   });
 });
+
+describe("PongGame", () => {
+    test("Create pong game", () => {
+      let pg = new PongGame();
+      expect(typeof pg != "undefined").toBeTruthy();
+    });
+  
+    test("New PongGame has default sized canvas", () => {
+      const pg = new PongGame();
+      expect(pg.CanvasWidth).toBeGreaterThan(0);
+      expect(pg.CanvasHeight).toBeGreaterThan(0);
+    });
+  
+    test("Create PongGame with nondefault canvas size", () => {
+      const pg1 = new PongGame();
+      const w = pg1.CanvasWidth + 15;
+      const h = pg1.CanvasHeight + 15;
+      const pg = new PongGame(w, h);
+      expect(pg.CanvasWidth).toBe(w);
+      expect(pg.CanvasHeight).toBe(h);
+    });
+  
+    test("Game should have an initial score of zero", () => {
+      const g = new PongGame();
+      expect(g.Score).toBe(0);
+    });
+  });
