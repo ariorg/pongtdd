@@ -2,21 +2,28 @@
 
 class GameElement {
     constructor() {
-        this._x = this._y = this._diameter = 0;
+        this._x = this._y = this._height = this._width = 0;
     }
 
     get X() { return this._x }
     get Y() { return this._y }
-    get Diameter() { return this._diameter }
+    get Width() { return this._width }
+    get Height() { return this._height }
+
     set X(value) { this._x = value }
     set Y(value) { this._y = value }
-    set Diameter(value) { this._diameter = value }
+    set Width(value) { this._width = value }
+    set Height(value) { this._height = value }
 }
 
-class PongBall extends Sprite {
+class PongBall extends GameElement {
     constructor() {
         super();
         this._diameter = 10;
+    }
+    get Diameter() { return this._diameter }
+    set Diameter(value) { 
+        this._diameter = value;
     }
 }
 
@@ -32,4 +39,4 @@ class PongGame {
     get Score() { return this._score }
 }
 
-module.exports = { PongGame, PongBall, Sprite };
+module.exports = { PongGame, PongBall, GameElement };

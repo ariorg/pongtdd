@@ -1,11 +1,12 @@
 const { PongGame, PongBall, GameElement } = require("./pong");
 
 describe("GameElement", () => {
-  test("should have x,y coordinates and diameter equal to zero after creation", () => {
+  test("should have x,y coordinates, width and height equal to zero after creation", () => {
     const s = new GameElement();
     expect(s.X).toBe(0);
     expect(s.Y).toBe(0);
-    expect(s.Diameter).toBe(0);
+    expect(s.Width).toBe(0);
+    expect(s.Height).toBe(0);
   });
 });
 
