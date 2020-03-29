@@ -20,16 +20,15 @@ class GameElement {
 }
 
 class Ball extends GameElement {
-    constructor() {
-        super();
-        this._diameter = 10;
+    constructor(x, y, radius) {
+        super(x, y, radius*2, radius*2);
     }
-    get Diameter() { return this._diameter }
-    // get Radius() { return this._diameter / 2 }
+    get Diameter() { return this.Width }
+    get Radius() { return this.Width / 2 }
 
-    set Diameter(value) { 
-        this._diameter = value;
-    }
+    // set Diameter(value) {
+    //     this.Width = value;
+    // }
     // set Radius(value) { 
     //     this._diameter = value * 2;
     // }
