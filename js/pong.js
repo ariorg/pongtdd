@@ -1,13 +1,14 @@
 'use strict'
 
-class PongGame {
-    constructor(width, height) {
-        this._canvasWidth = arguments.length >= 1 ? width : 1280;
-        this._canvasHeight = arguments.length >= 2 ? height : 960;
+class Sprite {
+    constructor() {
+        this._x = this._y = this._diameter = 0;
     }
 
-    get CanvasWidth() { return this._canvasWidth };
-    get CanvasHeight() { return this._canvasHeight };
+    get X() { return this._x }
+    get Y() { return this._y }
+    get Diameter() { return this._diameter }
+
 }
 
 class PongBall {
@@ -25,4 +26,17 @@ class PongBall {
     set Diameter(value) { this._diameter = value } 
 }
 
-module.exports = { PongGame, PongBall };
+class PongGame {
+    constructor(width, height) {
+        this._canvasWidth = arguments.length >= 1 ? width : 1280;
+        this._canvasHeight = arguments.length >= 2 ? height : 960;
+        this._score = 0;
+    }
+
+    get CanvasWidth() { return this._canvasWidth }
+    get CanvasHeight() { return this._canvasHeight }
+    get Score() { return this._score }
+}
+
+
+module.exports = { PongGame, PongBall, Sprite };
