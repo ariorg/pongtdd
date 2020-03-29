@@ -32,5 +32,4 @@ class PongGame {
     get Score() { return this._score }
 }
 
-
 module.exports = { PongGame, PongBall, Sprite };
