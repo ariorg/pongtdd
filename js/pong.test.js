@@ -1,9 +1,8 @@
-const { PongGame, PongBall, Sprite } = require("./pong");
+const { PongGame, PongBall, GameElement } = require("./pong");
 
-
-describe("Sprite", () => {
+describe("GameElement", () => {
   test("should have x,y coordinates and diameter equal to zero after creation", () => {
-    const s = new Sprite();
+    const s = new GameElement();
     expect(s.X).toBe(0);
     expect(s.Y).toBe(0);
     expect(s.Diameter).toBe(0);

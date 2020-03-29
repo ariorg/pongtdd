@@ -1,6 +1,6 @@
 'use strict'
 
-class Sprite {
+class GameElement {
     constructor() {
         this._x = this._y = this._diameter = 0;
     }
@@ -10,7 +10,7 @@ class Sprite {
     get Diameter() { return this._diameter }
     set X(value) { this._x = value }
     set Y(value) { this._y = value }
-    set Diameter(value) { this._diameter = value } 
+    set Diameter(value) { this._diameter = value }
 }
 
 class PongBall extends Sprite {
