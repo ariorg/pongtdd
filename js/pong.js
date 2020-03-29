@@ -1,8 +1,11 @@
 'use strict'
 
 class GameElement {
-    constructor() {
-        this._x = this._y = this._height = this._width = 0;
+    constructor(x, y, width, height) {
+        this._x = arguments.length >= 1 ? x : 0;
+        this._y = arguments.length >= 2 ? y : 0;
+        this._width = arguments.length >= 3 ? width : 0;
+        this._height = arguments.length >= 4 ? height : 0;
     }
 
     get X() { return this._x }

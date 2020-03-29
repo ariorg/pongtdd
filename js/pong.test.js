@@ -1,13 +1,24 @@
 const { Game, Ball, GameElement } = require("./pong");
 
 describe("GameElement", () => {
-  test("should have x,y coordinates, width and height equal to zero after creation", () => {
-    const s = new GameElement();
-    expect(s.X).toBe(0);
-    expect(s.Y).toBe(0);
-    expect(s.Width).toBe(0);
-    expect(s.Height).toBe(0);
+  test("Element creation without parameters hould have x,y coordinates, width and height equal to zero", () => {
+    const e = new GameElement();
+    expect(e.X).toBe(0);
+    expect(e.Y).toBe(0);
+    expect(e.Width).toBe(0);
+    expect(e.Height).toBe(0);
   });
+
+  test("Element creation with constructor parameters should set X,Y,Width and Height properties", () => {
+    const e = new GameElement(100, 200, 30, 10);
+    expect([e.X, e.Y, e.Width, e.Height]).toStrictEqual([100, 200, 30, 10]);
+  });
+
+  test("Element creation with x,y parameters only should set Width and Height to zero", () => {
+    const e = new GameElement(100, 200);
+    expect([e.X, e.Y, e.Width, e.Height]).toStrictEqual([100, 200, 0, 0]);
+  })
+
 });
 
 describe("Ball", () => {
