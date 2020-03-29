@@ -8,22 +8,16 @@ class Sprite {
     get X() { return this._x }
     get Y() { return this._y }
     get Diameter() { return this._diameter }
-
-}
-
-class PongBall {
-    constructor() {
-        this._x = 0;
-        this._y = 0;
-        this._diameter = 10;
-    }
-
-    get X() { return this._x }
-    get Y() { return this._y }
-    get Diameter() { return this._diameter }
     set X(value) { this._x = value }
     set Y(value) { this._y = value }
     set Diameter(value) { this._diameter = value } 
+}
+
+class PongBall extends Sprite {
+    constructor() {
+        super();
+        this._diameter = 10;
+    }
 }
 
 class PongGame {
