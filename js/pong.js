@@ -16,7 +16,7 @@ class GameElement {
     set Height(value) { this._height = value }
 }
 
-class PongBall extends GameElement {
+class Ball extends GameElement {
     constructor() {
         super();
         this._diameter = 10;
@@ -27,7 +27,7 @@ class PongBall extends GameElement {
     }
 }
 
-class PongGame {
+class Game {
     constructor(width, height) {
         this._canvasWidth = arguments.length >= 1 ? width : 1280;
         this._canvasHeight = arguments.length >= 2 ? height : 960;
@@ -39,4 +39,4 @@ class PongGame {
     get Score() { return this._score }
 }
 
-module.exports = { PongGame, PongBall, GameElement };
+module.exports = { Game, Ball, GameElement };
