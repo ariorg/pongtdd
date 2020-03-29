@@ -18,11 +18,10 @@ describe("GameElement", () => {
     const ball = new GameElement(100, 200);
     expect([ball.X, ball.Y, ball.Width, ball.Height]).toStrictEqual([100, 200, 0, 0]);
   })
-
 });
 
 describe("Ball", () => {
-  test("Create new Ball should set coords and diameter to zero", () => {
+  test("Create new Ball without arguments should set coords and diameter to zero", () => {
     const pb = new Ball();
     expect(pb.X).toBe(0);
     expect(pb.Y).toBe(0);
@@ -51,7 +50,6 @@ describe("Ball", () => {
     expect(ball.Diameter).toBe(10);
     expect(ball.Radius).toBe(5);
   });
-
 });
 
 describe("Paddle", () => {
@@ -64,33 +62,31 @@ describe("Paddle", () => {
     const ball = new Paddle(123, 234, 34, 12);
     expect([ball.X, ball.Y, ball.Width, ball.Height]).toStrictEqual([123, 234, 34, 12]);
   });
-
-
 });
 
 describe("Game", () => {
-    test("Create pong game", () => {
-      let pg = new Game();
-      expect(typeof pg != "undefined").toBeTruthy();
-    });
-  
-    test("New Game has default sized canvas", () => {
-      const pg = new Game();
-      expect(pg.CanvasWidth).toBeGreaterThan(0);
-      expect(pg.CanvasHeight).toBeGreaterThan(0);
-    });
-  
-    test("Create Game with nondefault canvas size", () => {
-      const pg1 = new Game();
-      const w = pg1.CanvasWidth + 15;
-      const h = pg1.CanvasHeight + 15;
-      const pg = new Game(w, h);
-      expect(pg.CanvasWidth).toBe(w);
-      expect(pg.CanvasHeight).toBe(h);
-    });
-  
-    test("Game should have an initial score of zero", () => {
-      const g = new Game();
-      expect(g.Score).toBe(0);
-    });
+  test("Create pong game", () => {
+    let pg = new Game();
+    expect(typeof pg != "undefined").toBeTruthy();
   });
+
+  test("New Game has default sized canvas", () => {
+    const pg = new Game();
+    expect(pg.CanvasWidth).toBeGreaterThan(0);
+    expect(pg.CanvasHeight).toBeGreaterThan(0);
+  });
+
+  test("Create Game with nondefault canvas size", () => {
+    const pg1 = new Game();
+    const w = pg1.CanvasWidth + 15;
+    const h = pg1.CanvasHeight + 15;
+    const pg = new Game(w, h);
+    expect(pg.CanvasWidth).toBe(w);
+    expect(pg.CanvasHeight).toBe(h);
+  });
+
+  test("Game should have an initial score of zero", () => {
+    const g = new Game();
+    expect(g.Score).toBe(0);
+  });
+});

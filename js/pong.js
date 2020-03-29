@@ -37,8 +37,9 @@ class Ball extends GameElement {
     }
 }
 
-class Paddle extends GameElement {}
-
+class Paddle extends GameElement 
+{
+}
 
 class Game {
     constructor(width, height) {
