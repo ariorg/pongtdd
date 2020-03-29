@@ -29,12 +29,12 @@ class Ball extends GameElement {
     get Diameter() { return this.Width }
     get Radius() { return this.Width / 2 }
 
-    // set Diameter(value) {
-    //     this.Width = value;
-    // }
-    // set Radius(value) { 
-    //     this._diameter = value * 2;
-    // }
+    set Diameter(value) {
+        this.Width = value;
+    }
+    set Radius(value) { 
+        this.Width = value * 2;
+    }
 }
 
 class Paddle extends GameElement {}
