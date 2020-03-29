@@ -1,22 +1,22 @@
-const { Game, Ball, GameElement } = require("./pong");
+const { Game, Ball, Paddle, GameElement } = require("./pong");
 
 describe("GameElement", () => {
   test("Element creation without parameters hould have x,y coordinates, width and height equal to zero", () => {
-    const e = new GameElement();
-    expect(e.X).toBe(0);
-    expect(e.Y).toBe(0);
-    expect(e.Width).toBe(0);
-    expect(e.Height).toBe(0);
+    const ball = new GameElement();
+    expect(ball.X).toBe(0);
+    expect(ball.Y).toBe(0);
+    expect(ball.Width).toBe(0);
+    expect(ball.Height).toBe(0);
   });
 
   test("Element creation with constructor parameters should set X,Y,Width and Height properties", () => {
-    const e = new GameElement(100, 200, 30, 10);
-    expect([e.X, e.Y, e.Width, e.Height]).toStrictEqual([100, 200, 30, 10]);
+    const ball = new GameElement(100, 200, 30, 10);
+    expect([ball.X, ball.Y, ball.Width, ball.Height]).toStrictEqual([100, 200, 30, 10]);
   });
 
   test("Element creation with x,y parameters only should set Width and Height to zero", () => {
-    const e = new GameElement(100, 200);
-    expect([e.X, e.Y, e.Width, e.Height]).toStrictEqual([100, 200, 0, 0]);
+    const ball = new GameElement(100, 200);
+    expect([ball.X, ball.Y, ball.Width, ball.Height]).toStrictEqual([100, 200, 0, 0]);
   })
 
 });
@@ -28,6 +28,12 @@ describe("Ball", () => {
     expect(pb.Y).toBe(0);
     expect(pb.Diameter).toBeGreaterThan(0);
   });
+
+  test("Construct Ball with parameters should set X,Y,Radius and Diameter properties", () => {
+    const ball = new Ball(100, 200, 10);
+    expect([ball.X, ball.Y, ball.Radius, ball.Diameter]).toStrictEqual([100, 200, 10, 20]);
+  });
+
 
   test("Set ball coordinates", () => {
     const ball = new Ball();
@@ -43,6 +49,20 @@ describe("Ball", () => {
     ball.Diameter = newD;
     expect(ball.Diameter).toBe(newD);
   });
+});
+
+describe("Paddle", () => {
+  test("Construct Paddle without parameters should set coordinates and size to zero", () => {
+    const ball = new Paddle();
+    expect([ball.X, ball.Y, ball.Width, ball.Height]).toStrictEqual([0, 0, 0, 0]);
+  });
+
+  test("Construct Paddle with parameters should set X,Y,Width and Height properties", () => {
+    const ball = new Paddle(123, 234, 34, 12);
+    expect([ball.X, ball.Y, ball.Width, ball.Height]).toStrictEqual([123, 234, 34, 12]);
+  });
+
+
 });
 
 describe("Game", () => {

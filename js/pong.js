@@ -25,10 +25,18 @@ class Ball extends GameElement {
         this._diameter = 10;
     }
     get Diameter() { return this._diameter }
+    // get Radius() { return this._diameter / 2 }
+
     set Diameter(value) { 
         this._diameter = value;
     }
+    // set Radius(value) { 
+    //     this._diameter = value * 2;
+    // }
 }
+
+class Paddle extends GameElement {}
+
 
 class Game {
     constructor(width, height) {
@@ -42,4 +50,4 @@ class Game {
     get Score() { return this._score }
 }
 
-module.exports = { Game, Ball, GameElement };
+module.exports = { Game, Ball, Paddle, GameElement };
