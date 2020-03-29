@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Pong game to demonstrate TDD",
   "main": "index.js",
+  "type": "module",
   "homepage": "https://github.com/arividar/pongtdd",
   "scripts": {
     "test": "jest"
