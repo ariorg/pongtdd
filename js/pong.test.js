@@ -1,4 +1,9 @@
-const { Game, Ball, Paddle, GameElement } = require("./pong");
+const {
+  Game,
+  Ball,
+  Paddle,
+  GameElement
+} = require("./pong");
 
 describe("GameElement", () => {
   test("Element creation without parameters hould have x,y coordinates, width and height equal to zero", () => {

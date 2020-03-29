@@ -8,15 +8,31 @@ class GameElement {
         this._height = arguments.length >= 4 ? height : 0;
     }
 
-    get X() { return this._x }
-    get Y() { return this._y }
-    get Width() { return this._width }
-    get Height() { return this._height }
+    get X() {
+        return this._x
+    }
+    get Y() {
+        return this._y
+    }
+    get Width() {
+        return this._width
+    }
+    get Height() {
+        return this._height
+    }
 
-    set X(value) { this._x = value }
-    set Y(value) { this._y = value }
-    set Width(value) { this._width = value }
-    set Height(value) { this._height = value }
+    set X(value) {
+        this._x = value
+    }
+    set Y(value) {
+        this._y = value
+    }
+    set Width(value) {
+        this._width = value
+    }
+    set Height(value) {
+        this._height = value
+    }
 }
 
 class Ball extends GameElement {
@@ -24,22 +40,24 @@ class Ball extends GameElement {
         if (arguments.length === 0)
             super();
         else
-            super(x, y, radius*2, radius*2);
+            super(x, y, radius * 2, radius * 2);
     }
-    get Diameter() { return this.Width }
-    get Radius() { return this.Width / 2 }
+    get Diameter() {
+        return this.Width
+    }
+    get Radius() {
+        return this.Width / 2
+    }
 
     set Diameter(value) {
         this.Width = value;
     }
-    set Radius(value) { 
+    set Radius(value) {
         this.Width = value * 2;
     }
 }
 
-class Paddle extends GameElement 
-{
-}
+class Paddle extends GameElement {}
 
 class Game {
     constructor(width, height) {
@@ -48,9 +66,20 @@ class Game {
         this._score = 0;
     }
 
-    get CanvasWidth() { return this._canvasWidth }
-    get CanvasHeight() { return this._canvasHeight }
-    get Score() { return this._score }
+    get CanvasWidth() {
+        return this._canvasWidth
+    }
+    get CanvasHeight() {
+        return this._canvasHeight
+    }
+    get Score() {
+        return this._score
+    }
 }
 
-module.exports = { Game, Ball, Paddle, GameElement };
+module.exports = {
+    Game,
+    Ball,
+    Paddle,
+    GameElement
+};
