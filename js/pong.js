@@ -21,7 +21,10 @@ class GameElement {
 
 class Ball extends GameElement {
     constructor(x, y, radius) {
-        super(x, y, radius*2, radius*2);
+        if (arguments.length === 0)
+            super();
+        else
+            super(x, y, radius*2, radius*2);
     }
     get Diameter() { return this.Width }
     get Radius() { return this.Width / 2 }

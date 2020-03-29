@@ -22,11 +22,11 @@ describe("GameElement", () => {
 });
 
 describe("Ball", () => {
-  test("Create new Ball should have coords 0,0 and diameter > 0", () => {
+  test("Create new Ball should set coords and diameter to zero", () => {
     const pb = new Ball();
     expect(pb.X).toBe(0);
     expect(pb.Y).toBe(0);
-    expect(pb.Diameter).toBeGreaterThan(0);
+    expect(pb.Diameter).toBe(0);
   });
 
   test("Construct Ball with parameters should set X,Y,Radius and Diameter properties", () => {
@@ -43,11 +43,11 @@ describe("Ball", () => {
     expect(ball.Y).toBe(20);
   });
 
-  test("Set ball diameter to x should be x", () => {
+  test("Set ball diameter to x should set it to x and Radius to x/2", () => {
     const ball = new Ball();
-    const newD = ball.Diameter + 5;
-    ball.Diameter = newD;
-    expect(ball.Diameter).toBe(newD);
+    ball.Diameter = 40;
+    expect(ball.Diameter).toBe(40);
+    expect(ball.Radius).toBe(20);
   });
 });
 
