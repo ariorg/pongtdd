@@ -1,11 +1,6 @@
 'use strict';
 
-const {
-  Game,
-  Ball,
-  Paddle,
-  GameElement
-} = require("./pong");
+import { Game, Ball, Paddle, GameElement } from "./pong";
 
 describe("GameElement", () => {
   test("Element creation without parameters hould have x,y coordinates, width and height equal to zero", () => {

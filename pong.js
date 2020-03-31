@@ -77,7 +77,7 @@ class Game {
     }
 }
 
-module.exports = {
+export {
     Game,
     Ball,
     Paddle,

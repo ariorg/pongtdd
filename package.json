@@ -6,12 +6,18 @@
   "type": "module",
   "homepage": "https://github.com/arividar/pongtdd",
   "scripts": {
+    "start": "lite-server",
     "test": "jest"
   },
-  "keywords": ["game", "tdd"],
+  "keywords": [
+    "game",
+    "tdd"
+  ],
   "author": "Ari Johannesson",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^25.2.3"
+    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
+    "jest": "^25.2.3",
+    "lite-server": "^2.5.4"
   }
 }
