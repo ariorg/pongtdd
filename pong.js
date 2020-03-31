@@ -60,9 +60,9 @@ class Ball extends GameElement {
 class Paddle extends GameElement {}
 
 class Game {
-    constructor(width, height) {
-        this._canvasWidth = arguments.length >= 1 ? width : 1280;
-        this._canvasHeight = arguments.length >= 2 ? height : 960;
+    constructor(canvas) {
+        this._canvasWidth = arguments.length >= 1 ? canvas.width : 1280;
+        this._canvasHeight = arguments.length >= 2 ? canvas.height : 960;
         this._score = 0;
     }
 
