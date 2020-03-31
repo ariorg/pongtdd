@@ -61,8 +61,8 @@ class Paddle extends GameElement {}
 
 class Game {
     constructor(canvas) {
-        this._canvasWidth = arguments.length >= 1 ? canvas.width : 1280;
-        this._canvasHeight = arguments.length >= 2 ? canvas.height : 960;
+        this._canvasWidth = canvas.width;
+        this._canvasHeight = canvas.height;
         this._score = 0;
     }
 

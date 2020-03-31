@@ -68,12 +68,12 @@ describe("Paddle", () => {
 
 describe("Game", () => {
   test("Create pong game", () => {
-    let pg = new Game(document.createElement("canvas"));
+    let pg = new Game();
     expect(typeof pg != "undefined").toBeTruthy();
   });
 
   test("New Game has default sized canvas", () => {
-    const pg = new Game(document.createElement("canvas"));
+    const pg = new Game();
     expect(pg.CanvasWidth).toBeGreaterThan(0);
     expect(pg.CanvasHeight).toBeGreaterThan(0);
   });
@@ -97,7 +97,7 @@ describe("Game", () => {
   });
 
   test("Game should have an initial score of zero", () => {
-    const g = new Game(document.createElement("canvas"));
+    const g = new Game();
     expect(g.Score).toBe(0);
   });
 });

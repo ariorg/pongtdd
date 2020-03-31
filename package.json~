@@ -5,9 +5,6 @@
   "main": "index.js",
   "type": "module",
   "homepage": "https://github.com/arividar/pongtdd",
-  "jest": {
-	  "setupFiles": ["jest-canvas-mock"]
-  },
   "scripts": {
     "start": "lite-server",
     "test": "jest"
