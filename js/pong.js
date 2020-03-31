@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 class GameElement {
     constructor(x, y, width, height) {
@@ -9,29 +9,29 @@ class GameElement {
     }
 
     get X() {
-        return this._x
+        return this._x;
     }
     get Y() {
-        return this._y
+        return this._y;
     }
     get Width() {
-        return this._width
+        return this._width;
     }
     get Height() {
-        return this._height
+        return this._height;
     }
 
     set X(value) {
-        this._x = value
+        this._x = value;
     }
     set Y(value) {
-        this._y = value
+        this._y = value;
     }
     set Width(value) {
-        this._width = value
+        this._width = value;
     }
     set Height(value) {
-        this._height = value
+        this._height = value;
     }
 }
 
@@ -67,13 +67,13 @@ class Game {
     }
 
     get CanvasWidth() {
-        return this._canvasWidth
+        return this._canvasWidth;
     }
     get CanvasHeight() {
-        return this._canvasHeight
+        return this._canvasHeight;
     }
     get Score() {
-        return this._score
+        return this._score;
     }
 }
 
