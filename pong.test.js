@@ -1,6 +1,8 @@
 'use strict';
 
 import { Game, Ball, Paddle, GameElement } from "./pong.js";
+import 'jest-canvas-mock';
+
 
 describe("GameElement", () => {
   test("Element creation without parameters hould have x,y coordinates, width and height equal to zero", () => {
@@ -68,12 +70,12 @@ describe("Paddle", () => {
 
 describe("Game", () => {
   test("Create pong game", () => {
-    let pg = new Game(document.createElement("canvas"));
+    let pg = new Game(document.createElement("canvas").getContext("2d"));
     expect(typeof pg != "undefined").toBeTruthy();
   });
 
   test("New Game has default sized canvas", () => {
-    const pg = new Game(document.createElement("canvas"));
+    const pg = new Game(document.createElement("canvas").getContext("2d"));
     expect(pg.CanvasWidth).toBeGreaterThan(0);
     expect(pg.CanvasHeight).toBeGreaterThan(0);
   });
@@ -82,7 +84,8 @@ describe("Game", () => {
     const canvas = document.createElement("canvas");
     canvas.width = 801;
     canvas.height = 601;
-    const pg = new Game(canvas);
+    const context = canvas.getContext("2d");
+    const pg = new Game(context);
     expect(pg.CanvasWidth).toBe(801);
     expect(pg.CanvasHeight).toBe(601);
   });
@@ -97,7 +100,7 @@ describe("Game", () => {
   });
 
   test("Game should have an initial score of zero", () => {
-    const g = new Game(document.createElement("canvas"));
+    const g = new Game(document.createElement("canvas").getContext("2d"));
     expect(g.Score).toBe(0);
   });
 });
