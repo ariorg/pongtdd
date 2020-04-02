@@ -1,6 +1,6 @@
 "use strict";
 
-import { Game, Ball, Paddle, GameElement } from "./pong.js";
+import Game from "./pong.js";
 
 let canvas = document.getElementById("skjarinn");
 let ctx = canvas.getContext("2d");

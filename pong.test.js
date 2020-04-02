@@ -1,6 +1,7 @@
 'use strict';
 
-import { Game, Ball, Paddle, GameElement } from "./pong.js";
+import { Game, Ball, Paddle } from "./pong.js";
+import GameElement from "./game-element.js";
 import 'jest-canvas-mock';
 
 

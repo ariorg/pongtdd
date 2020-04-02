@@ -1,41 +1,8 @@
 'use strict';
 
-class GameElement {
-    constructor(x, y, width, height) {
-        this._x = arguments.length >= 1 ? x : 0;
-        this._y = arguments.length >= 2 ? y : 0;
-        this._width = arguments.length >= 3 ? width : 0;
-        this._height = arguments.length >= 4 ? height : 0;
-    }
+import GameElement from "./game-element";
 
-    get X() {
-        return this._x;
-    }
-    get Y() {
-        return this._y;
-    }
-    get Width() {
-        return this._width;
-    }
-    get Height() {
-        return this._height;
-    }
-
-    set X(value) {
-        this._x = value;
-    }
-    set Y(value) {
-        this._y = value;
-    }
-    set Width(value) {
-        this._width = value;
-    }
-    set Height(value) {
-        this._height = value;
-    }
-}
-
-class Ball extends GameElement {
+export class Ball extends GameElement {
     constructor(x, y, radius) {
         if (arguments.length === 0)
             super();
@@ -57,9 +24,9 @@ class Ball extends GameElement {
     }
 }
 
-class Paddle extends GameElement {}
+export class Paddle extends GameElement {}
 
-class Game {
+export class Game {
     constructor(canvas) {
         this._canvas = canvas;
         this._ctx = canvas.getContext("2d");
@@ -79,10 +46,3 @@ class Game {
         return this._score;
     }
 }
-
-export {
-    Game,
-    Ball,
-    Paddle,
-    GameElement
-};
