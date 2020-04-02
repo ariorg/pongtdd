@@ -1,9 +1,6 @@
 'use strict';
-import GameElement from "./game-element";
 
-export class Paddle extends GameElement {}
-
-export class Game {
+export default class Game {
     constructor(canvas) {
         this._canvas = canvas;
         this._ctx = canvas.getContext("2d");
