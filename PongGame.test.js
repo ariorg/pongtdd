@@ -1,9 +1,9 @@
 'use strict';
 
-import Game from "./pong";
-import GameElement from "./game-element";
-import Paddle from "./paddle"
-import Ball from "./ball";
+import PongGame from "./PongGame";
+import GameElement from "./GameElement";
+import Paddle from "./Paddle"
+import Ball from "./Ball";
 import 'jest-canvas-mock';
 
 
@@ -73,13 +73,13 @@ describe("Paddle", () => {
 
 describe("Game", () => {
   test("Create pong game", () => {
-    let pg = new Game(document.createElement("canvas"));
+    let pg = new PongGame(document.createElement("canvas"));
     expect(typeof pg != "undefined").toBeTruthy();
     console.log(typeof pg);
   });
 
   test("New Game has default sized canvas", () => {
-    const pg = new Game(document.createElement("canvas"));
+    const pg = new PongGame(document.createElement("canvas"));
     expect(pg.CanvasWidth).toBeGreaterThan(0);
     expect(pg.CanvasHeight).toBeGreaterThan(0);
   });
@@ -88,13 +88,13 @@ describe("Game", () => {
     const canvas = document.createElement("canvas");
     canvas.width = 801;
     canvas.height = 601;
-    const pg = new Game(canvas);
+    const pg = new PongGame(canvas);
     expect(pg.CanvasWidth).toBe(801);
     expect(pg.CanvasHeight).toBe(601);
   });
 
   test("Game should have an initial score of zero", () => {
-    const g = new Game(document.createElement("canvas"));
+    const g = new PongGame(document.createElement("canvas"));
     expect(g.Score).toBe(0);
   });
 });

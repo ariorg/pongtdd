@@ -1,5 +1,5 @@
 'use strict'
-import GameElement from "./game-element";
+import GameElement from "./GameElement";
 
 export default class Ball extends GameElement {
     constructor(x, y, radius) {

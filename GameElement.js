@@ -1,3 +1,5 @@
+'use strict'
+
 export default class GameElement {
     constructor(x, y, width, height) {
         this._x = arguments.length >= 1 ? x : 0;
