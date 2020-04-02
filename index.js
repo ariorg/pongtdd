@@ -1,7 +1,7 @@
 "use strict";
 
-import Game from "./pong.js";
+import PongGame from "./PongGame.js";
 
 let canvas = document.getElementById("skjarinn");
 let ctx = canvas.getContext("2d");
-let pongGame = new Game(ctx);
+let pongGame = new PongGame(ctx);

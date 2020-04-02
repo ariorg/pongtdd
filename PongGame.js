@@ -1,6 +1,6 @@
 'use strict';
 
-export default class Game {
+export default class PongGame {
     constructor(canvas) {
         this._canvas = canvas;
         this._ctx = canvas.getContext("2d");
