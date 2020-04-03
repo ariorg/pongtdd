@@ -21,8 +21,8 @@ describe("GameElement", () => {
         const ball = new GameElement();
         ball.X = 101;
         ball.Y = 102;
-        ball.Width = 201,
-            ball.Height = 202;
+        ball.Width = 201;
+        ball.Height = 202;
         expect([ball.X, ball.Y, ball.Width, ball.Height]).toStrictEqual([101, 102, 201, 202]);
     });
 });
