@@ -13,8 +13,16 @@ describe("GameElement", () => {
     const ball = new GameElement(100, 200, 30, 10);
     expect([ball.X, ball.Y, ball.Width, ball.Height]).toStrictEqual([100, 200, 30, 10]);
   });
+  
   test("Element creation with x,y parameters only should set Width and Height to zero", () => {
     const ball = new GameElement(100, 200);
     expect([ball.X, ball.Y, ball.Width, ball.Height]).toStrictEqual([100, 200, 0, 0]);
+  });
+
+  test("Set Height should set Height", () => {
+    const ball = new GameElement();
+    ball.Height = 201;
+    expect(ball.Width).toBe(0);
+    expect(ball.Height).toBe(201);
   });
 });
