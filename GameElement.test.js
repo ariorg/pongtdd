@@ -17,7 +17,7 @@ describe("GameElement", () => {
         expect([ball.X, ball.Y, ball.Width, ball.Height]).toStrictEqual([100, 200, 0, 0]);
     });
 
-    test("Setters Height should set their propperties", () => {
+    test("Setters should set their propperties", () => {
         const ball = new GameElement();
         ball.X = 101;
         ball.Y = 102;
