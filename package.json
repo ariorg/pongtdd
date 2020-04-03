@@ -12,6 +12,10 @@
     "start": "lite-server",
     "test": "jest"
   },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": ["html"]
+  },
   "keywords": [
     "game",
     "tdd"
