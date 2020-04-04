@@ -1,7 +1,12 @@
 'use strict';
 
 import 'jest-canvas-mock';
-import PongGame from "./PongGame";
+import PongGame from './PongGame';
+import Paddle from './Paddle';
+import Ball from './Ball';
+
+jest.mock('./Paddle');
+jest.mock('./Ball');
 
 describe("PongGame class", () => {
   describe("constructor", () => {
@@ -29,6 +34,13 @@ describe("PongGame class", () => {
     test("Game should have an initial score of zero", () => {
       const g = new PongGame(document.createElement("canvas"));
       expect(g.Score).toBe(0);
+    });
+
+    test('New PongGame should create one Paddle and one Ball objects', () => {
+
+      const g = new PongGame(document.createElement("canvas"));
+      expect(Paddle).toHaveBeenCalledTimes(1);
+      expect(Ball).toHaveBeenCalledOnce();
     });
   });
 });
