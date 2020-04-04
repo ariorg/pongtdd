@@ -6,10 +6,14 @@
   "type": "module",
   "homepage": "https://github.com/arividar/pongtdd",
   "jest": {
-    "setupFiles": ["jest-canvas-mock"],
+    "setupFiles": [
+      "jest-canvas-mock"
+    ],
     "verbose": true,
     "collectCoverage": true,
-    "coverageReporters": ["html"]
+    "coverageReporters": [
+      "html"
+    ]
   },
   "scripts": {
     "start": "lite-server",
