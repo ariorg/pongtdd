@@ -40,7 +40,7 @@ describe("PongGame class", () => {
 
       const g = new PongGame(document.createElement("canvas"));
       expect(Paddle).toHaveBeenCalledTimes(1);
-      expect(Ball).toHaveBeenCalledOnce();
+      expect(Ball).toHaveBeenCalledTimes(1);
     });
   });
 });
