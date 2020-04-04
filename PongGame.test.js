@@ -3,8 +3,8 @@
 import 'jest-canvas-mock';
 import PongGame from "./PongGame";
 
-describe("PongGame", () => {
-  describe("PongGame constructor", () => {
+describe("PongGame class", () => {
+  describe("constructor", () => {
     test("Create pong game", () => {
       let pg = new PongGame(document.createElement("canvas"));
       expect(typeof pg != "undefined").toBeTruthy();
