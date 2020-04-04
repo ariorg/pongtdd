@@ -8,6 +8,11 @@ import Ball from './Ball';
 jest.mock('./Paddle');
 jest.mock('./Ball');
 
+beforeEach(() => {
+  Ball.mockClear();
+  Paddle.mockClear();
+});
+
 describe("PongGame class", () => {
   describe("constructor", () => {
     test("Create pong game", () => {
