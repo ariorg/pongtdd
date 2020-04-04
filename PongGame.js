@@ -14,11 +14,11 @@ export default class PongGame {
     }
 
     get CanvasWidth() {
-        return this._ctx.canvas.width;
+        return this._.canvas.width;
     }
 
     get CanvasHeight() {
-        return this._ctx.canvas.height;
+        return this._.canvas.height;
     }
     get Score() {
         return this._score;
