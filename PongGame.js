@@ -4,25 +4,21 @@ import Ball from './Ball';
 import Paddle from './Paddle';
 
 
-
 export default class PongGame {
 
-    constructor(canvas) {
-        this._canvas = canvas;
-        this._ctx = canvas.getContext("2d");
-        this._canvasWidth = this._ctx.canvas.width;
-        this._canvasHeight = this._ctx.canvas.height;
+    constructor(ctx2D) {
+        this._ctx = ctx2D;
         this._score = 0;
         this._paddle = new Paddle();
         this._ball = new Ball();
     }
 
     get CanvasWidth() {
-        return this._canvasWidth;
+        return this._ctx.canvas.width;
     }
 
     get CanvasHeight() {
-        return this._canvasHeight;
+        return this._ctx.canvas.height;
     }
     get Score() {
         return this._score;
