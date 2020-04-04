@@ -23,8 +23,8 @@ describe("PongGame class", () => {
 
     test("New Game has default sized canvas", () => {
       const pg = new PongGame(document.createElement("canvas"));
-      expect(pg.CanvasWidth).toBeGreaterThan(0);
-      expect(pg.CanvasHeight).toBeGreaterThan(0);
+      expect(pg._ctx.canvas.width).toBeGreaterThan(0);
+      expect(pg._ctx.canvas.height).toBeGreaterThan(0);
     });
 
     test("Width and height of passed in canvas is same in Game object", () => {
