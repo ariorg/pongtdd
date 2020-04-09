@@ -16,4 +16,10 @@ describe("Paddle", () => {
     const paddle = new Paddle(123, 234, 34, 12);
     expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([123, 234, 34, 12]);
   });
+
+  test("Paddle should set its initial position at the bottom center of the canvas", () => {
+    const paddle = new Paddle(ctx, height, width);
+    expect(paddle.X).toBe(Math.floor(ctx.canvas.width / 2));
+    expect(paddle.Y).toBe(Math.floor(ctx.canvas.height - paddle.Height / 2));
+  });
 });

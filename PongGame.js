@@ -3,14 +3,13 @@
 import Ball from './Ball';
 import Paddle from './Paddle';
 
-
 export default class PongGame {
 
     constructor(ctx2D) {
         this._ctx = ctx2D;
         this._score = 0;
-        this._paddle = new Paddle();
-        this._ball = new Ball();
+        this._paddle = new Paddle(this._ctx);
+        this._ball = new Ball(this._ctx);
     }
 
     get CanvasWidth() {
@@ -22,5 +21,9 @@ export default class PongGame {
     }
     get Score() {
         return this._score;
+    }
+
+    startNewGame() {
+        
     }
 }
