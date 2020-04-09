@@ -8,13 +8,13 @@ describe("Paddle", () => {
   });
 
   test("Construct Paddle without parameters should set coordinates and size to zero", () => {
-    const paddle = new Paddle();
+    const paddle = new Paddle(null);
     expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([0, 0, 0, 0]);
   });
 
-  test("Construct Paddle with parameters should set X,Y,Width and Height properties", () => {
-    const paddle = new Paddle(123, 234, 34, 12);
-    expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([123, 234, 34, 12]);
+  test("Construct Paddle with parameters should set X,Y to zero and correct Width and Height properties", () => {
+    const paddle = new Paddle(null, 34, 12);
+    expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([0, 0, 34, 12]);
   });
 
   test.skip("Paddle should set its initial position at the bottom center of the canvas", () => {

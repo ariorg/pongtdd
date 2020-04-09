@@ -1,11 +1,13 @@
 'use strict'
 
 export default class GameElement {
-    constructor(x, y, width, height) {
-        this._x = arguments.length >= 1 ? x : 0;
-        this._y = arguments.length >= 2 ? y : 0;
-        this._width = arguments.length >= 3 ? width : 0;
-        this._height = arguments.length >= 4 ? height : 0;
+    constructor(ctx, x, y, width, height) {
+        this._ctx = ctx;
+        const numPars = arguments.length;
+        this._x = numPars >= 2 ? x : 0;
+        this._y = numPars >= 3 ? y : 0;
+        this._width = numPars >= 4 ? width : 0;
+        this._height = numPars >= 5 ? height : 0;
     }
 
     get X() {
