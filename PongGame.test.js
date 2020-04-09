@@ -47,13 +47,13 @@ describe("PongGame class", () => {
     });
   });
 
-  // describe('StartGame method', () => {
-  //   test('StartGame should create a new Ball and Paddle', () => {
-  //     const canvas = document.createElement("canvas");
-  //     canvas.height=840;
-  //     canvas.width=960;
-  //     const g = new PongGame(canvas);
-  //     g.startNewGame();
-  //   });
-  // });
+  describe('StartGame method', () => {
+    test.skip('StartGame should create a new Ball and Paddle', () => {
+      const canvas = document.createElement("canvas");
+      canvas.height=840;
+      canvas.width=960;
+      const g = new PongGame(canvas);
+      g.startNewGame();
+    });
+  });
 });
