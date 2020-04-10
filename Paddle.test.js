@@ -28,4 +28,5 @@ describe("Paddle", () => {
       expect(paddle.X).toBe(Math.floor(canvasWidth / 2));
       expect(paddle.Y).toBe(Math.floor(canvasHeight - paddle.Height / 2));
   });
+
 });

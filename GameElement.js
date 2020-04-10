@@ -29,16 +29,24 @@ export default class GameElement {
         this._y = value;
     }
     set Width(value) {
+        this._throwIfEvenNumber(value, "Width of a element must be odd number");
         this._width = value;
     }
+
     set Height(value) {
+        this._throwIfEvenNumber(value, "Height of a element must be odd number");
         this._height = value;
     }
 
     startNewGame() {
         this.X = 0;
         this.Y = 0;
-        this.Width = 0;
-        this.Height = 0;
+        this.Width = 1;
+        this.Height = 1;
     }
+
+    _throwIfEvenNumber(value, errorText) {
+        if (value % 2 === 0) throw errorText;
+    }
+
 }
