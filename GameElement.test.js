@@ -1,7 +1,7 @@
 'use strict'
 import GameElement from "./GameElement";
 
-describe("GameElement", () => {
+describe("GameElement class tests", () => {
     test("Element creation without parameters hould have x,y coordinates, width and height equal to zero", () => {
         const ball = new GameElement();
         expect([ball.X, ball.Y, ball.Width, ball.Height]).toStrictEqual([0, 0, 0, 0]);
@@ -18,11 +18,19 @@ describe("GameElement", () => {
     });
 
     test("Setters should set their propperties", () => {
-        const ball = new GameElement();
-        ball.X = 101;
-        ball.Y = 102;
-        ball.Width = 201;
-        ball.Height = 202;
-        expect([ball.X, ball.Y, ball.Width, ball.Height]).toStrictEqual([101, 102, 201, 202]);
+        const ge = new GameElement();
+        ge.X = 101;
+        ge.Y = 102;
+        ge.Width = 201;
+        ge.Height = 202;
+        expect([ge.X, ge.Y, ge.Width, ge.Height]).toStrictEqual([101, 102, 201, 202]);
+    });
+
+    test("startNewGame method should set coords and shape size to zero", () => {
+        const ge = new GameElement();
+        ge.X = ge.Y = ge.Width = ge.Height = 1;
+        expect(ge.X + ge.Y + ge.Width + ge.Height).toBe(4);
+        ge.startNewGame();
+        expect(ge.X + ge.Y + ge.Width + ge.Height).toBe(0);
     });
 });

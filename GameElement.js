@@ -3,11 +3,10 @@
 export default class GameElement {
     constructor(ctx, x, y, width, height) {
         this._ctx = ctx;
-        const numPars = arguments.length;
-        this._x = numPars >= 2 ? x : 0;
-        this._y = numPars >= 3 ? y : 0;
-        this._width = numPars >= 4 ? width : 0;
-        this._height = numPars >= 5 ? height : 0;
+        this._x = x || 0;
+        this._y = y || 0;
+        this._width = width || 0;
+        this._height = height || 0;
     }
 
     get X() {
@@ -34,5 +33,12 @@ export default class GameElement {
     }
     set Height(value) {
         this._height = value;
+    }
+
+    startNewGame() {
+        this.X = 0;
+        this.Y = 0;
+        this.Width = 0;
+        this.Height = 0;
     }
 }
