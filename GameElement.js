@@ -3,10 +3,10 @@
 export default class GameElement {
     constructor(ctx, x, y, width, height) {
         this._ctx = ctx;
-        this._x = x || 0;
-        this._y = y || 0;
-        this._width = width || 1;
-        this._height = height || 1;
+        this.X = x || 0;
+        this.Y = y || 0;
+        this.Width = width || 1;
+        this.Height = height || 1;
     }
 
     get X() {
