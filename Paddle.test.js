@@ -13,8 +13,8 @@ describe("Paddle", () => {
   });
 
   test("Construct Paddle with parameters should set X,Y to zero and correct Width and Height properties", () => {
-      const paddle = new Paddle(null, 34, 12);
-      expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([0, 0, 34, 12]);
+      const paddle = new Paddle(null, 33, 11);
+      expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([0, 0, 33, 11]);
   });
 
   test("Paddle startNewGame should set initial position at the bottom center of the canvas", () => {
