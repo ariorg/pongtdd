@@ -13,13 +13,14 @@ describe("Paddle", () => {
   });
 
   test("Construct Paddle with parameters should set X,Y to zero and correct Width and Height properties", () => {
-    const paddle = new Paddle(null, 34, 12);
-    expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([0, 0, 34, 12]);
+      const paddle = new Paddle(null, 34, 12);
+      expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([0, 0, 34, 12]);
   });
 
-  test.skip("Paddle should set its initial position at the bottom center of the canvas", () => {
-    const paddle = new Paddle(ctx, height, width);
-    expect(paddle.X).toBe(Math.floor(ctx.canvas.width / 2));
-    expect(paddle.Y).toBe(Math.floor(ctx.canvas.height - paddle.Height / 2));
+  test("Paddle should set initial position at the bottom center of the canvas", () => {
+      const ctx = document.createElement("canvas").getContext('2d');
+      const paddle = new Paddle(ctx, 15, 5);
+      expect(paddle.X).toBe(Math.floor(ctx.canvas.width / 2));
+      expect(paddle.Y).toBe(Math.floor(ctx.canvas.height - paddle.Height / 2));
   });
 });

@@ -17,7 +17,8 @@
   },
   "scripts": {
     "start": "lite-server",
-    "test": "jest"
+    "test": "jest",
+    "testw": "jest --watch"
   },
   "keywords": [
     "game",
