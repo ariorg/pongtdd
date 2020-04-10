@@ -5,8 +5,8 @@ export default class GameElement {
         this._ctx = ctx;
         this._x = x || 0;
         this._y = y || 0;
-        this._width = width || 0;
-        this._height = height || 0;
+        this._width = width || 1;
+        this._height = height || 1;
     }
 
     get X() {
