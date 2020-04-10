@@ -18,9 +18,9 @@ describe("GameElement class tests", () => {
     });
 
     test("GameElement should not accept non-even size", () => {
-        expect(() => {
-            new GameElement(null, 100, 200, 10, 7)
-        }).toThrow();
+        expect(() => { new GameElement(null, 100, 200, 10, 7) }).toThrow();
+        expect(() => { new GameElement(null, 100, 200, 19, 12) }).toThrow();
+        expect(() => { new GameElement(null, 100, 200, 19, 11) }).not.toThrow();
     });
 
     test("Setters should set their propperties", () => {

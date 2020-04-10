@@ -1,7 +1,7 @@
 'use strict'
 import Paddle from "./Paddle";
 
-describe("Paddle", () => {
+describe("Paddle class tests", () => {
   test("Paddle creation", () => {
     const paddle = new Paddle();
     expect(paddle).toBeDefined();
