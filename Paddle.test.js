@@ -13,20 +13,20 @@ describe("Paddle class tests", () => {
   });
 
   test("Construct Paddle with parameters should set X,Y to zero and correct Width and Height properties", () => {
-      const paddle = new Paddle(null, 33, 11);
-      expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([0, 0, 33, 11]);
+    const paddle = new Paddle(null, 33, 11);
+    expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([0, 0, 33, 11]);
   });
 
   test("Paddle startNewGame should set initial position at the bottom center of the canvas", () => {
-      const canvasHeight = 600;
-      const canvasWidth = 400; 
-      const ctx = document.createElement("canvas").getContext('2d');
-      ctx.canvas.width=canvasWidth;
-      ctx.canvas.height=canvasHeight;
-      const paddle = new Paddle(ctx, 15, 5);
-      paddle.startNewGame();
-      expect(paddle.X).toBe(Math.floor(canvasWidth / 2));
-      expect(paddle.Y).toBe(Math.floor(canvasHeight - paddle.Height / 2));
+    const canvasHeight = 600;
+    const canvasWidth = 400;
+    const ctx = document.createElement("canvas").getContext('2d');
+    ctx.canvas.width = canvasWidth;
+    ctx.canvas.height = canvasHeight;
+    const paddle = new Paddle(ctx, 15, 5);
+    paddle.startNewGame();
+    expect(paddle.X).toBe(Math.floor(canvasWidth / 2));
+    expect(paddle.Y).toBe(canvasHeight - (1 + (paddle.Height - 1) / 2));
   });
 
 });
