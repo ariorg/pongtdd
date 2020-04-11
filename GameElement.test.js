@@ -3,13 +3,13 @@ import GameElement from "./GameElement";
 
 describe("GameElement class tests", () => {
     test("Element creation without parameters should set x,y to 0, and width and height equal to 1", () => {
-        const ball = new GameElement();
-        expect([ball.X, ball.Y, ball.Width, ball.Height]).toStrictEqual([0, 0, 1, 1]);
+        const ge = new GameElement();
+        expect([ge.X, ge.Y, ge.Width, ge.Height]).toStrictEqual([0, 0, 1, 1]);
     });
 
     test("Element creation with constructor parameters should set X,Y,Width and Height properties", () => {
-        const ball = new GameElement(null, 100, 200, 29, 9);
-        expect([ball.X, ball.Y, ball.Width, ball.Height]).toStrictEqual([100, 200, 29, 9]);
+        const ge = new GameElement(null, 100, 200, 29, 9);
+        expect([ge.X, ge.Y, ge.Width, ge.Height]).toStrictEqual([100, 200, 29, 9]);
     });
 
     test("Element creation with x,y parameters only should set Width and Height to 1", () => {
@@ -40,4 +40,19 @@ describe("GameElement class tests", () => {
         expect([ge.X, ge.Y, ge.Width, ge.Height]).toStrictEqual([0, 0, 1, 1]);
     });
 
+    test("Setting width and height should set WidthRadius and HeighRadius", () => {
+        const width = 11;
+        const height = 23;
+        const ge = new GameElement(null, 0, 0, width, height);
+        expect(ge.WidthRadius).toBe((width-1)/2);
+        expect(ge.HeightRadius).toBe((height-1)/2);
+    });
+
+    test("Width/Height should be equal to 2 x radius + 1 (the center point)", () => {
+        const ge = new GameElement(null);
+        ge.Width = 31;
+        expect(ge.WidthRadius).toBe(15);
+        ge.Height = 11;
+        expect(ge.HeightRadius).toBe(5);
+    });
 });

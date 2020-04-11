@@ -21,6 +21,13 @@ export default class GameElement {
     get Height() {
         return this._height;
     }
+    get WidthRadius() {
+        return (this.Width - 1) / 2;
+    }
+    get HeightRadius() {
+        return (this.Height - 1) / 2;
+    }
+
 
     set X(value) {
         this._x = value;
