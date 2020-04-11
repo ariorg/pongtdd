@@ -30,18 +30,20 @@ export default class GameElement {
 
 
     set X(value) {
+        this._throwIfNotInteger(value, "GameElement.X");
         this._x = value;
     }
     set Y(value) {
+        this._throwIfNotInteger(value, "GameElement.Y");
         this._y = value;
     }
     set Width(value) {
-        this._throwIfEvenNumber(value, "Width of a element must be odd number");
+        this._throwIfNotOddNumber(value, "GameElement.Width");
         this._width = value;
     }
 
     set Height(value) {
-        this._throwIfEvenNumber(value, "Height of a element must be odd number");
+        this._throwIfNotOddNumber(value, "GameElement.Height");
         this._height = value;
     }
 
@@ -52,8 +54,13 @@ export default class GameElement {
         this.Height = 1;
     }
 
-    _throwIfEvenNumber(value, errorText) {
-        if (value % 2 === 0) throw errorText;
+    _throwIfNotInteger(value, valueName) {
+        if (!Number.isInteger(value)) throw `${valueName} must be an integer`;
+    }
+
+    _throwIfNotOddNumber(value, valueName) {
+        this._throwIfNotInteger(value, valueName);
+        if (value % 2 === 0) throw `${valueName} must be an odd number`;
     }
 
 }

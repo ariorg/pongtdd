@@ -18,10 +18,11 @@ describe("GameElement class tests", () => {
         expect([ge.X, ge.Y, ge.Width, ge.Height]).toStrictEqual([100, 200, 1, 1]);
     });
 
-    test("GameElement should not accept non-even size", () => {
-        expect(() => { new GameElement(null, 100, 200, 10, 7) }).toThrow();
-        expect(() => { new GameElement(null, 100, 200, 19, 12) }).toThrow();
-        expect(() => { new GameElement(null, 100, 200, 19, 11) }).not.toThrow();
+    test("GameElement should not accept  size", () => {
+        expect(() => { new GameElement(null, 0, 0, 10, 7) }).toThrow();
+        expect(() => { new GameElement(null, 0, 0, 19, 12) }).toThrow();
+        expect(() => { new GameElement(null, 0, 0, 19.5, 11.01) }).toThrow();
+        expect(() => { new GameElement(null, 0, 0, 19, 11) }).not.toThrow();
     });
 
     test("Setters should set their propperties", () => {
