@@ -1,6 +1,6 @@
 'use strict'
 import GameElement from "./GameElement";
-// jsut for triggering git commit - temporary
+
 export default class Ball extends GameElement {
     constructor(x, y, radius) {
         if (arguments.length === 0)
