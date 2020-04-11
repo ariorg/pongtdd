@@ -1,7 +1,7 @@
 'use strict';
 
 import 'jest-canvas-mock';
-import PongGame from './PongGame.js';
+import PongGame from './PongGame';
 import Paddle from './Paddle';
 import Ball from './Ball';
 
@@ -14,13 +14,15 @@ beforeEach(() => {
 });
 
 describe("PongGame class", () => {
+  const ctx = document.createElement("canvas").getContext('2d');
+
   test("Create pong game", () => {
-    let pg = new PongGame(document.createElement("canvas").getContext('2d'));
+    let pg = new PongGame(ctx);
     expect(typeof pg != "undefined").toBeTruthy();
   });
 
   test("New Game has default sized canvas", () => {
-    const pg = new PongGame(document.createElement("canvas").getContext('2d'));
+    const pg = new PongGame(ctx);
     expect(pg._ctx.canvas.width).toBeGreaterThan(0);
     expect(pg._ctx.canvas.height).toBeGreaterThan(0);
   });
@@ -35,12 +37,12 @@ describe("PongGame class", () => {
   });
 
   test("Game should have an initial score of zero", () => {
-    const g = new PongGame(document.createElement("canvas").getContext('2d'));
+    const g = new PongGame(ctx);
     expect(g.Score).toBe(0);
   });
 
   test('PongGame constructor should create 1 instance of a Paddle and 1 of a Ball', () => {
-    const g = new PongGame(document.createElement("canvas").getContext('2d'));
+    const g = new PongGame(ctx);
     expect(Paddle).toHaveBeenCalledTimes(1);
     expect(Ball).toHaveBeenCalledTimes(1);
   });
@@ -49,7 +51,7 @@ describe("PongGame class", () => {
     const canvas = document.createElement("canvas");
     canvas.height = 840;
     canvas.width = 960;
-    const g = new PongGame(canvas);
+    const g = new PongGame(canvas.getContext('2d'));
     g.startNewGame();
   });
 });

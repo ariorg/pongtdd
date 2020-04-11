@@ -2,6 +2,7 @@
 import GameElement from "./GameElement";
 
 describe("GameElement class tests", () => {
+    
     test("Element creation without parameters should set x,y to 0, and width and height equal to 1", () => {
         const ge = new GameElement();
         expect([ge.X, ge.Y, ge.Width, ge.Height]).toStrictEqual([0, 0, 1, 1]);
