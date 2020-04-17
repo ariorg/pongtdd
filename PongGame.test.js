@@ -5,16 +5,18 @@ import PongGame from './PongGame';
 import Paddle from './Paddle';
 import Ball from './Ball';
 
-jest.mock('./Paddle');
 jest.mock('./Ball');
 
-beforeEach(() => {
-  Ball.mockClear();
-  Paddle.mockClear();
-});
-
 describe("PongGame class", () => {
-  const ctx = document.createElement("canvas").getContext('2d');
+
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext('2d');
+
+  beforeEach(() => {
+    canvas.width = 800;
+    canvas.height = 600;
+    Ball.mockClear();
+  });
 
   test("Create pong game", () => {
     let pg = new PongGame(ctx);
@@ -43,15 +45,18 @@ describe("PongGame class", () => {
 
   test('PongGame constructor should create 1 instance of a Paddle and 1 of a Ball', () => {
     const g = new PongGame(ctx);
-    expect(Paddle).toHaveBeenCalledTimes(1);
+    expect(g.Paddle).toBeDefined();
     expect(Ball).toHaveBeenCalledTimes(1);
   });
 
-  test('StartGame should create a new Ball and Paddle', () => {
-    const canvas = document.createElement("canvas");
-    canvas.height = 840;
-    canvas.width = 960;
-    const g = new PongGame(canvas.getContext('2d'));
+  test('startGame make Paddle at the bottom of the screen in a random location', () => {
+    ctx.canvas.height = 840;
+    ctx.canvas.width = 960;
+    const g = new PongGame(ctx);
     g.startNewGame();
+    expect(g.Paddle.Y).toBeDefined();
+    expect(g.Paddle.Y).toBe(ctx.canvas.height - g.Paddle.HeightRadius - 1);
+    expect(g.Paddle.X).toBeDefined();
+    expect(g.Paddle.X > g.Paddle.WidthRadius && g.Paddle.X < ctx.canvas.width - g.Paddle.WidthRadius).toBeTruthy;
   });
 });

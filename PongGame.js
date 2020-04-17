@@ -22,7 +22,13 @@ export default class PongGame {
         return this._score;
     }
 
+    get Paddle() {
+        return this._paddle;
+    }
+
     startNewGame() {
-        
+        // this.Paddle.Y = this.CanvasHeight - Paddle.HeightRadius - 1;
+        // this.Paddle.X = Math.floor(Math.random() * (this.CanvasWidth - 2 * this.Paddle.WidthRadius) + Paddle.WidthRadius);
+        this.Paddle.startNewGame();
     }
 }
