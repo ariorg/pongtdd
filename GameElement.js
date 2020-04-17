@@ -27,6 +27,18 @@ export default class GameElement {
     get HeightRadius() {
         return (this.Height - 1) / 2;
     }
+    get LeftX() {
+        return this._x - this.WidthRadius;
+    }
+    get RightX() {
+        return this._x + this.WidthRadius;
+    }
+    get TopY() {
+        return this._y - this.HeightRadius;
+    }
+    get BottomY() {
+        return this._y + this.HeightRadius;
+    }
 
 
     set X(value) {

@@ -46,17 +46,21 @@ describe("PongGame class", () => {
   test('PongGame constructor should create 1 instance of a Paddle and 1 of a Ball', () => {
     const g = new PongGame(ctx);
     expect(g.Paddle).toBeDefined();
+    expect(g.Paddle.WidthRadius).toBeGreaterThan(0);
     expect(Ball).toHaveBeenCalledTimes(1);
   });
 
-  test('startGame make Paddle at the bottom of the screen in a random location', () => {
+  test('startGame make Paddle at the bottom of the screen', () => {
     ctx.canvas.height = 840;
     ctx.canvas.width = 960;
     const g = new PongGame(ctx);
     g.startNewGame();
-    expect(g.Paddle.Y).toBeDefined();
-    expect(g.Paddle.Y).toBe(ctx.canvas.height - g.Paddle.HeightRadius - 1);
-    expect(g.Paddle.X).toBeDefined();
-    expect(g.Paddle.X > g.Paddle.WidthRadius && g.Paddle.X < ctx.canvas.width - g.Paddle.WidthRadius).toBeTruthy;
+    expect(g.Paddle.Y).toBe(ctx.canvas.height - 1 - g.Paddle.HeightRadius - 1);
+    expect(g.Paddle.X).toBeGreaterThanOrEqual(g.Paddle.WidthRadius);
+    expect(g.Paddle.X).toBeLessThan(ctx.canvas.width - g.Paddle.WidthRadius - 1);
   });
+
+  test('startNewGame should place Ball on top of Paddle', () => {
+    // tbd
+  })
 });

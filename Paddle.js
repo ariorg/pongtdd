@@ -7,7 +7,7 @@ export default class Paddle extends GameElement {
     }
 
     startNewGame() {
-        this.X = Math.floor(this._ctx.canvas.width / 2);
-        this.Y = Math.floor(this._ctx.canvas.height - this.Height / 2);
+        this.Y = this._ctx.canvas.height - 1 - this.HeightRadius - 1;
+        this.X = this.WidthRadius + Math.floor(Math.random() * (this._ctx.canvas.width - 1 - 2 * this.WidthRadius));
     }
 }
