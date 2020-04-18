@@ -21,10 +21,9 @@ export default class Ball extends GameElement {
 
     startNewGame(paddle) {
         this.Y = paddle.TopY - this.HeightRadius - 1;
-        const leftXLimit = paddle.LeftX + this.WidthRadius + 1;
-        const randomXPlacementDeltaLimit = paddle.Width - this.WidthRadius - 1;
-        const randomXDelta = Math.floor(Math.random() * randomXPlacementDeltaLimit);
-        this.X = leftXLimit + randomXDelta;
+        const leftXLimit = paddle.LeftX + this.WidthRadius;
+        const randomXPlacementDeltaLimit = paddle.Width - 2 * this.WidthRadius;
+        this.X = leftXLimit + Math.floor(Math.random() * randomXPlacementDeltaLimit);
         this.draw();
     }
 }
