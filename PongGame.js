@@ -30,8 +30,8 @@ export default class PongGame {
         return this._ball;
     }
 
-    startNewGame() {
-        this.Paddle.startNewGame();
+    startNewGame(ctx) {
+        this.Paddle.startNewGame(ctx);
         this.Ball.startNewGame(this.Paddle);
     }
 }

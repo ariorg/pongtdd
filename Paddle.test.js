@@ -25,7 +25,7 @@ describe("Paddle class tests", () => {
     const canvasWidth = 400;
     const paddleHeight = 5;
     const paddle = _newPaddle(canvasWidth, canvasHeight, 15, paddleHeight);
-    paddle.startNewGame();
+    paddle.startNewGame(paddle._ctx);
     expect(paddle.X).toBeGreaterThan(paddle.WidthRadius);
     expect(paddle.X).toBeLessThan(canvasWidth - 1 - paddle.WidthRadius);
     expect(paddle.Y).toBe(canvasHeight - 1 - paddle.HeightRadius - 1);

@@ -43,7 +43,7 @@ describe("PongGame class", () => {
     const width = 840;
     const height = 960;
     const g = _newPongGame(width, height);
-    g.startNewGame();
+    g.startNewGame(g._ctx);
     expect(g.Paddle.Y).toBe(height - 1 - g.Paddle.HeightRadius - 1);
     expect(g.Paddle.X).toBeGreaterThanOrEqual(g.Paddle.WidthRadius);
     expect(g.Paddle.X).toBeLessThan(width - g.Paddle.WidthRadius - 1);
@@ -51,7 +51,7 @@ describe("PongGame class", () => {
 
   test('startNewGame should place Ball on random location on top of Paddle', () => {
    const g = _newPongGame();
-   g.startNewGame();
+   g.startNewGame(g._ctx);
    expect(g.Ball.BottomY).toBe(g.Paddle.TopY - 1);
    expect(g.Ball.LeftX).toBeGreaterThanOrEqual(g.Paddle.LeftX);
    expect(g.Ball.RightX).toBeLessThanOrEqual(g.Paddle.RightX);
