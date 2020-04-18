@@ -65,6 +65,11 @@ export default class GameElement {
         this.Height = 1;
     }
 
+    draw() {
+        this._ctx.fillStyle = "black";
+        this._ctx.fillRect(this.LeftX, this.TopY, this.Width, this.Height);
+    }
+
     _throwIfNotInteger(value, valueName) {
         if (!Number.isInteger(value)) throw `${valueName} must be an integer`;
     }

@@ -1,4 +1,5 @@
 'use strict'
+import 'jest-canvas-mock';
 import Paddle from "./Paddle";
 
 describe("Paddle class tests", () => {
@@ -23,12 +24,25 @@ describe("Paddle class tests", () => {
     const canvasHeight = 600;
     const canvasWidth = 400;
     const paddleHeight = 5;
-    ctx.canvas.width = canvasWidth;
-    ctx.canvas.height = canvasHeight;
-    const paddle = new Paddle(ctx, 15, paddleHeight);
+    const paddle = _newPaddle(canvasWidth, canvasHeight, 15, paddleHeight);
     paddle.startNewGame();
     expect(paddle.X).toBeGreaterThan(paddle.WidthRadius);
     expect(paddle.X).toBeLessThan(canvasWidth - 1 - paddle.WidthRadius);
     expect(paddle.Y).toBe(canvasHeight - 1 - paddle.HeightRadius - 1);
   });
+
+  test("should draw itself", () => {
+    const pdl = _newPaddle();
+    pdl.draw();
+    expect(pdl._ctx.fillRect).toHaveBeenCalledTimes(1);
+  });
+
+  function _newPaddle(canvasWidth, canvasHeight, paddleWidth, paddleHeight) {
+    const ctx = document.createElement("canvas").getContext('2d');
+    ctx.canvas.width = canvasWidth || 800;
+    ctx.canvas.height = canvasHeight || 600;
+    const paddle = new Paddle(ctx, paddleWidth || 25, paddleHeight || 9);
+    return paddle;
+  }
 });
+
