@@ -4,9 +4,11 @@ import Ball from './Ball';
 describe("Ball class tests", () => {
     const ctx = document.createElement("canvas").getContext('2d');
 
-    test("Ball creation", () => {
-        const ball = new Ball(ctx);
+    test("Ball creation should set Diameter", () => {
+        const radius = 3;
+        const ball = new Ball(ctx, 1, 2, radius);
         expect(ball).toBeDefined();
+        expect(ball.Diameter).toBe(radius * 2 + 1);
     });
 
     test("Ball creation with no params should have coords 0,0 ", () => {

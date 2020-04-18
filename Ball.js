@@ -1,9 +1,9 @@
 'use strict'
-import GameElement from "./GameElement";
+import GameElement from "./GameElement.js";
 
 export default class Ball extends GameElement {
     constructor(ctx, x, y, radius) {
-        super(ctx, x, y, radius * 2, radius * 2);
+        super(ctx, x, y, radius * 2 + 1, radius * 2 + 1);
     }
     get Diameter() {
         return this.Width
@@ -25,5 +25,6 @@ export default class Ball extends GameElement {
         const randomXPlacementDeltaLimit = paddle.Width - this.WidthRadius - 1;
         const randomXDelta = Math.floor(Math.random() * randomXPlacementDeltaLimit);
         this.X = leftXLimit + randomXDelta;
+        this.draw();
     }
 }

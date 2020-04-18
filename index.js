@@ -1,4 +1,5 @@
 "use strict";
 
 import PongGame from "./PongGame.js";
-new PongGame(document.getElementById("skjarinn").getContext('2d'));
+const pg = new PongGame(document.getElementById("skjarinn").getContext('2d'));
+pg.startNewGame();

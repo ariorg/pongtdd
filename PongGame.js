@@ -1,14 +1,14 @@
 'use strict';
 
-import Ball from './Ball';
-import Paddle from './Paddle';
+import Ball from './Ball.js';
+import Paddle from './Paddle.js';
 
 export default class PongGame {
-    constructor(ctx2D) {
-        this._ctx = ctx2D;
+    constructor(ctx) {
+        this._ctx = ctx;
         this._score = 0;
-        this._paddle = new Paddle(this._ctx, 25, 9);
-        this._ball = new Ball(this._ctx);
+        this._paddle = new Paddle(this._ctx, 85, 13);
+        this._ball = new Ball(this._ctx, 10, 10, 5);
     }
 
     get CanvasWidth() {

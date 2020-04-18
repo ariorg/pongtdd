@@ -28,7 +28,7 @@ describe("Paddle class tests", () => {
     paddle.startNewGame();
     expect(paddle.X).toBeGreaterThan(paddle.WidthRadius);
     expect(paddle.X).toBeLessThan(canvasWidth - 1 - paddle.WidthRadius);
-    expect(paddle.Y).toBe(canvasHeight - 1 - paddle.HeightRadius - 1);
+    expect(paddle.Y).toBe(canvasHeight - 1 - paddle.HeightRadius);
   });
 
   test("should draw itself", () => {

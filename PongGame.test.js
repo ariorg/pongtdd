@@ -44,7 +44,7 @@ describe("PongGame class", () => {
     const height = 960;
     const g = _newPongGame(width, height);
     g.startNewGame();
-    expect(g.Paddle.Y).toBe(height - 1 - g.Paddle.HeightRadius - 1);
+    expect(g.Paddle.Y).toBe(height - 1 - g.Paddle.HeightRadius);
     expect(g.Paddle.X).toBeGreaterThanOrEqual(g.Paddle.WidthRadius);
     expect(g.Paddle.X).toBeLessThan(width - g.Paddle.WidthRadius - 1);
   });
@@ -64,4 +64,5 @@ describe("PongGame class", () => {
     ctx.canvas.height = height || 600;
     return new PongGame(ctx);
   }
+
 });
