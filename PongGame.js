@@ -26,7 +26,12 @@ export default class PongGame {
         return this._paddle;
     }
 
+    get Ball() {
+        return this._ball;
+    }
+
     startNewGame() {
         this.Paddle.startNewGame();
+        this.Ball.startNewGame(this.Paddle);
     }
 }

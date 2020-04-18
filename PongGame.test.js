@@ -5,13 +5,7 @@ import PongGame from './PongGame';
 import Paddle from './Paddle';
 import Ball from './Ball';
 
-jest.mock('./Ball');
-
 describe("PongGame class", () => {
-
-  beforeEach(() => {
-    Ball.mockClear();
-  });
 
   const newPongGame = (width, height) => {
     const canvas = document.createElement("canvas");
@@ -51,7 +45,8 @@ describe("PongGame class", () => {
     const g = newPongGame();
     expect(g.Paddle).toBeDefined();
     expect(g.Paddle.WidthRadius).toBeGreaterThan(0);
-    expect(Ball).toHaveBeenCalledTimes(1);
+    expect(g.Ball).toBeDefined();
+    expect(g.Ball.Radius).toBeGreaterThanOrEqual(0);
   });
 
   test('startGame make Paddle at the bottom of the screen', () => {
@@ -65,12 +60,10 @@ describe("PongGame class", () => {
   });
 
   test('startNewGame should place Ball on random location on top of Paddle', () => {
-   const width = 840;
-   const height = 960;
-   const g = newPongGame(width, height);
+   const g = newPongGame();
+   g.startNewGame();
    expect(g.Ball.BottomY).toBe(g.Paddle.TopY - 1);
    expect(g.Ball.LeftX).toBeGreaterThanOrEqual(g.Paddle.LeftX);
-   expect(g.Ball.RightX).ToBeLessThanOrEqual(g.Paddle.RightX);
+   expect(g.Ball.RightX).toBeLessThanOrEqual(g.Paddle.RightX);
   });
-
 });

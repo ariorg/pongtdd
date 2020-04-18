@@ -18,4 +18,12 @@ export default class Ball extends GameElement {
     set Radius(value) {
         this.Width = value * 2 + 1;
     }
+
+    startNewGame(paddle) {
+        this.Y = paddle.TopY - this.HeightRadius - 1;
+        const leftXLimit = paddle.LeftX + this.WidthRadius + 1;
+        const randomXPlacementDeltaLimit = paddle.Width - this.WidthRadius - 1;
+        const randomXDelta = Math.floor(Math.random() * randomXPlacementDeltaLimit);
+        this.X = leftXLimit + randomXDelta;
+    }
 }

@@ -40,7 +40,6 @@ export default class GameElement {
         return this._y + this.HeightRadius;
     }
 
-
     set X(value) {
         this._throwIfNotInteger(value, "GameElement.X");
         this._x = value;
