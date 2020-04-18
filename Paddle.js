@@ -2,8 +2,8 @@
 import GameElement from "./GameElement";
 
 export default class Paddle extends GameElement {
-    constructor(ctx, width, height) {
-        super(ctx, 0, 0, width || 0, height || 0);
+    constructor(canvasWidth, canvasHeight, width, height) {
+        super(canvasWidth, canvasHeight, 0, 0, width || 0, height || 0);
     }
 
     startNewGame(ctx) {

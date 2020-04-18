@@ -1,14 +1,23 @@
 'use strict'
 
 export default class GameElement {
-    constructor(ctx, x, y, width, height) {
-        this._ctx = ctx;
+    constructor(canvasWidth, canvasHeight, x, y, width, height) {
+        // if (arguments.length < 2) 
+        //     throw "Canvas width and size must be supplied"
+        this._canvasWidth = canvasWidth;
+        this._canvasHeight = canvasHeight;
         this.X = x || 0;
         this.Y = y || 0;
         this.Width = width || 1;
         this.Height = height || 1;
     }
 
+    get CanvasWidth() {
+        return this._width;
+    }
+    get CanvasHeight() {
+        return this._height;
+    }
     get X() {
         return this._x;
     }
@@ -65,9 +74,9 @@ export default class GameElement {
         this.Height = 1;
     }
 
-    draw() {
-        this._ctx.fillStyle = "black";
-        this._ctx.fillRect(this.LeftX, this.TopY, this.Width, this.Height);
+    draw(ctx) {
+        ctx.fillStyle = "black";
+        ctx.fillRect(this.LeftX, this.TopY, this.Width, this.Height);
     }
 
     _throwIfNotInteger(value, valueName) {

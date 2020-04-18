@@ -12,20 +12,20 @@ describe("GameElement class tests", () => {
     });
 
     test("Element creation with constructor parameters should set X,Y,Width and Height properties", () => {
-        const ge = new GameElement(ctx, 100, 200, 29, 9);
+        const ge = new GameElement(800, 600, 100, 200, 29, 9);
         expect([ge.X, ge.Y, ge.Width, ge.Height]).toStrictEqual([100, 200, 29, 9]);
     });
 
     test("Element creation with x,y parameters only should set Width and Height to 1", () => {
-        const ge = new GameElement(ctx, 100, 200);
+        const ge = new GameElement(800, 600, 100, 200);
         expect([ge.X, ge.Y, ge.Width, ge.Height]).toStrictEqual([100, 200, 1, 1]);
     });
 
     test("GameElement should not accept  size", () => {
-        expect(() => { new GameElement(ctx, 0, 0, 10, 7) }).toThrow();
-        expect(() => { new GameElement(ctx, 0, 0, 19, 12) }).toThrow();
-        expect(() => { new GameElement(ctx, 0, 0, 19.5, 11.01) }).toThrow();
-        expect(() => { new GameElement(ctx, 0, 0, 19, 11) }).not.toThrow();
+        expect(() => { new GameElement(800, 600, 0, 0, 10, 7) }).toThrow();
+        expect(() => { new GameElement(800, 600, 0, 0, 19, 12) }).toThrow();
+        expect(() => { new GameElement(800, 600, 0, 0, 19.5, 11.01) }).toThrow();
+        expect(() => { new GameElement(800, 600, 0, 0, 19, 11) }).not.toThrow();
     });
 
     test("Setters should set their propperties", () => {
@@ -38,7 +38,7 @@ describe("GameElement class tests", () => {
     });
 
     test("startNewGame method should set coords and shape size to 1", () => {
-        const ge = new GameElement();
+        const ge = new GameElement(ctx.width, ctx.height);
         ge.X = ge.Y = ge.Width = ge.Height = 5;
         expect(ge.X + ge.Y + ge.Width + ge.Height).toBe(4 * 5);
         ge.startNewGame();
@@ -46,7 +46,7 @@ describe("GameElement class tests", () => {
     });
 
     test("Setting width and height should set WidthRadius and HeighRadius", () => {
-        const ge = new GameElement(ctx, 0, 0, 11, 23);
+        const ge = new GameElement(ctx.width, ctx.height, 0, 0, 11, 23);
         expect(ge.WidthRadius).toBe(5);
         expect(ge.HeightRadius).toBe(11);
     });
@@ -60,7 +60,7 @@ describe("GameElement class tests", () => {
     });
 
     test("GameElement should have TopLeft and BottomRight coordinates", () => {
-        const ge = new GameElement(ctx, 100, 200, 41, 21);
+        const ge = new GameElement(ctx.width, ctx.height, 100, 200, 41, 21);
         expect(ge.LeftX).toBe(80);
         expect(ge.TopY).toBe(190);
         expect(ge.RightX).toBe(120);
