@@ -46,24 +46,24 @@ describe("GameElement class tests", () => {
     });
 
     test("Setting width and height should set WidthRadius and HeighRadius", () => {
-        const width = 11;
-        const height = 23;
-        const ge = new GameElement(ctx, 0, 0, width, height);
-        expect(ge.WidthRadius).toBe((width - 1) / 2);
-        expect(ge.HeightRadius).toBe((height - 1) / 2);
+        const ge = new GameElement(ctx, 0, 0, 11, 23);
+        expect(ge.WidthRadius).toBe(5);
+        expect(ge.HeightRadius).toBe(11);
     });
 
     test("Width/Height should be equal to 2 x radius + 1 (the center point)", () => {
         const ge = new GameElement(ctx);
         ge.Width = 31;
-        expect(ge.WidthRadius).toBe(15);
         ge.Height = 11;
+        expect(ge.WidthRadius).toBe(15);
         expect(ge.HeightRadius).toBe(5);
     });
 
     test("GameElement should have TopLeft and BottomRight coordinates", () => {
         const ge = new GameElement(ctx, 100, 200, 41, 21);
-        expect([ge.LeftX, ge.TopY]).toStrictEqual([80, 190]);
-        expect([ge.RightX, ge.BottomY]).toStrictEqual([120, 210]);
+        expect(ge.LeftX).toBe(80);
+        expect(ge.TopY).toBe(190);
+        expect(ge.RightX).toBe(120);
+        expect(ge.BottomY).toBe(210);
     });
 });
