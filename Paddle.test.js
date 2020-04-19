@@ -37,6 +37,30 @@ describe("Paddle class tests", () => {
     expect(pdl._ctx.fillRect).toHaveBeenCalledTimes(1);
   });
 
+  test("startNewGame: max random draw-location for paddle should be at the right edge of the canvas", () => {
+    const canvasWidth = 600;
+    const paddleWidth = 15;
+    const pdl = _newPaddle(canvasWidth, 400, 15, 5);
+    const mockMath = Object.create(global.Math);
+    mockMath.random = () => 0.99999999;
+    global.Math = mockMath;
+    pdl.startNewGame();
+    expect(pdl.RightX).toBe(canvasWidth - 1);
+    expect(pdl.X).toBe(canvasWidth - 1 - (paddleWidth - 1) / 2);
+  });
+
+  test("startNewGame: min random draw-location for paddle should be at x=0", () => {
+    const canvasWidth = 600;
+    const paddleWidth = 15;
+    const pdl = _newPaddle(canvasWidth, 400, paddleWidth, 5);
+    const mockMath = Object.create(global.Math);
+    mockMath.random = () => 0.00000001;
+    global.Math = mockMath;
+    pdl.startNewGame();
+    expect(pdl.LeftX).toBe(0);
+    expect(pdl.X).toBe((paddleWidth - 1) / 2);
+  });
+
   function _newPaddle(canvasWidth, canvasHeight, paddleWidth, paddleHeight) {
     const ctx = document.createElement("canvas").getContext('2d');
     ctx.canvas.width = canvasWidth || 800;
