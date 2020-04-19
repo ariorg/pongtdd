@@ -1,5 +1,3 @@
-'use strict'
-
 export default class GameElement {
     constructor(ctx, x, y, width, height) {
         this._ctx = ctx;

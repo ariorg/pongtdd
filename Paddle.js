@@ -1,4 +1,3 @@
-'use strict'
 import GameElement from "./GameElement.js";
 
 export default class Paddle extends GameElement {
