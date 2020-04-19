@@ -1,8 +1,8 @@
 import GameElement from "./GameElement.js";
 
 export default class Ball extends GameElement {
-    constructor(ctx, x, y, radius) {
-        super(ctx, x, y, radius * 2 + 1, radius * 2 + 1);
+    constructor(ctx, radius) {
+        super(ctx, radius * 2 + 1, radius * 2 + 1);
     }
     get Diameter() {
         return this.Width

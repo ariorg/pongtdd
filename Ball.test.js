@@ -7,7 +7,7 @@ describe("Ball class tests", () => {
 
     test("Ball creation should set Diameter", () => {
         const radius = 3;
-        const ball = new Ball(ctx, 1, 2, radius);
+        const ball = new Ball(ctx, radius);
         expect(ball).toBeDefined();
         expect(ball.Diameter).toBe(radius * 2 + 1);
     });
@@ -39,7 +39,7 @@ describe("Ball class tests", () => {
     });
 
     test("startNewGame ball max/min random location must match edges of the paddle", () => {
-        const ball = new Ball(ctx, 0, 0, 5);
+        const ball = new Ball(ctx, 5);
         const paddle = new Paddle(ctx, 15, 5);
         paddle.startNewGame();
 

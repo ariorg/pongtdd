@@ -6,7 +6,7 @@ export default class PongGame {
         this._ctx = ctx;
         this._score = 0;
         this._paddle = new Paddle(this._ctx, 85, 13);
-        this._ball = new Ball(this._ctx, 10, 10, 5);
+        this._ball = new Ball(this._ctx, 5);
     }
 
     get CanvasWidth() {

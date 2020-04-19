@@ -1,10 +1,10 @@
 export default class GameElement {
-    constructor(ctx, x, y, width, height) {
+    constructor(ctx, width, height) {
         this._ctx = ctx;
-        this.X = x || 0;
-        this.Y = y || 0;
         this.Width = width || 1;
         this.Height = height || 1;
+        this.X = 0;
+        this.Y = 0;
     }
 
     get X() {
