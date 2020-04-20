@@ -64,5 +64,4 @@ describe("PongGame class", () => {
     ctx.canvas.height = height || 600;
     return new PongGame(ctx);
   }
-
 });

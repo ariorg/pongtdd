@@ -25,4 +25,12 @@ export default class Ball extends GameElement {
         this.X = leftXLimit + Math.floor(Math.random() * randomXPlacementDeltaLimit);
         this.draw();
     }
+
+    draw() {
+        this._ctx.beginPath();
+        this._ctx.arc(this.X, this.Y, this.Radius, 0, Math.PI * 2);
+        this._ctx.fillStyle = "blue";
+        this._ctx.fill();
+        this._ctx.closePath()
+    }
 }

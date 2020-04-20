@@ -54,4 +54,8 @@ describe("Ball class tests", () => {
         ball.startNewGame(paddle);
         expect(ball.LeftX).toBe(paddle.LeftX);
     });
+
+    test("Draw should call ctx.bezier", () => {
+        //tbd
+    });
 });
