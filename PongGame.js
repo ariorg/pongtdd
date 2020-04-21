@@ -5,8 +5,8 @@ export default class PongGame {
     constructor(ctx) {
         this._ctx = ctx;
         this._score = 0;
-        this._paddle = new Paddle(this._ctx, 85, 13);
-        this._ball = new Ball(this._ctx, 13);
+        this._paddle = new Paddle(this._ctx, 121, 15);
+        this._ball = new Ball(this._ctx, 11);
     }
 
     get CanvasWidth() {
