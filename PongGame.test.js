@@ -1,6 +1,5 @@
 'use strict';
 
-import 'jest-canvas-mock';
 import PongGame from './PongGame';
 
 describe("PongGame class", () => {

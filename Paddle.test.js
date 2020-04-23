@@ -1,5 +1,4 @@
 'use strict'
-import 'jest-canvas-mock';
 import Paddle from "./Paddle";
 
 describe("Paddle class tests", () => {

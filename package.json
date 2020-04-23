@@ -29,7 +29,6 @@
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.9.0",
     "jest": "^25.3.0",
-    "jest-canvas-mock": "^2.2.0",
     "lite-server": "^2.5.4"
   },
   "dependencies": {
