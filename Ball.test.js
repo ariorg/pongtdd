@@ -69,19 +69,25 @@ describe("Ball class tests", () => {
             const g = new PongGame(ctx);
             g.startNewGame();
             const imageData = ctx.getImageData(g.Paddle.LeftX, g.Paddle.TopY - 1, g.Paddle.Width, 1);
-            let numberOfNonWhitePixels = 0;
+            let numberOfNonWhitePixels = numberOfNonTransparentPixelsInImageData(g, imageData);
+            expect(numberOfNonWhitePixels).toBeGreaterThan(1);
+            expect(numberOfNonWhitePixels).toBeLessThan(g.Ball.Width);
+        });
+
+        function numberOfNonTransparentPixelsInImageData(g, imageData) {
+            let numberOfNonTransparentPixels = 0;
             let pixelLocation = 0;
             for (let i = 0; i < g.Paddle.Width; i++) {
                 let pixel = imageData.data.slice(pixelLocation, pixelLocation + 4);
                 if (pixel[3] > 0)
-                    numberOfNonWhitePixels++;
+                    numberOfNonTransparentPixels++;
                 pixelLocation += 4;
             }
-            expect(numberOfNonWhitePixels).toBeGreaterThan(1);
-            expect(numberOfNonWhitePixels).toBeLessThan(g.Ball.Width);
-        });
+            return numberOfNonTransparentPixels;
+        }
     });
 
     describe("draw method tests", () => {
     });
 });
+
