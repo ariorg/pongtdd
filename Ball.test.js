@@ -2,7 +2,7 @@
 import Ball from './Ball.js';
 import Paddle from './Paddle.js';
 import PongGame from './PongGame.js';
-import 'jest-canvas-mock';
+import Canvas, { createCanvas } from 'canvas';
 
 describe("Ball class tests", () => {
     const ctx = document.createElement("canvas").getContext('2d');
@@ -50,6 +50,7 @@ describe("Ball class tests", () => {
             paddle.startNewGame();
 
             const mockMath = Object.create(global.Math);
+            const gMath = global.Math;
             global.Math = mockMath;
 
             mockMath.random = () => 0.99999999;
@@ -59,21 +60,25 @@ describe("Ball class tests", () => {
             mockMath.random = () => 0.00000001;
             ball.startNewGame(paddle);
             expect(ball.LeftX).toBe(paddle.LeftX);
+            global.Math = gMath;
         });
 
         test("Start new game should draw a blue ball on top of the paddle, touching it with 1 pixel", () => {
+            const canvas = createCanvas(800, 600);
+            const ctx = canvas.getContext('2d');
             const g = new PongGame(ctx);
-            const imageData = ctx.getImageData(g.Paddle.X, g.Paddle.Y+1, g.Paddle.Width, 1);
-            console.log(imageData)
+            g.startNewGame();
+            const imageData = ctx.getImageData(g.Paddle.LeftX, g.Paddle.TopY - 1, g.Paddle.Width, 1);
             let numberOfNonWhitePixels = 0;
-            let pixelLocation=0;
+            let pixelLocation = 0;
             for (let i = 0; i < g.Paddle.Width; i++) {
-                if (imageData.data.slice(pixelLocation, pixelLocation + 4).every(x => x === 255)) 
+                let pixel = imageData.data.slice(pixelLocation, pixelLocation + 4);
+                if (pixel[3] > 0)
                     numberOfNonWhitePixels++;
-                pixelLocation += 4;     
-                console.log("pixel " + i + ","+pixelLocation+": " + imageData.data.slice(i, i + 4));
+                pixelLocation += 4;
             }
-            expect(numberOfNonWhitePixels).toBe(1);
+            expect(numberOfNonWhitePixels).toBeGreaterThan(1);
+            expect(numberOfNonWhitePixels).toBeLessThan(g.Ball.Width);
         });
     });
 
