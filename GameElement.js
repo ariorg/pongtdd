@@ -76,13 +76,4 @@ export default class GameElement {
         this._throwIfNotInteger(value, valueName);
         if (value % 2 === 0) throw `${valueName} must be an odd number`;
     }
-
-    get _canvasWidth() {
-        return this._ctx.width;
-    }
-
-    get _canvasHeight() {
-        return this._ctx.height;
-    }
-
 }
