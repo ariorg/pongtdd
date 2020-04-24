@@ -68,12 +68,12 @@ describe("Ball class tests", () => {
             const ctx = canvas.getContext('2d');
             const g = new PongGame(ctx);
             g.startNewGame();
-            let numberOfNonWhitePixels = getNumberofNonTransparentPixels(ctx, g.Paddle.LeftX, g.Paddle.TopY - 1, g.Paddle.Width, 1);
-            expect(numberOfNonWhitePixels).toBeGreaterThan(1);
-            expect(numberOfNonWhitePixels).toBeLessThan(g.Ball.Width);
+            let numberOfNonTransparentPixels = _getNumberofNonTransparentPixels(ctx, g.Paddle.LeftX, g.Paddle.TopY - 1, g.Paddle.Width, 1);
+            expect(numberOfNonTransparentPixels).toBeGreaterThan(1);
+            expect(numberOfNonTransparentPixels).toBeLessThan(g.Ball.Width);
         });
 
-        function getNumberofNonTransparentPixels(ctx, x, y, width, height) {
+        function _getNumberofNonTransparentPixels(ctx, x, y, width, height) {
             const imageData = ctx.getImageData(x, y, width, height);
             let numberOfNonTransparentPixels = 0;
             let pixelLocation = 0;
