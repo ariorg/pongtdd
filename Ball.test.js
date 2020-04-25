@@ -2,7 +2,9 @@
 import Ball from './Ball.js';
 import Paddle from './Paddle.js';
 import PongGame from './PongGame.js';
-import Canvas, { createCanvas } from 'canvas';
+import Canvas, {
+    createCanvas
+} from 'canvas';
 
 describe("Ball class tests", () => {
     const ctx = document.createElement("canvas").getContext('2d');
@@ -38,8 +40,12 @@ describe("Ball class tests", () => {
 
         test("Diameter cannot be an even number and must be an integer", () => {
             const ball = new Ball(ctx);
-            expect(() => { ball.Diameter = 10; }).toThrow();
-            expect(() => { ball.Diameter = 9.01; }).toThrow();
+            expect(() => {
+                ball.Diameter = 10;
+            }).toThrow();
+            expect(() => {
+                ball.Diameter = 9.01;
+            }).toThrow();
         });
     });
 
@@ -63,16 +69,27 @@ describe("Ball class tests", () => {
             global.Math = gMath;
         });
 
-        test("Start new game should draw a blue ball on top of the paddle, touching it with 1 pixel", () => {
+        test("startNewGame should draw a ball on top of the paddle, touching it with at least one pixel", () => {
             const canvas = createCanvas(800, 600);
             const ctx = canvas.getContext('2d');
-            const g = new PongGame(ctx);
-            g.startNewGame();
-            let numberOfNonTransparentPixels = _getNumberofNonTransparentPixels(ctx, g.Paddle.LeftX, g.Paddle.TopY - 1, g.Paddle.Width, 1);
-            expect(numberOfNonTransparentPixels).toBeGreaterThan(1);
-            expect(numberOfNonTransparentPixels).toBeLessThan(g.Ball.Width);
+            const paddle = new Paddle(ctx, 121, 21);
+            const ball = new Ball(ctx, 15);
+
+            paddle.startNewGame();
+            let numOfPixelsTouchingPaddleBeforeBallDrawn = _numOfPixelsTouchingTopOfPaddle(ctx, paddle);
+
+            ball.startNewGame(paddle);
+            let numOfPixelsTouchingPaddleAfterBallDrawn = _numOfPixelsTouchingTopOfPaddle(ctx, paddle);
+
+            expect(numOfPixelsTouchingPaddleBeforeBallDrawn).toBe(0);
+            expect(numOfPixelsTouchingPaddleAfterBallDrawn).toBeGreaterThan(1);
+            expect(numOfPixelsTouchingPaddleAfterBallDrawn).toBeLessThan(ball.Width);
         });
 
+        function _numOfPixelsTouchingTopOfPaddle(ctx, paddle) {
+            return _getNumberofNonTransparentPixels(ctx, paddle.LeftX, paddle.TopY - 1, paddle.Width, 1);
+        }
+        
         function _getNumberofNonTransparentPixels(ctx, x, y, width, height) {
             const imageData = ctx.getImageData(x, y, width, height);
             let numberOfNonTransparentPixels = 0;
@@ -85,9 +102,8 @@ describe("Ball class tests", () => {
             }
             return numberOfNonTransparentPixels;
         }
+
     });
 
-    describe("draw method tests", () => {
-    });
+    describe("draw method tests", () => {});
 });
-
