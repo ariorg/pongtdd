@@ -110,7 +110,7 @@ describe("Ball class tests", () => {
   });
 
   describe("update method", () => {
-    test("Update without collision should change both X and Y if speed=1 and direction=1", () => {
+    test("if no collision it should add (speed * direction) to X and Y", () => {
       const ball = _newBall();
       
       ball.moveTo(400, 300);
@@ -121,9 +121,14 @@ describe("Ball class tests", () => {
       ball.update();
       expect(ball.X).toBe(401);
       expect(ball.Y).toBe(301);
+
+      ball.Speed = 2;
+      ball.update();
+      expect(ball.X).toBe(403);
+      expect(ball.Y).toBe(303);
     });
 
-    test("ball collision with top should reverse Ydirection of ball", () => {
+    test("ball collision with top of screen should set YDirection to 1", () => {
       const ball = _newBall();
       ball.X = 400;
       ball.Speed = 2;
@@ -132,6 +137,18 @@ describe("Ball class tests", () => {
       ball.update();
       expect(ball.YDirection).toBe(1);
       expect(ball.Y).toBe(ball.Radius + ball.YDirection * ball.Speed);
+    });
+
+    test("ball collision with bottom of screen should set YDirection to -1", () => {
+      const ball = _newBall();
+      ball.X = 400;
+      ball.Speed = 3;
+      ball.YDirection = 1;
+      ball.Y = Math.floor(ball._ctx.canvas.height - ball.Radius);
+      ball.update();
+      expect(ball.Speed).toBe(3);
+      expect(ball.YDirection).toBe(-1);
+      expect(ball.Y).toBe(ball._ctx.canvas.height - ball.Radius + ball.YDirection * ball.Speed);
     });
 
     test("ball collision with side edges should reverse XDirection of ball", () => {
@@ -144,6 +161,7 @@ describe("Ball class tests", () => {
       expect(ball.XDirection).toBe(1);
       expect(ball.X).toBe(ball.Radius + ball.XDirection * ball.Speed);
     });
+
   });
 
   function _newBall() {
