@@ -5,10 +5,10 @@ import PongGame from "./PongGame.js";
 import Canvas, { createCanvas } from "canvas";
 
 describe("Ball class tests", () => {
-  const ctx = document.createElement("canvas").getContext("2d");
 
   describe("constructor", () => {
     test("Ball creation should set Diameter", () => {
+      const ctx = document.createElement("canvas").getContext("2d");
       const radius = 3;
       const ball = new Ball(ctx, radius);
       expect(ball).toBeDefined();
@@ -16,18 +16,21 @@ describe("Ball class tests", () => {
     });
 
     test("Ball creation with no params should have coords 0,0 ", () => {
+      const ctx = document.createElement("canvas").getContext("2d");
       const ball = new Ball(ctx);
       expect(ball.X).toBe(0);
       expect(ball.Y).toBe(0);
     });
 
     test("Ball created with no radius should have Radius=0 and Diameter=1", () => {
+      const ctx = document.createElement("canvas").getContext("2d");
       const ball = new Ball(ctx);
       expect(ball.Radius).toBe(0);
       expect(ball.Diameter).toBe(1);
     });
 
     test("Set Diameter should set Radius and vice versa", () => {
+      const ctx = document.createElement("canvas").getContext("2d");
       const ball = new Ball(ctx);
       ball.Diameter = 11;
       expect(ball.Radius).toBe(5);
@@ -36,6 +39,7 @@ describe("Ball class tests", () => {
     });
 
     test("Diameter cannot be an even number and must be an integer", () => {
+      const ctx = document.createElement("canvas").getContext("2d");
       const ball = new Ball(ctx);
       expect(() => {
         ball.Diameter = 10;
@@ -48,6 +52,7 @@ describe("Ball class tests", () => {
 
   describe("startNewGame medthod", () => {
     test("ball max/min random location should match edges of the paddle", () => {
+      const ctx = document.createElement("canvas").getContext("2d");
       const ball = new Ball(ctx, 5);
       const paddle = new Paddle(ctx, 15, 5);
       paddle.startNewGame();
@@ -98,7 +103,16 @@ describe("Ball class tests", () => {
       }
       return numberOfNonTransparentPixels;
     }
+
   });
 
-  describe("draw method tests", () => {});
+  describe("draw method", () => {
+    test("should draw itself", () => {
+      const ctx = document.createElement("canvas").getContext("2d");
+      const ball = new Ball(ctx, 15);
+      ball.draw();
+      expect(ball._ctx.arc).toHaveBeenCalledTimes(1);
+    });
+  });
+
 });

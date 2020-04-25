@@ -68,6 +68,10 @@ export default class GameElement {
         this._ctx.fillRect(this.LeftX, this.TopY, this.Width, this.Height);
     }
 
+    update() {
+        throw "GameElement update() abstract method should be implemented"
+    }
+
     _throwIfNotInteger(value, valueName) {
         if (!Number.isInteger(value)) throw `${valueName} must be an integer`;
     }
