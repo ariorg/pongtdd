@@ -56,6 +56,11 @@ export default class GameElement {
         this._height = value;
     }
 
+    moveTo(x, y) {
+        this.X = x;
+        this.Y = y;
+    }
+
     startNewGame() {
         this.X = 0;
         this.Y = 0;

@@ -72,6 +72,14 @@ describe("GameElement class tests", () => {
 
     test("GameElement.update is abstract method and should throw", () => {
         const ge = new GameElement(ctx);
-        expect(() => { ge.update()}).toThrow();
+        expect(() => { ge.update() }).toThrow();
+    });
+
+    test("moveTo should set X and Y coordinates", () => {
+        const ge = new GameElement(ctx);
+        ge.X = ge.Y = 0;
+        ge.moveTo(123, 321);
+        expect(ge.X).toBe(123);
+        expect(ge.Y).toBe(321);
     });
 });
