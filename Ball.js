@@ -26,6 +26,10 @@ export default class Ball extends GameElement {
         this.draw();
     }
 
+    update() {
+        this.moveTo(this.X+1, this.Y+1);
+    }
+    
     draw() {
         this._ctx.beginPath();
         this._ctx.arc(this.X, this.Y, this.Radius + 1, 0, Math.PI * 2);

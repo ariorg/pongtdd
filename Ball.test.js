@@ -115,4 +115,20 @@ describe("Ball class tests", () => {
     });
   });
 
+  describe("update method", () => {
+    test("Update with no collision should change both X and Y", () => {
+      const ctx = document.createElement("canvas").getContext("2d");
+      ctx.canvas.width = 800;
+      ctx.canvas.width = 600;
+      const ball = new Ball(ctx, 5);
+
+      ball.moveTo(400, 300);
+      expect(ball.X).toBe(400);
+      expect(ball.Y).toBe(300);
+      
+      ball.update();
+      expect(ball.X).not.toBe(400);
+      expect(ball.Y).not.toBe(300);
+    });
+  });
 });
