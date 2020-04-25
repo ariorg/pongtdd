@@ -123,7 +123,7 @@ describe("Ball class tests", () => {
       expect(ball.Y).toBe(301);
     });
 
-    test("ball collision with top/bottom should reverse vertical direction of ball", () => {
+    test("ball collision with top should reverse Ydirection of ball", () => {
       const ball = _newBall();
       ball.X = 400;
       ball.Speed = 2;
@@ -132,6 +132,17 @@ describe("Ball class tests", () => {
       ball.update();
       expect(ball.YDirection).toBe(1);
       expect(ball.Y).toBe(ball.Radius + ball.YDirection * ball.Speed);
+    });
+
+    test("ball collision with side edges should reverse XDirection of ball", () => {
+      const ball = _newBall();
+      ball.Y = 300;
+      ball.Speed = 2;
+      ball.XDirection = -1;
+      ball.X = ball.Radius;
+      ball.update();
+      expect(ball.XDirection).toBe(1);
+      expect(ball.X).toBe(ball.Radius + ball.XDirection * ball.Speed);
     });
   });
 
