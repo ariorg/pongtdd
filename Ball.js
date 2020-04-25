@@ -27,7 +27,7 @@ export default class Ball extends MovingGameElement {
     }
 
     update() {
-        if (this.Y === 0)
+        if (this.Y <= this.Radius)
             this.YDirection = 1;
         this.X = Math.floor(this.X + this.XDirection * this.Speed);
         this.Y = Math.floor(this.Y + this.YDirection * this.Speed);

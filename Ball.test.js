@@ -134,12 +134,14 @@ describe("Ball class tests", () => {
       const ctx = document.createElement("canvas").getContext("2d");
       ctx.canvas.width = 800;
       ctx.canvas.height = 600;
-      const ball = new Ball(ctx, 5);
+      const ball = new Ball(ctx, 15);
       ball.X = 400;
+      ball.Speed = 2;
       ball.YDirection = -1;
       ball.Y = ball.Radius;
       ball.update();
-      expect(ball.Y).toBe(ball.Radius + ball.Speed);
+      expect(ball.YDirection).toBe(1);
+      expect(ball.Y).toBe(ball.Radius + ball.YDirection * ball.Speed);
     });
   });
 });
