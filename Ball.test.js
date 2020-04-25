@@ -7,7 +7,7 @@ import Canvas, { createCanvas } from "canvas";
 describe("Ball class tests", () => {
   const ctx = document.createElement("canvas").getContext("2d");
 
-  describe("Ball constructor", () => {
+  describe("constructor", () => {
     test("Ball creation should set Diameter", () => {
       const radius = 3;
       const ball = new Ball(ctx, radius);
@@ -73,16 +73,10 @@ describe("Ball class tests", () => {
       const ball = new Ball(ctx, 15);
 
       paddle.startNewGame();
-      let numOfPixelsTouchingPaddleBeforeBallDrawn = _numOfPixelsTouchingTopOfPaddle(
-        ctx,
-        paddle
-      );
+      let numOfPixelsTouchingPaddleBeforeBallDrawn = _numOfPixelsTouchingTopOfPaddle(ctx, paddle);
 
       ball.startNewGame(paddle);
-      let numOfPixelsTouchingPaddleAfterBallDrawn = _numOfPixelsTouchingTopOfPaddle(
-        ctx,
-        paddle
-      );
+      let numOfPixelsTouchingPaddleAfterBallDrawn = _numOfPixelsTouchingTopOfPaddle(ctx, paddle);
 
       expect(numOfPixelsTouchingPaddleBeforeBallDrawn).toBe(0);
       expect(numOfPixelsTouchingPaddleAfterBallDrawn).toBeGreaterThan(1);
@@ -90,13 +84,7 @@ describe("Ball class tests", () => {
     });
 
     function _numOfPixelsTouchingTopOfPaddle(ctx, paddle) {
-      return _getNumberofNonTransparentPixels(
-        ctx,
-        paddle.LeftX,
-        paddle.TopY - 1,
-        paddle.Width,
-        1
-      );
+      return _getNumberofNonTransparentPixels(ctx, paddle.LeftX, paddle.TopY - 1, paddle.Width, 1);
     }
 
     function _getNumberofNonTransparentPixels(ctx, x, y, width, height) {
