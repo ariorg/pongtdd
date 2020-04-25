@@ -1,8 +1,6 @@
-"use strict";
 import Ball from "./Ball.js";
 import Paddle from "./Paddle.js";
-import PongGame from "./PongGame.js";
-import Canvas, { createCanvas } from "canvas";
+import { createCanvas } from "canvas";
 
 describe("Ball class tests", () => {
 
@@ -119,16 +117,28 @@ describe("Ball class tests", () => {
     test("Update with no collision should change both X and Y", () => {
       const ctx = document.createElement("canvas").getContext("2d");
       ctx.canvas.width = 800;
-      ctx.canvas.width = 600;
+      ctx.canvas.height = 600;
       const ball = new Ball(ctx, 5);
 
       ball.moveTo(400, 300);
       expect(ball.X).toBe(400);
       expect(ball.Y).toBe(300);
-      
+
       ball.update();
       expect(ball.X).not.toBe(400);
       expect(ball.Y).not.toBe(300);
     });
+
+    // test("ball collision with top/bottom should reverse vertical direction of ball", () => {
+    //   const ctx = document.createElement("canvas").getContext("2d");
+    //   ctx.canvas.width = 800;
+    //   ctx.canvas.height = 600;
+    //   const ball = new Ball(ctx, 5);
+    //   ball.X = 400;
+    //   ball.YDirection = -1;
+    //   ball.Y = ball.Radius;
+    //   ball.update();
+    //   expect(ball.Y).toBe(ball.Radius + ball.Speed);
+    // });
   });
 });

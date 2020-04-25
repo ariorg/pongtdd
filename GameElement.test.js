@@ -1,4 +1,3 @@
-'use strict'
 import GameElement from "./GameElement";
 
 describe("GameElement class tests", () => {
