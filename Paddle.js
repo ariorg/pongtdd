@@ -1,6 +1,6 @@
-import GameElement from "./GameElement.js";
+import MovingGameElement from "./MovingGameElement.js";
 
-export default class Paddle extends GameElement {
+export default class Paddle extends MovingGameElement {
     constructor(ctx, width, height) {
         super(ctx, width || 0, height || 0);
     }

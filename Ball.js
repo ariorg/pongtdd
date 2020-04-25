@@ -1,6 +1,6 @@
-import GameElement from "./GameElement.js";
+import MovingGameElement from "./MovingGameElement.js";
 
-export default class Ball extends GameElement {
+export default class Ball extends MovingGameElement {
     constructor(ctx, radius) {
         super(ctx, radius * 2 + 1, radius * 2 + 1);
     }
@@ -27,7 +27,10 @@ export default class Ball extends GameElement {
     }
 
     update() {
-        this.moveTo(this.X+1, this.Y+1);
+        if (this.Y === 0)
+            this.YDirection = 1;
+        this.X = Math.floor(this.X + this.XDirection * this.Speed);
+        this.Y = Math.floor(this.Y + this.YDirection * this.Speed);
     }
     
     draw() {

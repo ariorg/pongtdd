@@ -1,10 +1,11 @@
 import GameElement from "./GameElement.js";
 
 export default class MovingGameElement extends GameElement {
-    constructor(ctx, radius) {
-        super(ctx, radius);
+    constructor(ctx, width, height) {
+        super(ctx, width, height);
         this._xDirection = 0;
         this._yDirection = 0;
+        this._speed = 0;
     }
 
     get XDirection() {
@@ -15,6 +16,10 @@ export default class MovingGameElement extends GameElement {
         return this._yDirection;
     }
 
+    get Speed() {
+        return this._speed;
+    }
+
     set XDirection(value) {
         this._throwIfNotDirectionValue(value);
         this._xDirection = value;
@@ -22,7 +27,11 @@ export default class MovingGameElement extends GameElement {
 
     set YDirection(value) {
         this._throwIfNotDirectionValue(value);
-        return this._yDirection = value;
+        this._yDirection = value;
+    }
+
+    set Speed(value) {
+        this._speed = value;
     }
 
     _throwIfNotDirectionValue(value) {

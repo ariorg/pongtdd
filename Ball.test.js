@@ -114,7 +114,7 @@ describe("Ball class tests", () => {
   });
 
   describe("update method", () => {
-    test("Update with no collision should change both X and Y", () => {
+    test("Update without collision should change both X and Y if speed=1 and direction=1", () => {
       const ctx = document.createElement("canvas").getContext("2d");
       ctx.canvas.width = 800;
       ctx.canvas.height = 600;
@@ -124,21 +124,22 @@ describe("Ball class tests", () => {
       expect(ball.X).toBe(400);
       expect(ball.Y).toBe(300);
 
+      ball.XDirection = ball.YDirection = ball.Speed = 1;
       ball.update();
-      expect(ball.X).not.toBe(400);
-      expect(ball.Y).not.toBe(300);
+      expect(ball.X).toBe(401);
+      expect(ball.Y).toBe(301);
     });
 
-    // test("ball collision with top/bottom should reverse vertical direction of ball", () => {
-    //   const ctx = document.createElement("canvas").getContext("2d");
-    //   ctx.canvas.width = 800;
-    //   ctx.canvas.height = 600;
-    //   const ball = new Ball(ctx, 5);
-    //   ball.X = 400;
-    //   ball.YDirection = -1;
-    //   ball.Y = ball.Radius;
-    //   ball.update();
-    //   expect(ball.Y).toBe(ball.Radius + ball.Speed);
-    // });
+    test("ball collision with top/bottom should reverse vertical direction of ball", () => {
+      const ctx = document.createElement("canvas").getContext("2d");
+      ctx.canvas.width = 800;
+      ctx.canvas.height = 600;
+      const ball = new Ball(ctx, 5);
+      ball.X = 400;
+      ball.YDirection = -1;
+      ball.Y = ball.Radius;
+      ball.update();
+      expect(ball.Y).toBe(ball.Radius + ball.Speed);
+    });
   });
 });
