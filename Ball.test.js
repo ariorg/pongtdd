@@ -28,8 +28,7 @@ describe("Ball class tests", () => {
     });
 
     test("Set Diameter should set Radius and vice versa", () => {
-      const ctx = document.createElement("canvas").getContext("2d");
-      const ball = new Ball(ctx);
+      const ball = _newBall();
       ball.Diameter = 11;
       expect(ball.Radius).toBe(5);
       ball.Radius = 9;
@@ -37,8 +36,7 @@ describe("Ball class tests", () => {
     });
 
     test("Diameter cannot be an even number and must be an integer", () => {
-      const ctx = document.createElement("canvas").getContext("2d");
-      const ball = new Ball(ctx);
+      const ball = _newBall();
       expect(() => {
         ball.Diameter = 10;
       }).toThrow();
@@ -50,9 +48,8 @@ describe("Ball class tests", () => {
 
   describe("startNewGame medthod", () => {
     test("ball max/min random location should match edges of the paddle", () => {
-      const ctx = document.createElement("canvas").getContext("2d");
-      const ball = new Ball(ctx, 5);
-      const paddle = new Paddle(ctx, 15, 5);
+      const ball = _newBall();
+      const paddle = new Paddle(ball._ctx, 15, 5);
       paddle.startNewGame();
 
       const mockMath = Object.create(global.Math);
@@ -106,8 +103,7 @@ describe("Ball class tests", () => {
 
   describe("draw method", () => {
     test("should draw itself", () => {
-      const ctx = document.createElement("canvas").getContext("2d");
-      const ball = new Ball(ctx, 15);
+      const ball = _newBall();
       ball.draw();
       expect(ball._ctx.arc).toHaveBeenCalledTimes(1);
     });
@@ -115,11 +111,8 @@ describe("Ball class tests", () => {
 
   describe("update method", () => {
     test("Update without collision should change both X and Y if speed=1 and direction=1", () => {
-      const ctx = document.createElement("canvas").getContext("2d");
-      ctx.canvas.width = 800;
-      ctx.canvas.height = 600;
-      const ball = new Ball(ctx, 5);
-
+      const ball = _newBall();
+      
       ball.moveTo(400, 300);
       expect(ball.X).toBe(400);
       expect(ball.Y).toBe(300);
@@ -131,10 +124,7 @@ describe("Ball class tests", () => {
     });
 
     test("ball collision with top/bottom should reverse vertical direction of ball", () => {
-      const ctx = document.createElement("canvas").getContext("2d");
-      ctx.canvas.width = 800;
-      ctx.canvas.height = 600;
-      const ball = new Ball(ctx, 15);
+      const ball = _newBall();
       ball.X = 400;
       ball.Speed = 2;
       ball.YDirection = -1;
@@ -144,4 +134,12 @@ describe("Ball class tests", () => {
       expect(ball.Y).toBe(ball.Radius + ball.YDirection * ball.Speed);
     });
   });
+
+  function _newBall() {
+    const ctx = document.createElement("canvas").getContext("2d");
+    ctx.canvas.width = 800;
+    ctx.canvas.height = 600;
+    return new Ball(ctx, 5);
+  }
 });
+
