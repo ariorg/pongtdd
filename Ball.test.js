@@ -133,10 +133,10 @@ describe("Ball class tests", () => {
       ball.X = 400;
       ball.Speed = 2;
       ball.YDirection = -1;
-      ball.Y = ball.Radius;
+      let yBeforeUpdate = ball.Y = ball.Radius;
       ball.update();
       expect(ball.YDirection).toBe(1);
-      expect(ball.Y).toBe(ball.Radius + ball.YDirection * ball.Speed);
+      expect(ball.Y).toBe(yBeforeUpdate + ball.YDirection * ball.Speed);
     });
 
     test("ball collision with bottom of screen should set YDirection to -1", () => {
@@ -144,22 +144,35 @@ describe("Ball class tests", () => {
       ball.X = 400;
       ball.Speed = 3;
       ball.YDirection = 1;
-      ball.Y = Math.floor(ball._ctx.canvas.height - ball.Radius);
+      let yBeforeUpdate = ball.Y = ball._ctx.canvas.height - ball.Radius;
       ball.update();
-      expect(ball.Speed).toBe(3);
       expect(ball.YDirection).toBe(-1);
-      expect(ball.Y).toBe(ball._ctx.canvas.height - ball.Radius + ball.YDirection * ball.Speed);
+      expect(ball.Speed).toBe(3);
+      expect(ball.Y).toBe(yBeforeUpdate + ball.YDirection * ball.Speed);
     });
 
-    test("ball collision with side edges should reverse XDirection of ball", () => {
+    test("ball collision with left edge should reverse XDirection of ball", () => {
       const ball = _newBall();
       ball.Y = 300;
       ball.Speed = 2;
       ball.XDirection = -1;
-      ball.X = ball.Radius;
+      let xBeforeUpdate = ball.X = ball.Radius;
       ball.update();
       expect(ball.XDirection).toBe(1);
-      expect(ball.X).toBe(ball.Radius + ball.XDirection * ball.Speed);
+      expect(ball.Speed).toBe(2);
+      expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
+    });
+
+    test("ball collision with right edge should reverse XDirection of ball", () => {
+      const ball = _newBall();
+      ball.Y = 300;
+      ball.Speed = 2;
+      ball.XDirection = 1;
+      let xBeforeUpdate = ball.X = ball._ctx.canvas.width - ball.Radius;
+      ball.update();
+      expect(ball.XDirection).toBe(-1);
+      expect(ball.Speed).toBe(2);
+      expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
     });
 
   });
