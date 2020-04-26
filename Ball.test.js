@@ -175,6 +175,9 @@ describe("Ball class tests", () => {
       expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
     });
 
+    test.todo("ball collision with the Paddle should reverse YDirection");
+
+    test.todo("ball collision with the exact corner of the Paddle should reverse ball direction");
   });
 
   function _newBall() {
