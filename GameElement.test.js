@@ -69,7 +69,7 @@ describe("GameElement class tests", () => {
         ge.X = 100;
         ge.Y = 200;
         expect(ge.XLeft).toBe(80);
-        expect(ge.TopY).toBe(190);
+        expect(ge.YTop).toBe(190);
         expect(ge.XRight).toBe(120);
         expect(ge.BottomY).toBe(210);
     });

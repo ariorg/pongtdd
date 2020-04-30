@@ -84,7 +84,7 @@ describe("Ball class tests", () => {
     });
 
     function _numOfPixelsTouchingTopOfPaddle(ctx, paddle) {
-      return _getNumberofNonTransparentPixels(ctx, paddle.XLeft, paddle.TopY - 1, paddle.Width, 1);
+      return _getNumberofNonTransparentPixels(ctx, paddle.XLeft, paddle.YTop - 1, paddle.Width, 1);
     }
 
     function _getNumberofNonTransparentPixels(ctx, x, y, width, height) {
@@ -181,7 +181,7 @@ describe("Ball class tests", () => {
       ball.Speed = 2;
       ball.YDirection = 1;
       ball.X = paddle.X;  
-      ball.BottomY = paddle.TopY-1;
+      ball.BottomY = paddle.YTop-1;
       ball.update();
       expect(ball.YDirection).toBe(-1);
     });

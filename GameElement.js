@@ -31,7 +31,7 @@ export default class GameElement {
     get XRight() {
         return this._x + this.WidthRadius;
     }
-    get TopY() {
+    get YTop() {
         return this._y - this.HeightRadius;
     }
     get BottomY() {
@@ -70,7 +70,7 @@ export default class GameElement {
 
     draw() {
         this._ctx.fillStyle = "black";
-        this._ctx.fillRect(this.XLeft, this.TopY, this.Width, this.Height);
+        this._ctx.fillRect(this.XLeft, this.YTop, this.Width, this.Height);
     }
 
     update() {

@@ -51,7 +51,7 @@ describe("PongGame class", () => {
   test('startNewGame should place Ball on random location on top of Paddle', () => {
    const g = _newPongGame();
    g.startNewGame();
-   expect(g.Ball.BottomY).toBe(g.Paddle.TopY - 1);
+   expect(g.Ball.BottomY).toBe(g.Paddle.YTop - 1);
    expect(g.Ball.XLeft).toBeGreaterThanOrEqual(g.Paddle.XLeft);
    expect(g.Ball.XRight).toBeLessThanOrEqual(g.Paddle.XRight);
   });
