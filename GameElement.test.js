@@ -30,7 +30,7 @@ describe("GameElement class tests", () => {
         });
     });
 
-    describe('Getters and setters', () => {
+    describe("Getters and setters", () => {
         test("Setters should set their propperties", () => {
             const ge = new GameElement();
             ge.X = 101;
@@ -38,6 +38,22 @@ describe("GameElement class tests", () => {
             ge.Width = 201;
             ge.Height = 203;
             expect([ge.X, ge.Y, ge.Width, ge.Height]).toStrictEqual([101, 102, 201, 203]);
+        });
+
+        test("Set RightX should change X", () => {
+            const ge = new GameElement();
+            ge.Width = 15;
+            ge.X = 0;
+            ge.XRight = 100;
+            expect(ge.X).toBe(100-7);
+        });
+
+        test("Set BottomY should change Y", () => {
+            const ge = new GameElement();
+            ge.Height = 9;
+            ge.Y = 0;
+            ge.YBottom = 100;
+            expect(ge.Y).toBe(100-4);
         });
 
     });
