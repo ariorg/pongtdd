@@ -50,7 +50,7 @@ describe("Paddle class tests", () => {
       mockMath.random = () => 0.99999999;
       global.Math = mockMath;
       pdl.startNewGame();
-      expect(pdl.RightX).toBe(canvasWidth - 1);
+      expect(pdl.XRight).toBe(canvasWidth - 1);
       expect(pdl.X).toBe(canvasWidth - 1 - (paddleWidth - 1) / 2);
     });
 

@@ -28,7 +28,7 @@ export default class GameElement {
     get XLeft() {
         return this._x - this.WidthRadius;
     }
-    get RightX() {
+    get XRight() {
         return this._x + this.WidthRadius;
     }
     get TopY() {

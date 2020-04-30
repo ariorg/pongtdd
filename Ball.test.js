@@ -58,7 +58,7 @@ describe("Ball class tests", () => {
 
       mockMath.random = () => 0.99999999;
       ball.startNewGame(paddle);
-      expect(ball.RightX).toBe(paddle.RightX);
+      expect(ball.XRight).toBe(paddle.XRight);
 
       mockMath.random = () => 0.00000001;
       ball.startNewGame(paddle);

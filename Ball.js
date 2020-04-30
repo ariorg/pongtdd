@@ -33,7 +33,7 @@ export default class Ball extends MovingGameElement {
         if (this.TopY <= 0) this.YDirection = 1;
         if (this.BottomY >= this._ctx.canvas.height-1) this.YDirection = -1;
         if (this.XLeft <= 0) this.XDirection = 1;
-        if (this.RightX >= this._ctx.canvas.width-1) this.XDirection = -1;
+        if (this.XRight >= this._ctx.canvas.width-1) this.XDirection = -1;
         this.X = this.X + this.XDirection * this.Speed;
         this.Y = this.Y + this.YDirection * this.Speed;
     }

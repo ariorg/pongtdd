@@ -53,7 +53,7 @@ describe("PongGame class", () => {
    g.startNewGame();
    expect(g.Ball.BottomY).toBe(g.Paddle.TopY - 1);
    expect(g.Ball.XLeft).toBeGreaterThanOrEqual(g.Paddle.XLeft);
-   expect(g.Ball.RightX).toBeLessThanOrEqual(g.Paddle.RightX);
+   expect(g.Ball.XRight).toBeLessThanOrEqual(g.Paddle.XRight);
   });
 
   const _newPongGame = (width, height) => {
