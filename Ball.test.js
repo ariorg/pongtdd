@@ -62,7 +62,7 @@ describe("Ball class tests", () => {
 
       mockMath.random = () => 0.00000001;
       ball.startNewGame(paddle);
-      expect(ball.LeftX).toBe(paddle.LeftX);
+      expect(ball.XLeft).toBe(paddle.XLeft);
       global.Math = gMath;
     });
 
@@ -84,7 +84,7 @@ describe("Ball class tests", () => {
     });
 
     function _numOfPixelsTouchingTopOfPaddle(ctx, paddle) {
-      return _getNumberofNonTransparentPixels(ctx, paddle.LeftX, paddle.TopY - 1, paddle.Width, 1);
+      return _getNumberofNonTransparentPixels(ctx, paddle.XLeft, paddle.TopY - 1, paddle.Width, 1);
     }
 
     function _getNumberofNonTransparentPixels(ctx, x, y, width, height) {
@@ -112,7 +112,7 @@ describe("Ball class tests", () => {
   describe("update method", () => {
     test("if no collision it should add (speed * direction) to X and Y", () => {
       const ball = _newBall();
-      
+
       ball.moveTo(400, 300);
       expect(ball.X).toBe(400);
       expect(ball.Y).toBe(300);
@@ -175,7 +175,16 @@ describe("Ball class tests", () => {
       expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
     });
 
-    test.todo("ball collision with the Paddle should reverse YDirection");
+   test.skip("Ball collision with the Paddle top should set YDirection to -1", () => {
+      const ball = _newBall();
+      const paddle = new Paddle(ball._ctx, 121, 15)
+      ball.Speed = 2;
+      ball.YDirection = 1;
+      ball.X = paddle.X;  
+      ball.BottomY = paddle.TopY-1;
+      ball.update();
+      expect(ball.YDirection).toBe(-1);
+    });
 
     test.todo("ball collision with the exact corner of the Paddle should reverse ball direction");
   });

@@ -25,7 +25,7 @@ export default class GameElement {
     get HeightRadius() {
         return (this.Height - 1) / 2;
     }
-    get LeftX() {
+    get XLeft() {
         return this._x - this.WidthRadius;
     }
     get RightX() {
@@ -70,7 +70,7 @@ export default class GameElement {
 
     draw() {
         this._ctx.fillStyle = "black";
-        this._ctx.fillRect(this.LeftX, this.TopY, this.Width, this.Height);
+        this._ctx.fillRect(this.XLeft, this.TopY, this.Width, this.Height);
     }
 
     update() {

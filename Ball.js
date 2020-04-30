@@ -20,7 +20,7 @@ export default class Ball extends MovingGameElement {
 
     startNewGame(paddle) {
         this.Y = paddle.TopY - this.HeightRadius - 1;
-        const leftXLimit = paddle.LeftX + this.WidthRadius;
+        const leftXLimit = paddle.XLeft + this.WidthRadius;
         const randomXPlacementDeltaLimit = paddle.Width - 2 * this.WidthRadius;
         this.X = leftXLimit + Math.floor(Math.random() * randomXPlacementDeltaLimit);
         this.YDirection = -1;
@@ -32,7 +32,7 @@ export default class Ball extends MovingGameElement {
     update() {
         if (this.TopY <= 0) this.YDirection = 1;
         if (this.BottomY >= this._ctx.canvas.height-1) this.YDirection = -1;
-        if (this.LeftX <= 0) this.XDirection = 1;
+        if (this.XLeft <= 0) this.XDirection = 1;
         if (this.RightX >= this._ctx.canvas.width-1) this.XDirection = -1;
         this.X = this.X + this.XDirection * this.Speed;
         this.Y = this.Y + this.YDirection * this.Speed;

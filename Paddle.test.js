@@ -62,7 +62,7 @@ describe("Paddle class tests", () => {
       mockMath.random = () => 0.00000001;
       global.Math = mockMath;
       pdl.startNewGame();
-      expect(pdl.LeftX).toBe(0);
+      expect(pdl.XLeft).toBe(0);
       expect(pdl.X).toBe((paddleWidth - 1) / 2);
     });
   });
