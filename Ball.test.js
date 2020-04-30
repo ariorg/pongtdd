@@ -181,7 +181,7 @@ describe("Ball class tests", () => {
       ball.Speed = 2;
       ball.YDirection = 1;
       ball.X = paddle.X;  
-      ball.BottomY = paddle.YTop-1;
+      ball.YBottom = paddle.YTop-1;
       ball.update();
       expect(ball.YDirection).toBe(-1);
     });

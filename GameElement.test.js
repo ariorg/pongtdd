@@ -71,7 +71,7 @@ describe("GameElement class tests", () => {
         expect(ge.XLeft).toBe(80);
         expect(ge.YTop).toBe(190);
         expect(ge.XRight).toBe(120);
-        expect(ge.BottomY).toBe(210);
+        expect(ge.YBottom).toBe(210);
     });
 
     test("GameElement.update is abstract method and should throw", () => {

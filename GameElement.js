@@ -34,7 +34,7 @@ export default class GameElement {
     get YTop() {
         return this._y - this.HeightRadius;
     }
-    get BottomY() {
+    get YBottom() {
         return this._y + this.HeightRadius;
     }
 
