@@ -205,9 +205,28 @@ describe("Ball class tests", () => {
         expect(ball.YDirection).toBe(1);
       });
 
-      test.skip("Ball collision with the exact corner of the Paddle should reverse ball direction", () => {
+      test("Ball colliding just inside the left corner of the Paddle should not change X direction", () => {
+        ball.YBottom = paddle.YTop - 1;
 
+        ball.YDirection = 1;
+        ball.XDirection = 1;
+        ball.XRight = paddle.XLeft + ball.Radius + 1;
+        ball.update(paddle);
+        expect(ball.XDirection).toBe(1);
+        expect(ball.YDirection).toBe(-1);
       });
+
+      test("Ball colliding with the left corner of the Paddle should reverse ball direction", () => {
+        ball.YBottom = paddle.YTop - 1;
+
+        ball.YDirection = 1;
+        ball.XDirection = 1;
+        ball.XRight = paddle.XLeft + ball.Radius;
+        ball.update(paddle);
+        expect(ball.XDirection).toBe(-1);
+        expect(ball.YDirection).toBe(-1);
+      });
+
     });
   });
 
