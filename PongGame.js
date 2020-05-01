@@ -42,7 +42,7 @@ export default class PongGame {
        
         const gameLoop = () => {
             clearCanvas();
-            this.Ball.update();
+            this.Ball.update(this._paddle);
             this.Ball.draw();
             this.Paddle.draw();
             requestAnimationFrame(gameLoop);
