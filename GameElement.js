@@ -46,9 +46,17 @@ export default class GameElement {
         this._throwIfNotInteger(value, "GameElement.Y");
         this._y = value;
     }
+    set XLeft(value) {
+        this._throwIfNotInteger(value, "GameElement.Y");
+        this._x = value+this.WidthRadius;
+    }
     set XRight(value) {
         this._throwIfNotInteger(value, "GameElement.Y");
         this._x = value-this.WidthRadius;
+    }
+    set YTop(value) {
+        this._throwIfNotInteger(value, "GameElement.Y");
+        this._y = value+this.HeightRadius;
     }
     set YBottom(value) {
         this._throwIfNotInteger(value, "GameElement.Y");

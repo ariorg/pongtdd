@@ -101,7 +101,7 @@ describe("Ball class tests", () => {
 
   });
 
-  describe("draw method", () => {
+  describe("Draw method", () => {
     test("should draw itself", () => {
       const ball = _newBall();
       ball.draw();
@@ -110,54 +110,53 @@ describe("Ball class tests", () => {
   });
 
   describe("update method", () => {
-    test("if no collision it should add (speed * direction) to X and Y", () => {
+    test("If no collision it should add (speed * direction) to X and Y", () => {
       const ball = _newBall();
 
       ball.moveTo(400, 300);
-      expect(ball.X).toBe(400);
       expect(ball.Y).toBe(300);
 
       ball.XDirection = ball.YDirection = ball.Speed = 1;
-      ball.update();
+      ball.update(_newPaddle(ball));
       expect(ball.X).toBe(401);
       expect(ball.Y).toBe(301);
 
       ball.Speed = 2;
-      ball.update();
+      ball.update(_newPaddle(ball));
       expect(ball.X).toBe(403);
       expect(ball.Y).toBe(303);
     });
 
-    test("ball collision with top of screen should set YDirection to 1", () => {
+    test("Ball collision with top of screen should set YDirection to 1", () => {
       const ball = _newBall();
       ball.X = 400;
       ball.Speed = 2;
       ball.YDirection = -1;
       let yBeforeUpdate = ball.Y = ball.Radius;
-      ball.update();
+      ball.update(_newPaddle(ball));
       expect(ball.YDirection).toBe(1);
       expect(ball.Y).toBe(yBeforeUpdate + ball.YDirection * ball.Speed);
     });
 
-    test("ball collision with bottom of screen should set YDirection to -1", () => {
+    test("Ball collision with bottom of screen should set YDirection to -1", () => {
       const ball = _newBall();
       ball.X = 400;
       ball.Speed = 3;
       ball.YDirection = 1;
       let yBeforeUpdate = ball.Y = ball._ctx.canvas.height - ball.Radius;
-      ball.update();
+      ball.update(_newPaddle(ball));
       expect(ball.YDirection).toBe(-1);
       expect(ball.Speed).toBe(3);
       expect(ball.Y).toBe(yBeforeUpdate + ball.YDirection * ball.Speed);
     });
 
-    test("ball collision with left edge should reverse XDirection of ball", () => {
+    test("Ball collision with left edge should reverse XDirection of ball", () => {
       const ball = _newBall();
       ball.Y = 300;
       ball.Speed = 2;
       ball.XDirection = -1;
       let xBeforeUpdate = ball.X = ball.Radius;
-      ball.update();
+      ball.update(_newPaddle(ball));
       expect(ball.XDirection).toBe(1);
       expect(ball.Speed).toBe(2);
       expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
@@ -169,24 +168,30 @@ describe("Ball class tests", () => {
       ball.Speed = 2;
       ball.XDirection = 1;
       let xBeforeUpdate = ball.X = ball._ctx.canvas.width - ball.Radius;
-      ball.update();
+      ball.update(_newPaddle(ball));
       expect(ball.XDirection).toBe(-1);
       expect(ball.Speed).toBe(2);
       expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
     });
 
-   test.skip("Ball collision with the Paddle top should set YDirection to -1", () => {
+    test("Ball collision with the Paddle top should set YDirection to -1", () => {
       const ball = _newBall();
-      const paddle = new Paddle(ball._ctx, 121, 15)
       ball.Speed = 2;
       ball.YDirection = 1;
-      ball.X = paddle.X;  
-      ball.YBottom = paddle.YTop-1;
-      ball.update();
+      const paddle = new Paddle(ball._ctx, 121, 15)
+      paddle.Y = 100;
+      paddle.X = 50;
+
+      ball.X = paddle.X;
+      ball.YBottom = paddle.YTop - 1;
+      console.log(ball.YBottom);
+
+      console.log(paddle.YTop);
+      ball.update(paddle);
       expect(ball.YDirection).toBe(-1);
     });
 
-    test.todo("ball collision with the exact corner of the Paddle should reverse ball direction");
+    test.todo("Ball collision with the exact corner of the Paddle should reverse ball direction");
   });
 
   function _newBall() {
@@ -195,5 +200,11 @@ describe("Ball class tests", () => {
     ctx.canvas.height = 600;
     return new Ball(ctx, 5);
   }
+
+  const _newPaddle = (ball) => {
+    const paddle = new Paddle(ball._ctx, 15, 5);
+    paddle.startNewGame();
+    return paddle;
+  };
 });
 

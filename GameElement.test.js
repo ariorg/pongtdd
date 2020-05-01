@@ -40,20 +40,33 @@ describe("GameElement class tests", () => {
             expect([ge.X, ge.Y, ge.Width, ge.Height]).toStrictEqual([101, 102, 201, 203]);
         });
 
-        test("Set RightX should change X", () => {
+        test("Set LeftX/RightX should change X", () => {
             const ge = new GameElement();
-            ge.Width = 15;
-            ge.X = 0;
+            expect(ge.X).toBe(0);
+
+            const widthRadius = 7;
+            ge.Width = 2 * widthRadius + 1;
+
             ge.XRight = 100;
-            expect(ge.X).toBe(100-7);
+            expect(ge.X).toBe(100-widthRadius);
+
+            ge.XLeft = 100;
+            expect(ge.X).toBe(100+widthRadius);
         });
 
         test("Set BottomY should change Y", () => {
             const ge = new GameElement();
-            ge.Height = 9;
-            ge.Y = 0;
+            expect(ge.Y).toBe(0);
+
+            const heightRadius = 4;
+            
+            ge.Height = 2 * heightRadius + 1;
+
+            ge.YTop = 100;
+            expect(ge.Y).toBe(100+heightRadius);
+            
             ge.YBottom = 100;
-            expect(ge.Y).toBe(100-4);
+            expect(ge.Y).toBe(100-heightRadius);
         });
 
     });
