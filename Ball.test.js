@@ -4,6 +4,19 @@ import { createCanvas } from "canvas";
 
 describe("Ball class tests", () => {
 
+  const _newBall = () => {
+    const ctx = document.createElement("canvas").getContext("2d");
+    ctx.canvas.width = 800;
+    ctx.canvas.height = 600;
+    return new Ball(ctx, 5);
+  }
+
+  const _newPaddle = (ball) => {
+    const paddle = new Paddle(ball._ctx, 15, 5);
+    paddle.startNewGame();
+    return paddle;
+  }
+
   describe("constructor", () => {
     test("Ball creation should set Diameter", () => {
       const ctx = document.createElement("canvas").getContext("2d");
@@ -83,11 +96,32 @@ describe("Ball class tests", () => {
       expect(numOfPixelsTouchingPaddleAfterBallDrawn).toBeLessThan(ball.Width);
     });
 
-    function _numOfPixelsTouchingTopOfPaddle(ctx, paddle) {
+
+    test("startNew game should set XDirection equally randomly to 1 or -1", () => {
+      const ball = _newBall();
+      const paddle = new Paddle(ball._ctx, 15, 5);
+      paddle.startNewGame();
+
+      const mockMath = Object.create(global.Math);
+      const globalMath = global.Math;
+      global.Math = mockMath;
+
+      mockMath.random = () => 0.49999999;
+      ball.startNewGame(paddle);
+      expect(ball.XDirection).toBe(-1);
+
+      mockMath.random = () => 0.50000000;
+      ball.startNewGame(paddle);
+      expect(ball.XDirection).toBe(1);
+      global.Math = globalMath;
+      
+    });
+
+    const _numOfPixelsTouchingTopOfPaddle = (ctx, paddle) => {
       return _getNumberofNonTransparentPixels(ctx, paddle.XLeft, paddle.YTop - 1, paddle.Width, 1);
     }
 
-    function _getNumberofNonTransparentPixels(ctx, x, y, width, height) {
+    const _getNumberofNonTransparentPixels = (ctx, x, y, width, height) => {
       const imageData = ctx.getImageData(x, y, width, height);
       let numberOfNonTransparentPixels = 0;
       let pixelLocation = 0;
@@ -110,6 +144,7 @@ describe("Ball class tests", () => {
   });
 
   describe("Update method - collision detection", () => {
+
     test("If no collision it should add (speed * direction) to X and Y", () => {
       const ball = _newBall();
 
@@ -162,7 +197,6 @@ describe("Ball class tests", () => {
       expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
     });
 
-
     test("ball collision with right edge should reverse XDirection of ball", () => {
       const ball = _newBall();
       ball.Y = 300;
@@ -207,7 +241,6 @@ describe("Ball class tests", () => {
 
       test("Ball colliding just inside the left corner of the Paddle should not change X direction", () => {
         ball.YBottom = paddle.YTop - 1;
-
         ball.YDirection = 1;
         ball.XDirection = 1;
         ball.XRight = paddle.XLeft + ball.Radius + 1;
@@ -218,7 +251,6 @@ describe("Ball class tests", () => {
 
       test("Ball colliding with the left corner of the Paddle should reverse ball direction", () => {
         ball.YBottom = paddle.YTop - 1;
-
         ball.YDirection = 1;
         ball.XDirection = 1;
         ball.XRight = paddle.XLeft + ball.Radius;
@@ -226,21 +258,6 @@ describe("Ball class tests", () => {
         expect(ball.XDirection).toBe(-1);
         expect(ball.YDirection).toBe(-1);
       });
-
     });
   });
-
-  function _newBall() {
-    const ctx = document.createElement("canvas").getContext("2d");
-    ctx.canvas.width = 800;
-    ctx.canvas.height = 600;
-    return new Ball(ctx, 5);
-  }
-
-  const _newPaddle = (ball) => {
-    const paddle = new Paddle(ball._ctx, 15, 5);
-    paddle.startNewGame();
-    return paddle;
-  };
 });
-

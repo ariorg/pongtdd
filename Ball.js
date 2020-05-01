@@ -24,7 +24,7 @@ export default class Ball extends MovingGameElement {
         const randomXPlacementDeltaLimit = paddle.Width - 2 * this.WidthRadius;
         this.X = leftXLimit + Math.floor(Math.random() * randomXPlacementDeltaLimit);
         this.YDirection = -1;
-        this.XDirection = 1;
+        this.XDirection = Math.random() < 0.5 ? -1 : 1;
         this.Speed = 1;
         this.draw();
     }
