@@ -30,7 +30,7 @@ export default class Ball extends MovingGameElement {
     }
 
     update(paddle) {
-        this._ifCollisionSetNewDirection(paddle);
+        this._detectCollisionAndSetDirection(paddle);
         this.X = this.X + this.XDirection * this.Speed;
         this.Y = this.Y + this.YDirection * this.Speed;
     }
@@ -43,20 +43,23 @@ export default class Ball extends MovingGameElement {
         this._ctx.closePath();
     }
 
-    _ifCollisionSetNewDirection(paddle) {
+    _detectCollisionAndSetDirection(paddle) {
         if (this.XLeft <= 0)
             this.XDirection = 1;
 
-        if (this.XRight >= this._ctx.canvas.width - 1)
+        if (
+            (this.XRight >= this._ctx.canvas.width - 1) ||
+            (this.YBottom >= paddle.YTop - 1 && (this.XRight <= paddle.XLeft + this.Radius) && (this.XRight >= paddle.XLeft))
+        )
             this.XDirection = -1;
 
         if (this.YTop <= 0)
             this.YDirection = 1;
 
         if (
-            (this.YBottom >= paddle.YTop - 1 && this.XRight >= paddle.XLeft && this.XLeft <= paddle.XRight) || 
-            (this.YBottom >= this._ctx.canvas.height - 1)
-           )
+            (this.YBottom >= this._ctx.canvas.height - 1) ||
+            (this.YBottom >= paddle.YTop - 1 && this.XRight >= paddle.XLeft && this.XLeft <= paddle.XRight)
+        )
             this.YDirection = -1;
     }
 }
