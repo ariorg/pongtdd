@@ -77,7 +77,7 @@ export default class GameElement {
         this.Y = y;
     }
 
-    startNewGame() {
+    resetGame() {
         this.X = 0;
         this.Y = 0;
         this.Width = 1;

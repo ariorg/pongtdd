@@ -36,7 +36,7 @@ describe("Paddle class tests", () => {
       const canvasWidth = 400;
       const paddleHeight = 5;
       const paddle = _newPaddle(canvasWidth, canvasHeight, 15, paddleHeight);
-      paddle.startNewGame();
+      paddle.resetGame();
       expect(paddle.X).toBeGreaterThan(paddle.WidthRadius);
       expect(paddle.X).toBeLessThan(canvasWidth - 1 - paddle.WidthRadius);
       expect(paddle.Y).toBe(canvasHeight - 1 - paddle.HeightRadius);
@@ -49,7 +49,7 @@ describe("Paddle class tests", () => {
       const mockMath = Object.create(global.Math);
       mockMath.random = () => 0.99999999;
       global.Math = mockMath;
-      pdl.startNewGame();
+      pdl.resetGame();
       expect(pdl.XRight).toBe(canvasWidth - 1);
       expect(pdl.X).toBe(canvasWidth - 1 - (paddleWidth - 1) / 2);
     });
@@ -61,7 +61,7 @@ describe("Paddle class tests", () => {
       const mockMath = Object.create(global.Math);
       mockMath.random = () => 0.00000001;
       global.Math = mockMath;
-      pdl.startNewGame();
+      pdl.resetGame();
       expect(pdl.XLeft).toBe(0);
       expect(pdl.X).toBe((paddleWidth - 1) / 2);
     });

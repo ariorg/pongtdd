@@ -18,7 +18,7 @@ export default class Ball extends MovingGameElement {
         this.Width = value * 2 + 1;
     }
 
-    startNewGame(paddle) {
+    resetGame(paddle) {
         this.Y = paddle.YTop - this.HeightRadius - 1;
         const leftXLimit = paddle.XLeft + this.WidthRadius;
         const randomXPlacementDeltaLimit = paddle.Width - 2 * this.WidthRadius;

@@ -5,7 +5,7 @@ export default class Paddle extends MovingGameElement {
         super(ctx, width || 0, height || 0);
     }
 
-    startNewGame() {
+    resetGame() {
         this.Y = this._ctx.canvas.height - 1 - this.HeightRadius;
         this.X = this.WidthRadius + Math.floor(Math.random() * (this._ctx.canvas.width - 2 * this.WidthRadius));
         this.draw();

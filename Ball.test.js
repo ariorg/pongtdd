@@ -13,7 +13,7 @@ describe("Ball class tests", () => {
 
   const _newPaddle = (ball) => {
     const paddle = new Paddle(ball._ctx, 15, 5);
-    paddle.startNewGame();
+    paddle.resetGame();
     return paddle;
   }
 
@@ -63,18 +63,18 @@ describe("Ball class tests", () => {
     test("ball max/min random location should match edges of the paddle", () => {
       const ball = _newBall();
       const paddle = new Paddle(ball._ctx, 15, 5);
-      paddle.startNewGame();
+      paddle.resetGame();
 
       const mockMath = Object.create(global.Math);
       const gMath = global.Math;
       global.Math = mockMath;
 
       mockMath.random = () => 0.99999999;
-      ball.startNewGame(paddle);
+      ball.resetGame(paddle);
       expect(ball.XRight).toBe(paddle.XRight);
 
       mockMath.random = () => 0.00000001;
-      ball.startNewGame(paddle);
+      ball.resetGame(paddle);
       expect(ball.XLeft).toBe(paddle.XLeft);
       global.Math = gMath;
     });
@@ -85,10 +85,10 @@ describe("Ball class tests", () => {
       const paddle = new Paddle(ctx, 121, 21);
       const ball = new Ball(ctx, 15);
 
-      paddle.startNewGame();
+      paddle.resetGame();
       let numOfPixelsTouchingPaddleBeforeBallDrawn = _numOfPixelsTouchingTopOfPaddle(ctx, paddle);
 
-      ball.startNewGame(paddle);
+      ball.resetGame(paddle);
       let numOfPixelsTouchingPaddleAfterBallDrawn = _numOfPixelsTouchingTopOfPaddle(ctx, paddle);
 
       expect(numOfPixelsTouchingPaddleBeforeBallDrawn).toBe(0);
@@ -100,18 +100,18 @@ describe("Ball class tests", () => {
     test("startNew game should set XDirection equally randomly to 1 or -1", () => {
       const ball = _newBall();
       const paddle = new Paddle(ball._ctx, 15, 5);
-      paddle.startNewGame();
+      paddle.resetGame();
 
       const mockMath = Object.create(global.Math);
       const globalMath = global.Math;
       global.Math = mockMath;
 
       mockMath.random = () => 0.49999999;
-      ball.startNewGame(paddle);
+      ball.resetGame(paddle);
       expect(ball.XDirection).toBe(-1);
 
       mockMath.random = () => 0.50000000;
-      ball.startNewGame(paddle);
+      ball.resetGame(paddle);
       expect(ball.XDirection).toBe(1);
       global.Math = globalMath;
       

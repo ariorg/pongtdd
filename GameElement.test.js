@@ -75,7 +75,7 @@ describe("GameElement class tests", () => {
         const ge = new GameElement();
         ge.X = ge.Y = ge.Width = ge.Height = 5;
         expect(ge.X + ge.Y + ge.Width + ge.Height).toBe(4 * 5);
-        ge.startNewGame();
+        ge.resetGame();
         expect([ge.X, ge.Y, ge.Width, ge.Height]).toStrictEqual([0, 0, 1, 1]);
     });
 

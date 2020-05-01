@@ -28,12 +28,12 @@ export default class PongGame {
         return this._ball;
     }
 
-    startNewGame() {
-        this.Paddle.startNewGame();
-        this.Ball.startNewGame(this.Paddle);
+    reset() {
+        this.Paddle.resetGame();
+        this.Ball.resetGame(this.Paddle);
     }
 
-    startGameLoop() { 
+    run() { 
         const clearCanvas = () => {
            this._ctx.clearRect(0, 0, this._ctx.canvas.width, this._ctx.canvas.height);
            this._ctx.fillStyle = '#FFFFFF';
