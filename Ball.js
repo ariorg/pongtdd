@@ -30,7 +30,7 @@ export default class Ball extends MovingGameElement {
     }
 
     update(paddle) {
-        this._detectCollisionAndSetDirection(paddle);
+        this._detectCollisionAndSetDirectionAccordingly(paddle);
         this.X = this.X + this.XDirection * this.Speed;
         this.Y = this.Y + this.YDirection * this.Speed;
     }
@@ -43,7 +43,7 @@ export default class Ball extends MovingGameElement {
         this._ctx.closePath();
     }
 
-    _detectCollisionAndSetDirection(paddle) {
+    _detectCollisionAndSetDirectionAccordingly(paddle) {
         if (this.XLeft <= 0)
             this.XDirection = 1;
 

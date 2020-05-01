@@ -162,6 +162,7 @@ describe("Ball class tests", () => {
       expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
     });
 
+
     test("ball collision with right edge should reverse XDirection of ball", () => {
       const ball = _newBall();
       ball.Y = 300;
@@ -174,35 +175,40 @@ describe("Ball class tests", () => {
       expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
     });
 
-    test("Ball collision within the paddle should set YDirection to -1", () => {
+    describe('Collision detection with paddle', () => {
       const ball = _newBall();
       ball.Speed = 2;
-      ball.YDirection = 1;
       const paddle = new Paddle(ball._ctx, 121, 15)
       paddle.Y = 100;
       paddle.X = 50;
 
-      ball.X = paddle.X;
-      ball.YBottom = paddle.YTop - 1;
-      ball.update(paddle);
-      expect(ball.YDirection).toBe(-1);
+      test("Ball collision within the paddle should set YDirection to -1", () => {
+        ball.YDirection = 1;
+        ball.YBottom = paddle.YTop - 1;
+        ball.update(paddle);
+        expect(ball.YDirection).toBe(-1);
+      });
+
+      test("Ball just to the right of the paddle should not cause collision and change YDirection", () => {
+        ball.YBottom = paddle.YTop - 1;
+        ball.YDirection = 1;
+        ball.XLeft = paddle.XRight + 1;
+        ball.update(paddle);
+        expect(ball.YDirection).toBe(1);
+      });
+
+      test("Ball just to the left of the paddle should not cause collision and change YDirection", () => {
+        ball.YBottom = paddle.YTop - 1;
+        ball.YDirection = 1;
+        ball.XRight = paddle.XLeft - 1;
+        ball.update(paddle);
+        expect(ball.YDirection).toBe(1);
+      });
+
+      test.skip("Ball collision with the exact corner of the Paddle should reverse ball direction", () => {
+
+      });
     });
-
-    test("Ball to the right of the paddle should not cause collision and change YDirection", () => {
-      const ball = _newBall();
-      ball.Speed = 2;
-      ball.YDirection = 1;
-      const paddle = new Paddle(ball._ctx, 121, 15)
-      paddle.Y = 100;
-      paddle.X = 50;
-
-      ball.XLeft = paddle.XRight + 1;
-      ball.YBottom = paddle.YTop - 1;
-      ball.update(paddle);
-      expect(ball.YDirection).toBe(1);
-    });
-
-    test.todo("Ball collision with the exact corner of the Paddle should reverse ball direction");
   });
 
   function _newBall() {
