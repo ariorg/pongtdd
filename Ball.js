@@ -30,7 +30,7 @@ export default class Ball extends MovingGameElement {
     }
 
     update(paddle) {
-        if (this.YBottom >= paddle.YTop - 1) this.YDirection = -1;
+        if (this.YBottom >= paddle.YTop - 1 && this.XRight >= paddle.XLeft && this.XLeft <= paddle.XRight) this.YDirection = -1;
         if (this.YTop <= 0) this.YDirection = 1;
         if (this.YBottom >= this._ctx.canvas.height-1) this.YDirection = -1;
         if (this.XLeft <= 0) this.XDirection = 1;

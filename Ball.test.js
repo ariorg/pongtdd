@@ -109,7 +109,7 @@ describe("Ball class tests", () => {
     });
   });
 
-  describe("update method", () => {
+  describe("Update method - collision detection", () => {
     test("If no collision it should add (speed * direction) to X and Y", () => {
       const ball = _newBall();
 
@@ -174,7 +174,7 @@ describe("Ball class tests", () => {
       expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
     });
 
-    test("Ball collision with the Paddle top should set YDirection to -1", () => {
+    test("Ball collision within the paddle should set YDirection to -1", () => {
       const ball = _newBall();
       ball.Speed = 2;
       ball.YDirection = 1;
@@ -184,11 +184,22 @@ describe("Ball class tests", () => {
 
       ball.X = paddle.X;
       ball.YBottom = paddle.YTop - 1;
-      console.log(ball.YBottom);
-
-      console.log(paddle.YTop);
       ball.update(paddle);
       expect(ball.YDirection).toBe(-1);
+    });
+
+    test("Ball to the right of the paddle should not cause collision and change YDirection", () => {
+      const ball = _newBall();
+      ball.Speed = 2;
+      ball.YDirection = 1;
+      const paddle = new Paddle(ball._ctx, 121, 15)
+      paddle.Y = 100;
+      paddle.X = 50;
+
+      ball.XLeft = paddle.XRight + 1;
+      ball.YBottom = paddle.YTop - 1;
+      ball.update(paddle);
+      expect(ball.YDirection).toBe(1);
     });
 
     test.todo("Ball collision with the exact corner of the Paddle should reverse ball direction");
