@@ -9,7 +9,7 @@
     "setupFiles": [
       "jest-canvas-mock"
     ],
-    "verbose": true,
+    "verbose": false,
     "collectCoverage": true,
     "coverageProvider": "babel",
     "coverageReporters": [
@@ -20,6 +20,7 @@
   "scripts": {
     "start": "lite-server",
     "test": "jest",
+    "testv": "jest --verbose",
     "testw": "jest --watch"
   },
   "keywords": [
