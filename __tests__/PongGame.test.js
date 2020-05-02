@@ -1,4 +1,4 @@
-import PongGame from '../js/PongGame';
+import PongGame from "../js/PongGame.js";
 
 describe("PongGame class", () => {
 

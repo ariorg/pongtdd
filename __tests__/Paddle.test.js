@@ -1,4 +1,4 @@
-import Paddle from "../js/Paddle";
+import Paddle from "../js/Paddle.js";
 
 describe("Paddle class tests", () => {
   const ctx = document.createElement("canvas").getContext('2d');
