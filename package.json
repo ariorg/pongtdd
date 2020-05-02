@@ -11,8 +11,10 @@
     ],
     "verbose": true,
     "collectCoverage": true,
+    "coverageProvider": "babel",
     "coverageReporters": [
-      "html"
+      "html",
+      "text"
     ]
   },
   "scripts": {

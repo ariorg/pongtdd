@@ -4,45 +4,45 @@ import Paddle from "./Paddle";
 describe("Paddle class tests", () => {
   const ctx = document.createElement("canvas").getContext('2d');
 
-  describe("constructor", () => {
+  describe("Constructor", () => {
     test("Paddle creation", () => {
       const paddle = new Paddle();
       expect(paddle).toBeDefined();
     });
 
-    test("Construct Paddle without parameters should set coordinates and size to zero", () => {
+    test("Construct without params should set coordinates and size to 0", () => {
       const paddle = new Paddle(ctx);
       expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([0, 0, 1, 1]);
     });
 
-    test("Construct Paddle with parameters should set X,Y to zero and correct Width, Height and Radius properties", () => {
+    test("Construct with params should set X,Y to 0 and correct Width, Height and Radius", () => {
       const paddle = new Paddle(ctx, 33, 11);
       expect([paddle.X, paddle.Y, paddle.Width, paddle.Height, paddle.WidthRadius, paddle.HeightRadius]).toStrictEqual([0, 0, 33, 11, 16, 5]);
     });
 
   });
 
-  describe("draw method", () => {
-    test("should draw itself", () => {
+  describe("Method draw", () => {
+    test("Should draw itself", () => {
       const pdl = _newPaddle();
       pdl.draw();
       expect(pdl._ctx.fillRect).toHaveBeenCalledTimes(1);
     });
   });
 
-  describe("resetGame method", () => {
-    test("should set initial position at the bottom of the canvas at random x-position", () => {
+  describe("Method resetGame ", () => {
+    test("Should set initial position at the bottom of the canvas at random x-position", () => {
       const canvasHeight = 600;
       const canvasWidth = 400;
       const paddleHeight = 5;
       const paddle = _newPaddle(canvasWidth, canvasHeight, 15, paddleHeight);
       paddle.resetGame();
-      expect(paddle.X).toBeGreaterThan(paddle.WidthRadius);
+      expect(paddle.X).toBeGreaterThanOrEqual(paddle.WidthRadius);
       expect(paddle.X).toBeLessThan(canvasWidth - 1 - paddle.WidthRadius);
       expect(paddle.Y).toBe(canvasHeight - 1 - paddle.HeightRadius);
     });
 
-    test("max random draw-location for paddle should be at the right edge of the canvas", () => {
+    test("Max random draw-location for paddle should be at the right edge of the canvas", () => {
       const canvasWidth = 600;
       const paddleWidth = 15;
       const pdl = _newPaddle(canvasWidth, 400, 15, 5);
@@ -54,7 +54,7 @@ describe("Paddle class tests", () => {
       expect(pdl.X).toBe(canvasWidth - 1 - (paddleWidth - 1) / 2);
     });
 
-    test("min random draw-location for paddle should be at x=0", () => {
+    test("Min random draw-location for paddle should be at x=0", () => {
       const canvasWidth = 600;
       const paddleWidth = 15;
       const pdl = _newPaddle(canvasWidth, 400, paddleWidth, 5);

@@ -39,7 +39,7 @@ export default class PongGame {
         this.Ball.update(this._paddle);
         this.Ball.draw();
         this.Paddle.draw();
-        requestAnimationFrame(() => this.run());
+        requestAnimationFrame(/*istanbul ignore next*/() => this.run());
     }
 
     _clearCanvas() {

@@ -2,8 +2,8 @@ import MovingGameElement from "./MovingGameElement.js";
 
 describe("MovingGameElement class tests", () => {
 
-    describe("constructor", () => {
-        it("should create MogingGameElement with zero X/Ydirection", () => {
+    describe("Constructor", () => {
+        it("Should create MogingGameElement with zero X/Ydirection", () => {
             const ctx = document.createElement("canvas").getContext("2d");
             let mge = new MovingGameElement(ctx);
             expect(mge.XDirection).toBe(0);
@@ -12,7 +12,7 @@ describe("MovingGameElement class tests", () => {
         });
     });
 
-    describe("setters and getters", () => {
+    describe("Setters and getters", () => {
         const ctx = document.createElement("canvas").getContext("2d");
         let mge = new MovingGameElement(ctx);
 
@@ -23,7 +23,7 @@ describe("MovingGameElement class tests", () => {
             expect(mge.Speed).toBe(123);
         });
             
-        test("set X/Ydirection should throw if not a valid direction", () => {
+        test("Set X/Ydirection should throw if not a valid direction", () => {
             expect(() => { mge.YDirection = 0; }).not.toThrow();
             expect(() => { mge.XDirection = -1; }).not.toThrow();
             
