@@ -261,6 +261,16 @@ describe("Ball class tests", () => {
         expect(ball.XDirection).toBe(-1);
         expect(ball.YDirection).toBe(-1);
       });
+      
+      test("Ball colliding with the right corner of the Paddle should reverse ball direction", () => {
+        ball.YBottom = paddle.YTop - 1;
+        ball.YDirection = 1;
+        ball.XDirection = -1;
+        ball.XLeft = paddle.XRight - ball.Radius;
+        ball.update(paddle);
+        expect(ball.XDirection).toBe(1);
+        expect(ball.YDirection).toBe(-1);
+      });
     });
   });
 });

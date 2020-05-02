@@ -43,7 +43,10 @@ export default class Ball extends MovingGameElement {
     }
 
     _detectCollisionAndSetDirection(paddle) {
-        if (this.XLeft <= 0)
+        if (
+            (this.XLeft <= 0) ||
+            (this.YBottom >= paddle.YTop - 1 && (this.XLeft >= paddle.XRight - this.Radius) && (this.XLeft <= paddle.XRight))
+        )
             this.XDirection = 1;
 
         if (
