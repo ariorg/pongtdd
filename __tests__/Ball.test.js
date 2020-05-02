@@ -1,5 +1,5 @@
-import Ball from "../Ball.js";
-import Paddle from "../Paddle.js";
+import Ball from "../js/Ball.js";
+import Paddle from "../js/Paddle.js";
 import { createCanvas } from "canvas";
 
 describe("Ball class tests", () => {
