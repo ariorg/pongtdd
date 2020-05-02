@@ -33,20 +33,18 @@ export default class PongGame {
         this.Ball.resetGame(this.Paddle);
     }
 
-    run() { 
-        const clearCanvas = () => {
-           this._ctx.clearRect(0, 0, this._ctx.canvas.width, this._ctx.canvas.height);
-           this._ctx.fillStyle = '#FFFFFF';
-           this._ctx.fillRect(0, 0, this._ctx.canvas.width, this._ctx.canvas.height);
-        }
-       
-        const gameLoop = () => {
-            clearCanvas();
-            this.Ball.update(this._paddle);
-            this.Ball.draw();
-            this.Paddle.draw();
-            requestAnimationFrame(gameLoop);
-        }
-        gameLoop();
+    run() {
+        this._clearCanvas();
+        this.Paddle.update();
+        this.Ball.update(this._paddle);
+        this.Ball.draw();
+        this.Paddle.draw();
+        requestAnimationFrame(() => this.run());
+    }
+
+    _clearCanvas() {
+        this._ctx.clearRect(0, 0, this._ctx.canvas.width, this._ctx.canvas.height);
+        this._ctx.fillStyle = '#FFFFFF';
+        this._ctx.fillRect(0, 0, this._ctx.canvas.width, this._ctx.canvas.height);
     }
 }

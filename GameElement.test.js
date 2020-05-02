@@ -43,7 +43,6 @@ describe("GameElement class tests", () => {
         test("Set LeftX/RightX should change X", () => {
             const ge = new GameElement();
             expect(ge.X).toBe(0);
-
             const widthRadius = 7;
             ge.Width = 2 * widthRadius + 1;
 
@@ -57,9 +56,7 @@ describe("GameElement class tests", () => {
         test("Set BottomY should change Y", () => {
             const ge = new GameElement();
             expect(ge.Y).toBe(0);
-
             const heightRadius = 4;
-            
             ge.Height = 2 * heightRadius + 1;
 
             ge.YTop = 100;
@@ -71,7 +68,7 @@ describe("GameElement class tests", () => {
 
     });
 
-    test("startNewGame method should set coords and shape size to 1", () => {
+    test("resetGame method should set coords and shape size to 1", () => {
         const ge = new GameElement();
         ge.X = ge.Y = ge.Width = ge.Height = 5;
         expect(ge.X + ge.Y + ge.Width + ge.Height).toBe(4 * 5);

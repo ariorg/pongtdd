@@ -31,8 +31,7 @@ export default class Ball extends MovingGameElement {
 
     update(paddle) {
         this._detectCollisionAndSetDirection(paddle);
-        this.X = this.X + this.XDirection * this.Speed;
-        this.Y = this.Y + this.YDirection * this.Speed;
+        super.update();
     }
 
     draw() {

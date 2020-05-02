@@ -59,7 +59,7 @@ describe("Ball class tests", () => {
     });
   });
 
-  describe("startNewGame medthod", () => {
+  describe("Method resetGame", () => {
     test("ball max/min random location should match edges of the paddle", () => {
       const ball = _newBall();
       const paddle = new Paddle(ball._ctx, 15, 5);
@@ -79,7 +79,7 @@ describe("Ball class tests", () => {
       global.Math = gMath;
     });
 
-    test("startNewGame should draw a ball on top of the paddle, touching it with at least one pixel", () => {
+    test("should draw a ball on top of the paddle, touching it with at least one pixel", () => {
       const canvas = createCanvas(800, 600);
       const ctx = canvas.getContext("2d");
       const paddle = new Paddle(ctx, 121, 21);
@@ -97,7 +97,7 @@ describe("Ball class tests", () => {
     });
 
 
-    test("startNew game should set XDirection equally randomly to 1 or -1", () => {
+    test("should set XDirection equally randomly to 1 or -1", () => {
       const ball = _newBall();
       const paddle = new Paddle(ball._ctx, 15, 5);
       paddle.resetGame();
@@ -114,7 +114,7 @@ describe("Ball class tests", () => {
       ball.resetGame(paddle);
       expect(ball.XDirection).toBe(1);
       global.Math = globalMath;
-      
+
     });
 
     const _numOfPixelsTouchingTopOfPaddle = (ctx, paddle) => {
@@ -143,70 +143,73 @@ describe("Ball class tests", () => {
     });
   });
 
-  describe("Update method - collision detection", () => {
+  describe("Method update", () => {
 
-    test("If no collision it should add (speed * direction) to X and Y", () => {
-      const ball = _newBall();
+    describe('Collision with canvas border', () => {
 
-      ball.moveTo(400, 300);
-      expect(ball.Y).toBe(300);
+      test("If no collision it should add (speed * direction) to X and Y", () => {
+        const ball = _newBall();
 
-      ball.XDirection = ball.YDirection = ball.Speed = 1;
-      ball.update(_newPaddle(ball));
-      expect(ball.X).toBe(401);
-      expect(ball.Y).toBe(301);
+        ball.moveTo(400, 300);
+        expect(ball.Y).toBe(300);
 
-      ball.Speed = 2;
-      ball.update(_newPaddle(ball));
-      expect(ball.X).toBe(403);
-      expect(ball.Y).toBe(303);
-    });
+        ball.XDirection = ball.YDirection = ball.Speed = 1;
+        ball.update(_newPaddle(ball));
+        expect(ball.X).toBe(401);
+        expect(ball.Y).toBe(301);
 
-    test("Ball collision with top of screen should set YDirection to 1", () => {
-      const ball = _newBall();
-      ball.X = 400;
-      ball.Speed = 2;
-      ball.YDirection = -1;
-      let yBeforeUpdate = ball.Y = ball.Radius;
-      ball.update(_newPaddle(ball));
-      expect(ball.YDirection).toBe(1);
-      expect(ball.Y).toBe(yBeforeUpdate + ball.YDirection * ball.Speed);
-    });
+        ball.Speed = 2;
+        ball.update(_newPaddle(ball));
+        expect(ball.X).toBe(403);
+        expect(ball.Y).toBe(303);
+      });
 
-    test("Ball collision with bottom of screen should set YDirection to -1", () => {
-      const ball = _newBall();
-      ball.X = 400;
-      ball.Speed = 3;
-      ball.YDirection = 1;
-      let yBeforeUpdate = ball.Y = ball._ctx.canvas.height - ball.Radius;
-      ball.update(_newPaddle(ball));
-      expect(ball.YDirection).toBe(-1);
-      expect(ball.Speed).toBe(3);
-      expect(ball.Y).toBe(yBeforeUpdate + ball.YDirection * ball.Speed);
-    });
+      test("Ball collision with top of screen should set YDirection to 1", () => {
+        const ball = _newBall();
+        ball.X = 400;
+        ball.Speed = 2;
+        ball.YDirection = -1;
+        let yBeforeUpdate = ball.Y = ball.Radius;
+        ball.update(_newPaddle(ball));
+        expect(ball.YDirection).toBe(1);
+        expect(ball.Y).toBe(yBeforeUpdate + ball.YDirection * ball.Speed);
+      });
 
-    test("Ball collision with left edge should reverse XDirection of ball", () => {
-      const ball = _newBall();
-      ball.Y = 300;
-      ball.Speed = 2;
-      ball.XDirection = -1;
-      let xBeforeUpdate = ball.X = ball.Radius;
-      ball.update(_newPaddle(ball));
-      expect(ball.XDirection).toBe(1);
-      expect(ball.Speed).toBe(2);
-      expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
-    });
+      test("Ball collision with bottom of screen should set YDirection to -1", () => {
+        const ball = _newBall();
+        ball.X = 400;
+        ball.Speed = 3;
+        ball.YDirection = 1;
+        let yBeforeUpdate = ball.Y = ball._ctx.canvas.height - ball.Radius;
+        ball.update(_newPaddle(ball));
+        expect(ball.YDirection).toBe(-1);
+        expect(ball.Speed).toBe(3);
+        expect(ball.Y).toBe(yBeforeUpdate + ball.YDirection * ball.Speed);
+      });
 
-    test("ball collision with right edge should reverse XDirection of ball", () => {
-      const ball = _newBall();
-      ball.Y = 300;
-      ball.Speed = 2;
-      ball.XDirection = 1;
-      let xBeforeUpdate = ball.X = ball._ctx.canvas.width - ball.Radius;
-      ball.update(_newPaddle(ball));
-      expect(ball.XDirection).toBe(-1);
-      expect(ball.Speed).toBe(2);
-      expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
+      test("Ball collision with left edge should reverse XDirection of ball", () => {
+        const ball = _newBall();
+        ball.Y = 300;
+        ball.Speed = 2;
+        ball.XDirection = -1;
+        let xBeforeUpdate = ball.X = ball.Radius;
+        ball.update(_newPaddle(ball));
+        expect(ball.XDirection).toBe(1);
+        expect(ball.Speed).toBe(2);
+        expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
+      });
+
+      test("ball collision with right edge should reverse XDirection of ball", () => {
+        const ball = _newBall();
+        ball.Y = 300;
+        ball.Speed = 2;
+        ball.XDirection = 1;
+        let xBeforeUpdate = ball.X = ball._ctx.canvas.width - ball.Radius;
+        ball.update(_newPaddle(ball));
+        expect(ball.XDirection).toBe(-1);
+        expect(ball.Speed).toBe(2);
+        expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
+      });
     });
 
     describe('Collision detection with paddle', () => {

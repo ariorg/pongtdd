@@ -30,7 +30,7 @@ describe("Paddle class tests", () => {
     });
   });
 
-  describe("startNewGame method", () => {
+  describe("resetGame method", () => {
     test("should set initial position at the bottom of the canvas at random x-position", () => {
       const canvasHeight = 600;
       const canvasWidth = 400;
