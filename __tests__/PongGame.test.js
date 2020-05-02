@@ -1,6 +1,4 @@
-'use strict';
-
-import PongGame from './PongGame';
+import PongGame from '../PongGame';
 
 describe("PongGame class", () => {
 

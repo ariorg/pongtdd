@@ -1,4 +1,4 @@
-import MovingGameElement from "./MovingGameElement.js";
+import MovingGameElement from "../MovingGameElement.js";
 
 describe("MovingGameElement class tests", () => {
 

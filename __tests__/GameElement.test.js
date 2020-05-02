@@ -1,4 +1,4 @@
-import GameElement from "./GameElement";
+import GameElement from "../GameElement";
 
 describe("GameElement class tests", () => {
 
