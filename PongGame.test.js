@@ -66,16 +66,17 @@ describe("PongGame class", () => {
   describe("methods", () => {
     test("Run should start game loop by calling requestAnimationFrame(run)", () => {
       const rafSpy = jest.spyOn(global, "requestAnimationFrame");
-      const g = _newPongGame();
-      g.run();
+      const game = _newPongGame();
+      game.run();
+      expect(rafSpy).toHaveBeenCalledWith(game.run);
       expect(rafSpy).toHaveBeenCalledTimes(1);
     });
 
     test("Run should update ball and paddle", () => {
-      const g = _newPongGame();
-      const ballUpdateSpy = jest.spyOn(g.Ball, "update");
-      const paddleUpdateSpy =  jest.spyOn(g.Paddle, "update");
-      g.run();
+      const game = _newPongGame();
+      const ballUpdateSpy = jest.spyOn(game.Ball, "update");
+      const paddleUpdateSpy =  jest.spyOn(game.Paddle, "update");
+      game.run();
       expect(paddleUpdateSpy).toHaveBeenCalledTimes(1);
       expect(ballUpdateSpy).toHaveBeenCalledTimes(1);
     });

@@ -33,18 +33,19 @@ export default class PongGame {
         this.Ball.resetGame(this.Paddle);
     }
 
-    run() {
-        this._clearCanvas();
+    run = () => {
         this.Paddle.update();
         this.Ball.update(this._paddle);
+
+        this._clearCanvas(this._ctx);
         this.Ball.draw();
         this.Paddle.draw();
-        requestAnimationFrame(/*istanbul ignore next*/() => this.run());
+        requestAnimationFrame(this.run);
     }
 
-    _clearCanvas() {
-        this._ctx.clearRect(0, 0, this._ctx.canvas.width, this._ctx.canvas.height);
-        this._ctx.fillStyle = '#FFFFFF';
-        this._ctx.fillRect(0, 0, this._ctx.canvas.width, this._ctx.canvas.height);
+    _clearCanvas(ctx) {
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     }
 }
