@@ -3,7 +3,7 @@ export default class Input {
     this._leftKeyPressed = false;
     this._rightKeyPressed = false;
 
-    document.addEventListener(
+    globalThis.document.addEventListener(
       "keyup",
       (event) => {
         if (event.keyCode === 37) this._leftKeyPressed = false;
@@ -12,7 +12,7 @@ export default class Input {
       false
     );
 
-    document.addEventListener(
+    globalThis.document.addEventListener(
       "keydown",
       (event) => {
         this._leftKeyPressed = event.keyCode === 37;
