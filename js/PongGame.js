@@ -1,5 +1,6 @@
 import Ball from './Ball.js';
 import Paddle from './Paddle.js';
+import Input from './Input.js';
 
 export default class PongGame {
     constructor(ctx) {
