@@ -5,6 +5,8 @@ describe("Input class tests", () => {
     test("Input creation", () => {
       const input = new Input();
       expect(input).toBeDefined();
+      expect(input.IsLeftKeyPressed).toBeFalsy();
+      expect(input.IsRightKeyPressed).toBeFalsy();
     });
   });
 });
