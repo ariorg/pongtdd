@@ -66,6 +66,11 @@ describe("Paddle class tests", () => {
     });
   });
 
+  describe("Method update() tests", () => {
+    test.todo("Paddle.update should move left one speed if leftkey is pressed");
+    test.todo("Paddle.update should move right one speed if leftkey is pressed");
+  });
+
   function _newPaddle(canvasWidth, canvasHeight, paddleWidth, paddleHeight) {
     const ctx = document.createElement("canvas").getContext('2d');
     ctx.canvas.width = canvasWidth || 800;
