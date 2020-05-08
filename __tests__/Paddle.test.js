@@ -78,13 +78,20 @@ describe('Paddle class tests', () => {
   });
 
   describe('Method update() tests', () => {
+    test('Paddle.update with no key pressed should not move', () => {
+      const p = _newPaddle();
+      const orgX = 200;
+      p.Speed = 2;
+      p.X = orgX;
+      p.update();
+      expect(p.X).toBe(orgX);
+    });
+    
     test('Paddle.update should move left one speed if leftkey is pressed', () => {
       const p = _newPaddle();
       const orgX = 100;
       p.Speed = 2;
       p.X = orgX;
-      p.update();
-      expect(p.X).toBe(orgX);
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 37 }));
       p.update();
       expect(p.X).toBe(orgX - p.Speed);
@@ -95,8 +102,6 @@ describe('Paddle class tests', () => {
       const orgX = 200;
       p.Speed = 2;
       p.X = orgX;
-      p.update();
-      expect(p.X).toBe(orgX);
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 39 }));
       p.update();
       expect(p.X).toBe(orgX + p.Speed);
