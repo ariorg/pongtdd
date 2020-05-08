@@ -1,30 +1,29 @@
-import PongGame from "../js/PongGame.js";
+import PongGame from '../js/PongGame.js';
 
-describe("PongGame class", () => {
-
+describe('PongGame class', () => {
   describe('constructor', () => {
-    test("Create pong game", () => {
-      const canvas = document.createElement("canvas");
+    test('Create pong game', () => {
+      const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       let pg = new PongGame(ctx);
-      expect(typeof pg != "undefined").toBeTruthy();
+      expect(typeof pg != 'undefined').toBeTruthy();
     });
 
-    test("New Game has default sized canvas", () => {
-      const canvas = document.createElement("canvas");
+    test('New Game has default sized canvas', () => {
+      const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       const pg = new PongGame(ctx);
       expect(pg._ctx.canvas.width).toBeGreaterThan(0);
       expect(pg._ctx.canvas.height).toBeGreaterThan(0);
     });
 
-    test("Width and height of passed in canvas is same in Game object", () => {
-      const pg = _newPongGame(801, 601)
+    test('Width and height of passed in canvas is same in Game object', () => {
+      const pg = _newPongGame(801, 601);
       expect(pg.CanvasWidth).toBe(801);
       expect(pg.CanvasHeight).toBe(601);
     });
 
-    test("Game should have an initial score of zero", () => {
+    test('Game should have an initial score of zero', () => {
       const g = _newPongGame();
       expect(g.Score).toBe(0);
     });
@@ -36,11 +35,9 @@ describe("PongGame class", () => {
       expect(g.Ball).toBeDefined();
       expect(g.Ball.Radius).toBeGreaterThanOrEqual(0);
     });
-
   });
 
   describe('resetGame', () => {
-
     test('resetGame make Paddle at the bottom of the screen', () => {
       const width = 840;
       const height = 960;
@@ -58,34 +55,32 @@ describe("PongGame class", () => {
       expect(g.Ball.XLeft).toBeGreaterThanOrEqual(g.Paddle.XLeft);
       expect(g.Ball.XRight).toBeLessThanOrEqual(g.Paddle.XRight);
     });
-
   });
 
-  describe("methods", () => {
-    test("Run should start game loop by calling requestAnimationFrame(run)", () => {
-      const rafSpy = jest.spyOn(global, "requestAnimationFrame");
+  describe('methods', () => {
+    test('Run should start game loop by calling requestAnimationFrame(run)', () => {
+      const rafSpy = jest.spyOn(global, 'requestAnimationFrame');
       const game = _newPongGame();
       game.run();
       expect(rafSpy).toHaveBeenCalledWith(game.run);
       expect(rafSpy).toHaveBeenCalledTimes(1);
     });
 
-    test("Run should update ball and paddle", () => {
+    test('Run should update ball and paddle', () => {
       const game = _newPongGame();
-      const ballUpdateSpy = jest.spyOn(game.Ball, "update");
-      const paddleUpdateSpy =  jest.spyOn(game.Paddle, "update");
+      const ballUpdateSpy = jest.spyOn(game.Ball, 'update');
+      const paddleUpdateSpy = jest.spyOn(game.Paddle, 'update');
       game.run();
       expect(paddleUpdateSpy).toHaveBeenCalledTimes(1);
       expect(ballUpdateSpy).toHaveBeenCalledTimes(1);
     });
-
   });
 
   const _newPongGame = (width, height) => {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext('2d')
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
     ctx.canvas.width = width || 800;
     ctx.canvas.height = height || 600;
     return new PongGame(ctx);
-  }
+  };
 });
