@@ -7,6 +7,7 @@ describe('Input class tests', () => {
       expect(input).toBeDefined()
       expect(input.IsLeftKeyPressed).toBeFalsy()
       expect(input.IsRightKeyPressed).toBeFalsy()
+      expect(input.IsSpaceKeyPressed).toBeFalsy()
     })
 
     test('Input creation should add input-handlers to document', () => {
