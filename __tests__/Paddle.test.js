@@ -11,12 +11,7 @@ describe('Paddle class tests', () => {
 
     test('Construct without params should set coordinates and size to 0', () => {
       const paddle = new Paddle(ctx);
-      expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([
-        0,
-        0,
-        1,
-        1,
-      ]);
+      expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([0, 0, 1, 1]);
     });
 
     test('Construct with params should set X,Y to 0 and correct Width, Height and Radius', () => {
@@ -77,7 +72,7 @@ describe('Paddle class tests', () => {
     });
   });
 
-  describe('Method update() tests', () => {
+  describe('Method update', () => {
     test('Paddle.update with no key pressed should not move', () => {
       const p = _newPaddle();
       const orgX = 200;
@@ -86,8 +81,8 @@ describe('Paddle class tests', () => {
       p.update();
       expect(p.X).toBe(orgX);
     });
-    
-    test('Paddle.update should move left one speed if leftkey is pressed', () => {
+
+    test('should move left one speed if leftkey is pressed', () => {
       const p = _newPaddle();
       const orgX = 100;
       p.Speed = 2;
@@ -97,7 +92,7 @@ describe('Paddle class tests', () => {
       expect(p.X).toBe(orgX - p.Speed);
     });
 
-    test('Paddle.update should move right one speed if leftkey is pressed', () => {
+    test('should move right one speed if leftkey is pressed', () => {
       const p = _newPaddle();
       const orgX = 200;
       p.Speed = 2;
@@ -105,6 +100,15 @@ describe('Paddle class tests', () => {
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 39 }));
       p.update();
       expect(p.X).toBe(orgX + p.Speed);
+    });
+
+    test('should not move beyound left canvas edge', () => {
+      const p = _newPaddle();
+      p.X = 1;
+      p.Speed = 3;
+      document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 37 }));
+      p.update();
+      expect(p.X).toBe(0);
     });
   });
 

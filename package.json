@@ -6,18 +6,14 @@
   "type": "module",
   "homepage": "https://github.com/arividar/pongtdd",
   "jest": {
-    "setupFiles": [
-      "jest-canvas-mock"
-    ],
+    "setupFiles": ["jest-canvas-mock"],
     "verbose": false,
     "collectCoverage": true,
     "coverageProvider": "babel",
-    "coverageReporters": [
-      "html",
-      "text"
-    ]
+    "coverageReporters": ["html", "text"]
   },
   "prettier": {
+    "printWidth": 96,
     "trailingComma": "es5",
     "tabWidth": 2,
     "semi": true,
@@ -29,10 +25,7 @@
     "testv": "jest --verbose",
     "testw": "jest --watch"
   },
-  "keywords": [
-    "game",
-    "tdd"
-  ],
+  "keywords": ["game", "tdd"],
   "author": "Ari Johannesson",
   "license": "ISC",
   "devDependencies": {
