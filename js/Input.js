@@ -6,7 +6,6 @@ export default class Input {
 
     document.addEventListener(
       'keyup',
-      /* istanbul ignore next */
       event => {
         if (event.keyCode === 37) this._leftKeyPressed = false
         if (event.keyCode === 39) this._rightKeyPressed = false
@@ -16,11 +15,10 @@ export default class Input {
 
     document.addEventListener(
       'keydown',
-      /* istanbul ignore next */
       event => {
         this._leftKeyPressed = event.keyCode === 37
         this._rightKeyPressed = event.keyCode === 39
-        this._rightKeyPressed = event.keyCode === 32
+        this._spaceKeyPressed = event.keyCode === 32
       },
       false
     )
