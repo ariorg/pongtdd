@@ -67,8 +67,30 @@ describe("Paddle class tests", () => {
   });
 
   describe("Method update() tests", () => {
-    test.todo("Paddle.update should move left one speed if leftkey is pressed");
-    test.todo("Paddle.update should move right one speed if leftkey is pressed");
+    test("Paddle.update should move left one speed if leftkey is pressed", () => {
+      const p = _newPaddle();
+      const orgX = 100;
+      p.Speed = 2;
+      p.X = orgX;
+      p.update();
+      expect(p.X).toBe(orgX);
+      document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 37 }));
+      p.update();
+      expect(p.X).toBe(orgX-p.Speed);
+    });
+    
+    test("Paddle.update should move right one speed if leftkey is pressed", () => {
+      const p = _newPaddle();
+      const orgX = 200;
+      p.Speed = 2;
+      p.X = orgX;
+      p.update();
+      expect(p.X).toBe(orgX);
+      document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 39 }));
+      p.update();
+      expect(p.X).toBe(orgX+p.Speed);
+    });
+
   });
 
   function _newPaddle(canvasWidth, canvasHeight, paddleWidth, paddleHeight) {
