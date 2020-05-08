@@ -10,7 +10,7 @@ export default class Paddle extends MovingGameElement {
     update() {
         this.X -= this._input.IsLeftKeyPressed ? this.Speed : 0;
         this.X += this._input.IsRightKeyPressed ? this.Speed : 0;
-        if (this.X < 0) this.X = 0;
+        if (this.XLeft < 0) this.XLeft = 0;
     }
 
     resetGame() {

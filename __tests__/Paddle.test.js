@@ -104,11 +104,11 @@ describe('Paddle class tests', () => {
 
     test('should not move beyound left canvas edge', () => {
       const p = _newPaddle();
-      p.X = 1;
+      p.XLeft = 1;
       p.Speed = 3;
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 37 }));
       p.update();
-      expect(p.X).toBe(0);
+      expect(p.XLeft).toBe(0);
     });
   });
 
