@@ -9,6 +9,7 @@ export default class Input {
       event => {
         if (event.keyCode === 37) this._leftKeyPressed = false
         if (event.keyCode === 39) this._rightKeyPressed = false
+        if (event.keyCode === 32) this._spaceKeyPressed = false
       },
       false
     )

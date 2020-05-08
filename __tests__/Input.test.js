@@ -15,7 +15,7 @@ describe('constructor', () => {
     expect(spyOnAddEventListener).toHaveBeenCalledTimes(2);
   });
 
-  test('Input left/right/space-key should set IsKeyPressed property', () => {
+  test('Left/right/space-keydown should set IsKeyPressed property', () => {
     const input = new Input();
     
     const eventLeftKey = new KeyboardEvent('keydown', { keyCode: 37 });
@@ -35,4 +35,24 @@ describe('constructor', () => {
     document.dispatchEvent(eventSpaceKey);
     expect(input.IsSpaceKeyPressed).toBeTruthy();
   });
+
+  test('Left/right/space-keyup should unset IsKeyPressed property', () => {
+    const input = new Input();
+    
+    document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 37 }));
+    expect(input.IsLeftKeyPressed).toBeTruthy();
+    document.dispatchEvent(new KeyboardEvent('keyup', { keyCode: 37 }));
+    expect(input.IsLeftKeyPressed).toBeFalsy();
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 39 }));
+    expect(input.IsRightKeyPressed).toBeTruthy();
+    document.dispatchEvent(new KeyboardEvent('keyup', { keyCode: 39 }));
+    expect(input.IsRightKeyPressed).toBeFalsy();
+    
+    document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 32 }));
+    expect(input.IsSpaceKeyPressed).toBeTruthy();
+    document.dispatchEvent(new KeyboardEvent('keyup', { keyCode: 32 }));
+    expect(input.IsSpaceKeyPressed).toBeFalsy();
+  });
+
 });
