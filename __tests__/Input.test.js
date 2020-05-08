@@ -11,11 +11,11 @@ describe('Input class tests', () => {
 
     test('Input creation should add input-handlers to document', () => {
       let spyOnAddEventListener = jest.spyOn(
-        thisGlobal.document,
+        document,
         'addEventListener'
       )
       const input = new Input()
-      expect(spyOnAddEventListener).toHaveBeenCalledTimes(3)
+      expect(spyOnAddEventListener).toHaveBeenCalledTimes(2)
     })
   })
 })
