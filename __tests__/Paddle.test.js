@@ -1,36 +1,47 @@
-import Paddle from "../js/Paddle.js";
+import Paddle from '../js/Paddle.js';
 
-describe("Paddle class tests", () => {
-  const ctx = document.createElement("canvas").getContext('2d');
+describe('Paddle class tests', () => {
+  const ctx = document.createElement('canvas').getContext('2d');
 
-  describe("Constructor", () => {
-    test("Paddle creation", () => {
+  describe('Constructor', () => {
+    test('Paddle creation', () => {
       const paddle = new Paddle();
       expect(paddle).toBeDefined();
     });
 
-    test("Construct without params should set coordinates and size to 0", () => {
+    test('Construct without params should set coordinates and size to 0', () => {
       const paddle = new Paddle(ctx);
-      expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([0, 0, 1, 1]);
+      expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([
+        0,
+        0,
+        1,
+        1,
+      ]);
     });
 
-    test("Construct with params should set X,Y to 0 and correct Width, Height and Radius", () => {
+    test('Construct with params should set X,Y to 0 and correct Width, Height and Radius', () => {
       const paddle = new Paddle(ctx, 33, 11);
-      expect([paddle.X, paddle.Y, paddle.Width, paddle.Height, paddle.WidthRadius, paddle.HeightRadius]).toStrictEqual([0, 0, 33, 11, 16, 5]);
+      expect([
+        paddle.X,
+        paddle.Y,
+        paddle.Width,
+        paddle.Height,
+        paddle.WidthRadius,
+        paddle.HeightRadius,
+      ]).toStrictEqual([0, 0, 33, 11, 16, 5]);
     });
-
   });
 
-  describe("Method draw", () => {
-    test("Should draw itself", () => {
+  describe('Method draw', () => {
+    test('Should draw itself', () => {
       const pdl = _newPaddle();
       pdl.draw();
       expect(pdl._ctx.fillRect).toHaveBeenCalledTimes(1);
     });
   });
 
-  describe("Method resetGame ", () => {
-    test("Should set initial position at the bottom of the canvas at random x-position", () => {
+  describe('Method resetGame ', () => {
+    test('Should set initial position at the bottom of the canvas at random x-position', () => {
       const canvasHeight = 600;
       const canvasWidth = 400;
       const paddleHeight = 5;
@@ -41,7 +52,7 @@ describe("Paddle class tests", () => {
       expect(paddle.Y).toBe(canvasHeight - 1 - paddle.HeightRadius);
     });
 
-    test("Max random draw-location for paddle should be at the right edge of the canvas", () => {
+    test('Max random draw-location for paddle should be at the right edge of the canvas', () => {
       const canvasWidth = 600;
       const paddleWidth = 15;
       const pdl = _newPaddle(canvasWidth, 400, 15, 5);
@@ -53,7 +64,7 @@ describe("Paddle class tests", () => {
       expect(pdl.X).toBe(canvasWidth - 1 - (paddleWidth - 1) / 2);
     });
 
-    test("Min random draw-location for paddle should be at x=0", () => {
+    test('Min random draw-location for paddle should be at x=0', () => {
       const canvasWidth = 600;
       const paddleWidth = 15;
       const pdl = _newPaddle(canvasWidth, 400, paddleWidth, 5);
@@ -66,8 +77,8 @@ describe("Paddle class tests", () => {
     });
   });
 
-  describe("Method update() tests", () => {
-    test("Paddle.update should move left one speed if leftkey is pressed", () => {
+  describe('Method update() tests', () => {
+    test('Paddle.update should move left one speed if leftkey is pressed', () => {
       const p = _newPaddle();
       const orgX = 100;
       p.Speed = 2;
@@ -76,10 +87,10 @@ describe("Paddle class tests", () => {
       expect(p.X).toBe(orgX);
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 37 }));
       p.update();
-      expect(p.X).toBe(orgX-p.Speed);
+      expect(p.X).toBe(orgX - p.Speed);
     });
-    
-    test("Paddle.update should move right one speed if leftkey is pressed", () => {
+
+    test('Paddle.update should move right one speed if leftkey is pressed', () => {
       const p = _newPaddle();
       const orgX = 200;
       p.Speed = 2;
@@ -88,17 +99,15 @@ describe("Paddle class tests", () => {
       expect(p.X).toBe(orgX);
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 39 }));
       p.update();
-      expect(p.X).toBe(orgX+p.Speed);
+      expect(p.X).toBe(orgX + p.Speed);
     });
-
   });
 
   function _newPaddle(canvasWidth, canvasHeight, paddleWidth, paddleHeight) {
-    const ctx = document.createElement("canvas").getContext('2d');
+    const ctx = document.createElement('canvas').getContext('2d');
     ctx.canvas.width = canvasWidth || 800;
     ctx.canvas.height = canvasHeight || 600;
     const paddle = new Paddle(ctx, paddleWidth || 25, paddleHeight || 9);
     return paddle;
   }
 });
-
