@@ -6,9 +6,9 @@ export default class PongGame {
   constructor(ctx) {
     this._ctx = ctx;
     this._score = 0;
-    this._paddle = new Paddle(this._ctx, 121, 15);
-    this._ball = new Ball(this._ctx, 11);
     this._input = new Input();
+    this._paddle = new Paddle(this._ctx, this._input, 121, 15);
+    this._ball = new Ball(this._ctx, 11);
     this.reset();
   }
 

@@ -2,8 +2,6 @@ import Paddle from '../js/Paddle.js';
 import Input from '../js/Input.js';
 
 describe('Paddle class tests', () => {
-  const ctx = document.createElement('canvas').getContext('2d');
-
   describe('Constructor', () => {
     test('Paddle creation', () => {
       const paddle = new Paddle();
@@ -11,12 +9,15 @@ describe('Paddle class tests', () => {
     });
 
     test('Construct without params should set coordinates and size to 0', () => {
+      const ctx = document.createElement('canvas').getContext('2d');
       const paddle = new Paddle(ctx);
       expect([paddle.X, paddle.Y, paddle.Width, paddle.Height]).toStrictEqual([0, 0, 1, 1]);
     });
 
     test('Construct with params should set X,Y to 0 and correct Width, Height and Radius', () => {
-      const paddle = new Paddle(ctx, 33, 11);
+      const input = new Input();
+      const ctx = document.createElement('canvas').getContext('2d');
+      const paddle = new Paddle(ctx, input, 33, 11);
       expect([
         paddle.X,
         paddle.Y,
@@ -74,14 +75,12 @@ describe('Paddle class tests', () => {
   });
 
   describe('Method update', () => {
-    const _input = new Input();
-
     test('Paddle.update with no key pressed should not move', () => {
       const p = _newPaddle();
       const orgX = 200;
       p.Speed = 2;
       p.X = orgX;
-      p.update(_input);
+      p.update();
       expect(p.X).toBe(orgX);
     });
 
@@ -91,7 +90,7 @@ describe('Paddle class tests', () => {
       p.Speed = 2;
       p.X = orgX;
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 37 }));
-      p.update(_input);
+      p.update();
       expect(p.X).toBe(orgX - p.Speed);
     });
 
@@ -101,7 +100,7 @@ describe('Paddle class tests', () => {
       p.Speed = 2;
       p.X = orgX;
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 39 }));
-      p.update(_input);
+      p.update();
       expect(p.X).toBe(orgX + p.Speed);
     });
 
@@ -110,7 +109,7 @@ describe('Paddle class tests', () => {
       p.XLeft = 1;
       p.Speed = 3;
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 37 }));
-      p.update(_input);
+      p.update();
       expect(p.XLeft).toBe(0);
     });
 
@@ -120,16 +119,17 @@ describe('Paddle class tests', () => {
       p.XRight = canvasWidth - 2;
       p.Speed = 4;
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 39 }));
-      p.update(_input);
+      p.update();
       expect(p.XRight).toBe(canvasWidth - 1);
     });
   });
 
   function _newPaddle(canvasWidth, canvasHeight, paddleWidth, paddleHeight) {
+    const input = new Input();
     const ctx = document.createElement('canvas').getContext('2d');
     ctx.canvas.width = canvasWidth || 800;
     ctx.canvas.height = canvasHeight || 600;
-    const paddle = new Paddle(ctx, paddleWidth || 25, paddleHeight || 9);
+    const paddle = new Paddle(ctx, input, paddleWidth || 25, paddleHeight || 9);
     return paddle;
   }
 });

@@ -1,8 +1,10 @@
 import Ball from "../js/Ball.js";
 import Paddle from "../js/Paddle.js";
+import Input from "../js/Input.js";
 import { createCanvas } from "canvas";
 
 describe("Ball class tests", () => {
+  const _input = new Input();
 
   const _newBall = () => {
     const ctx = document.createElement("canvas").getContext("2d");
@@ -12,7 +14,7 @@ describe("Ball class tests", () => {
   }
 
   const _newPaddle = (ball) => {
-    const paddle = new Paddle(ball._ctx, 15, 5);
+    const paddle = new Paddle(ball._ctx, _input, 15, 5);
     paddle.resetGame();
     return paddle;
   }
@@ -62,7 +64,7 @@ describe("Ball class tests", () => {
   describe("Method resetGame", () => {
     test("ball max/min random location should match edges of the paddle", () => {
       const ball = _newBall();
-      const paddle = new Paddle(ball._ctx, 15, 5);
+      const paddle = new Paddle(ball._ctx, _input, 15, 5);
       paddle.resetGame();
 
       const mockMath = Object.create(global.Math);
@@ -82,7 +84,7 @@ describe("Ball class tests", () => {
     test("should draw a ball on top of the paddle, touching it with at least one pixel", () => {
       const canvas = createCanvas(800, 600);
       const ctx = canvas.getContext("2d");
-      const paddle = new Paddle(ctx, 121, 21);
+      const paddle = new Paddle(ctx, _input, 121, 21);
       const ball = new Ball(ctx, 15);
 
       paddle.resetGame();
@@ -99,7 +101,7 @@ describe("Ball class tests", () => {
 
     test("should set XDirection equally randomly to 1 or -1", () => {
       const ball = _newBall();
-      const paddle = new Paddle(ball._ctx, 15, 5);
+      const paddle = new Paddle(ball._ctx, _input, 15, 5);
       paddle.resetGame();
 
       const mockMath = Object.create(global.Math);
@@ -215,7 +217,7 @@ describe("Ball class tests", () => {
     describe('Collision detection with paddle', () => {
       const ball = _newBall();
       ball.Speed = 2;
-      const paddle = new Paddle(ball._ctx, 121, 15)
+      const paddle = new Paddle(ball._ctx, _input, 121, 15)
       paddle.Y = 100;
       paddle.X = 50;
 

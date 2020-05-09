@@ -1,13 +1,14 @@
 import MovingGameElement from './MovingGameElement.js';
 
 export default class Paddle extends MovingGameElement {
-  constructor(ctx, width, height) {
+  constructor(ctx, input, width, height) {
     super(ctx, width || 0, height || 0);
+    this._input = input;
   }
 
-  update(input) {
-    this.X -= input.IsLeftKeyPressed ? this.Speed : 0;
-    this.X += input.IsRightKeyPressed ? this.Speed : 0;
+  update() {
+    this.X -= this._input.IsLeftKeyPressed ? this.Speed : 0;
+    this.X += this._input.IsRightKeyPressed ? this.Speed : 0;
     if (this.XLeft < 0) this.XLeft = 0;
     if (this.XRight > this._ctx.canvas.width - 1) this.XRight = this._ctx.canvas.width-1;
   }
