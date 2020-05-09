@@ -12,24 +12,11 @@ export default class PongGame {
     this.reset();
   }
 
-  get CanvasWidth() {
-    return this._ctx.canvas.width;
-  }
-
-  get CanvasHeight() {
-    return this._ctx.canvas.height;
-  }
-  get Score() {
-    return this._score;
-  }
-
-  get Paddle() {
-    return this._paddle;
-  }
-
-  get Ball() {
-    return this._ball;
-  }
+  get CanvasWidth() { return this._ctx.canvas.width; }
+  get CanvasHeight() { return this._ctx.canvas.height; }
+  get Score() { return this._score; }
+  get Paddle() { return this._paddle; }
+  get Ball() { return this._ball; }
 
   reset() {
     this.Paddle.resetGame();
