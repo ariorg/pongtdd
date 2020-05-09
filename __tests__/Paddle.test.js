@@ -1,4 +1,5 @@
 import Paddle from '../js/Paddle.js';
+import Input from '../js/Input.js';
 
 describe('Paddle class tests', () => {
   const ctx = document.createElement('canvas').getContext('2d');
@@ -73,12 +74,15 @@ describe('Paddle class tests', () => {
   });
 
   describe('Method update', () => {
+
+    const _input = new Input();
+    
     test('Paddle.update with no key pressed should not move', () => {
       const p = _newPaddle();
       const orgX = 200;
       p.Speed = 2;
       p.X = orgX;
-      p.update();
+      p.update(_input);
       expect(p.X).toBe(orgX);
     });
 
@@ -88,7 +92,7 @@ describe('Paddle class tests', () => {
       p.Speed = 2;
       p.X = orgX;
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 37 }));
-      p.update();
+      p.update(_input);
       expect(p.X).toBe(orgX - p.Speed);
     });
 
@@ -98,7 +102,7 @@ describe('Paddle class tests', () => {
       p.Speed = 2;
       p.X = orgX;
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 39 }));
-      p.update();
+      p.update(_input);
       expect(p.X).toBe(orgX + p.Speed);
     });
 
@@ -107,7 +111,7 @@ describe('Paddle class tests', () => {
       p.XLeft = 1;
       p.Speed = 3;
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 37 }));
-      p.update();
+      p.update(_input);
       expect(p.XLeft).toBe(0);
     });
 
@@ -117,7 +121,7 @@ describe('Paddle class tests', () => {
       p.XRight = canvasWidth-2;
       p.Speed = 4;
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 39 }));
-      p.update();
+      p.update(_input);
       expect(p.XRight).toBe(canvasWidth-1);
     });
   });

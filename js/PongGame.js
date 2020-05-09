@@ -1,3 +1,4 @@
+import Input from './Input.js';
 import Ball from './Ball.js';
 import Paddle from './Paddle.js';
 
@@ -7,6 +8,7 @@ export default class PongGame {
     this._score = 0;
     this._paddle = new Paddle(this._ctx, 121, 15);
     this._ball = new Ball(this._ctx, 11);
+    this._input = new Input();
     this.reset();
   }
 
@@ -35,8 +37,8 @@ export default class PongGame {
   }
 
   run = () => {
-    this.Paddle.update();
-    this.Ball.update(this._paddle);
+    this.Paddle.update(this._input);
+    this.Ball.update(this.Paddle);
 
     this._clearCanvas(this._ctx);
     this.Ball.draw();
