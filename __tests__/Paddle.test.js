@@ -74,9 +74,8 @@ describe('Paddle class tests', () => {
   });
 
   describe('Method update', () => {
-
     const _input = new Input();
-    
+
     test('Paddle.update with no key pressed should not move', () => {
       const p = _newPaddle();
       const orgX = 200;
@@ -118,11 +117,11 @@ describe('Paddle class tests', () => {
     test('should not move beyond right side of canvas', () => {
       const canvasWidth = 500;
       const p = _newPaddle(canvasWidth, 300);
-      p.XRight = canvasWidth-2;
+      p.XRight = canvasWidth - 2;
       p.Speed = 4;
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 39 }));
       p.update(_input);
-      expect(p.XRight).toBe(canvasWidth-1);
+      expect(p.XRight).toBe(canvasWidth - 1);
     });
   });
 
