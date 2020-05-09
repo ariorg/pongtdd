@@ -9,14 +9,28 @@ export default class GameElement {
 
   get X() { return this._x; }
   get Y() { return this._y; }
-  get XLeft() { return this._x - this.WidthRadius; }
-  get XRight() { return this._x + this.WidthRadius; }
-  get YTop() { return this._y - this.HeightRadius; }
-  get YBottom() { return this._y + this.HeightRadius; }
   get Width() { return this._width; }
   get Height() { return this._height; }
-  get WidthRadius() { return (this.Width - 1) / 2; }
-  get HeightRadius() { return (this.Height - 1) / 2; }
+
+  get XLeft() {
+    return this._x - this.WidthRadius;
+  }
+  get XRight() {
+    return this._x + this.WidthRadius;
+  }
+  get YTop() {
+    return this._y - this.HeightRadius;
+  }
+  get YBottom() {
+    return this._y + this.HeightRadius;
+  }
+
+  get WidthRadius() {
+    return (this.Width - 1) / 2;
+  }
+  get HeightRadius() {
+    return (this.Height - 1) / 2;
+  }
 
   set X(value) {
     this._throwIfNotInteger(value, 'GameElement.X');
