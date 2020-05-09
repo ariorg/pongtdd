@@ -18,7 +18,7 @@ export default class Paddle extends MovingGameElement {
     this.X =
       this.WidthRadius +
       Math.floor(Math.random() * (this._ctx.canvas.width - 2 * this.WidthRadius));
-    this.Speed = 2;
+    this.Speed = 4;
     this.draw();
   }
 }
