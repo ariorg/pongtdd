@@ -5,7 +5,7 @@ Single player Pong.
 Pure static javascript with Jest tests.
 
 ### Here is a change
-From vidari
+First from vidari
 
 ### Play the game:
 * https://arividar.github.io/pongtdd
