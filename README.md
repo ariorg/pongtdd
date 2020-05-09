@@ -9,3 +9,7 @@ From vidari
 
 ### Play the game:
 * https://arividar.github.io/pongtdd
+
+### Todo
+* Scoring
+* End game
