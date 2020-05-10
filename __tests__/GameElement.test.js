@@ -44,12 +44,7 @@ describe('GameElement class tests', () => {
       ge.Y = 102;
       ge.Width = 201;
       ge.Height = 203;
-      expect([ge.X, ge.Y, ge.Width, ge.Height]).toStrictEqual([
-        101,
-        102,
-        201,
-        203,
-      ]);
+      expect([ge.X, ge.Y, ge.Width, ge.Height]).toStrictEqual([101, 102, 201, 203 ]);
     });
 
     test('Set LeftX/RightX should change X', () => {
