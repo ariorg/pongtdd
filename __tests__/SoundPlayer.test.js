@@ -1,5 +1,8 @@
 import SoundPlayer from '../js/SoundPlayer.js';
 
 describe('constructor', () => {
-  test.todo('SoundPlayer creation');
+    it('should create a SoundPlayer', () => {
+        const sp = new SoundPlayer();
+        expect(sp).toBeDefined();
+    });
 });
