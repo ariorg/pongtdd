@@ -9,10 +9,15 @@ describe('SoundPlayer tests', () => {
   });
 
   describe('PlaySound method', () => {
-    it.skip('should play sound', () => {
+    afterEach(() => { jest.clearAllMocks(); });
+
+    it('should play sound', () => {
       const sp = new SoundPlayer();
-      // Todo: Mock soundplayer - see here:
-      //       https://jestjs.io/docs/en/es6-class-mocks
+      const playSpy = jest.spyOn(sp, 'play');
+      const soundFileName = 'sound.wav';
+      sp.play(soundFileName);
+      expect(playSpy).toHaveBeenCalledWith(soundFileName);
+      expect(playSpy).toHaveBeenCalledTimes(1);
     });
   });
 });
