@@ -16,7 +16,7 @@ describe('SoundPlayer tests', () => {
       expect(sp.Volume).toBe(expected);
     });
   });
-  
+
   describe('getters and setters', () => {
     it('Should set and get Volume', () => {
       const sp = new SoundPlayer();
@@ -24,7 +24,7 @@ describe('SoundPlayer tests', () => {
       const expected = 0.234;
       sp.Volume = expected;
       expect(sp.Volume).toBe(expected);
-    }); 
+    });
   });
 
   describe('PlaySound method', () => {
