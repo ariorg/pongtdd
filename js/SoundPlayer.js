@@ -20,7 +20,7 @@ export default class SoundPlayer {
 
   play(soundFileName, volume) {
     if (volume) this.Volume = volume;
-    const snd = new Audio(this.SoundFilePath + soundFileName);
+    const snd = new Audio(this.SoundFilePath + '/' + soundFileName);
     snd.volume = this.Volume;
     snd.play();
   }
