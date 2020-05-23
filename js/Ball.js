@@ -52,7 +52,6 @@ export default class Ball extends MovingGameElement {
         this.XLeft <= paddle.XRight)
     ) {
       this.XDirection = 1;
-      //this._pongSounds.ballCollidesWithPaddle();
     }
     if (
       this.XRight >= this._ctx.canvas.width - 1 ||
@@ -61,7 +60,6 @@ export default class Ball extends MovingGameElement {
         this.XRight >= paddle.XLeft)
     ){
       this.XDirection = -1;
-      //this._pongSounds.ballCollidesWithPaddle();
     }
     if (this.YTop <= 0) this.YDirection = 1;
 
