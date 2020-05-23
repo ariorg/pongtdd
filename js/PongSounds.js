@@ -1,6 +1,6 @@
 import SoundPlayer from '../js/SoundPlayer.js';
 
-const PongSoundsEnum = {
+const PongSound = {
   COLLISION_BALL_WALL: {
     FILE: 'tick.mp3',
     VOLUME: 0.5,
@@ -21,15 +21,15 @@ export default class PongSounds {
   }
 
   gameOver() {
-    this._play(PongSoundsEnum.GAME_OVER);
+    this._play(PongSound.GAME_OVER);
   }
 
   ballCollidesWithWall() {
-    this._play(PongSoundsEnum.COLLISION_BALL_WALL);
+    this._play(PongSound.COLLISION_BALL_WALL);
   }
 
   ballCollidesWithPaddle() {
-    this._play(PongSoundsEnum.COLLISION_BALL_PADDLE);
+    this._play(PongSound.COLLISION_BALL_PADDLE);
   }
 
   _play(sound) {

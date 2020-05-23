@@ -25,6 +25,14 @@ describe('SoundPlayer tests', () => {
       sp.Volume = expected;
       expect(sp.Volume).toBe(expected);
     });
+
+    it('Should set and get SoundFilePath', () => {
+      const sp = new SoundPlayer();
+      const expected = '/file/path';
+      expect(sp.SoundFilePath).not.toBe(expected);
+      sp.SoundFilePath = expected;
+      expect(sp.SoundFilePath).toBe(expected);
+    });
   });
 
   describe('PlaySound method', () => {
