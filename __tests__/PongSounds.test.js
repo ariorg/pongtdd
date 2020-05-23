@@ -10,14 +10,6 @@ describe('PongSounds constructor tests', () => {
 
   window.HTMLMediaElement.prototype.play = () => {};
 
-  describe('constructor', () => {
-    it('should create a PongSounds', () => {
-      const ps = new PongSounds();
-      expect(ps).toBeDefined();
-      expect(SoundPlayer).toHaveBeenCalledTimes(1);
-    });
-  });
-
   describe('pong sounds', () => {
     it('should play pong sounds', () => {
       const ps = new PongSounds();

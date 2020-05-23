@@ -1,8 +1,10 @@
 import MovingGameElement from './MovingGameElement.js';
+import PongSounds from './PongSounds.js';
 
 export default class Ball extends MovingGameElement {
   constructor(ctx, radius) {
     super(ctx, radius * 2 + 1, radius * 2 + 1);
+    this._pongSounds = new PongSounds();
   }
   get Diameter() {
     return this.Width;
