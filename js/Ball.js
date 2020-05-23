@@ -34,6 +34,7 @@ export default class Ball extends MovingGameElement {
   update(paddle) {
     this._detectCollisionAndSetDirection(paddle);
     super.update();
+    this._pongSounds.ballCollidesWithPaddle();
   }
 
   draw() {
@@ -61,8 +62,7 @@ export default class Ball extends MovingGameElement {
     )
       this.XDirection = -1;
 
-    if (this.YTop <= 0)
-      this.YDirection = 1;
+    if (this.YTop <= 0) this.YDirection = 1;
 
     if (
       this.YBottom >= this._ctx.canvas.height - 1 ||

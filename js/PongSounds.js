@@ -36,6 +36,3 @@ export default class PongSounds {
     this._soundPlayer.play(sound.FILE, sound.VOLUME);
   }
 }
-
-
-

@@ -2,8 +2,9 @@ import Ball from "../js/Ball.js";
 import Paddle from "../js/Paddle.js";
 import Input from "../js/Input.js";
 import { createCanvas } from "canvas";
-
+ 
 describe("Ball class tests", () => {
+  window.HTMLMediaElement.prototype.play = () => {};
   const _input = new Input();
 
   const _newBall = () => {

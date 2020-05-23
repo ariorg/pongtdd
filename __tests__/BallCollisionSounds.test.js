@@ -6,31 +6,19 @@ import PongSounds from '../js/PongSounds.js';
 jest.mock('../js/PongSounds.js');
 
 describe('Ball collision sound tests', () => {
-  window.HTMLMediaElement.prototype.play = () => {};
-
   beforeEach(() => {
+    window.HTMLMediaElement.prototype.play = () => {};
     PongSounds.mockClear();
   });
 
-  const _input = new Input();
-  const _newBall = () => {
-    const ctx = document.createElement('canvas').getContext('2d');
-    ctx.canvas.width = 800;
-    ctx.canvas.height = 600;
-    return new Ball(ctx, 5);
-  };
-
-  const _newPaddle = ball => {
-    const paddle = new Paddle(ball._ctx, _input, 15, 5);
-    paddle.resetGame();
-    return paddle;
-  };
-
   describe('Ball collision sounds', () => {
-    test('Ball collision within the paddle should play sound', () => {
-      const ball = _newBall();
-      ball.Speed = 1;
-      const paddle = new Paddle(ball._ctx, _input, 121, 15);
+    it('collision within the paddle should play sound', () => {
+      const ctx = document.createElement('canvas').getContext('2d');
+      ctx.canvas.width = 800;
+      ctx.canvas.height = 600;
+      const ball = new Ball(ctx, 5);
+      const paddle = new Paddle(ball._ctx, new Input(), 121, 15);
+      paddle.resetGame();
       paddle.Y = 100;
       paddle.X = 50;
       ball.YDirection = 1;

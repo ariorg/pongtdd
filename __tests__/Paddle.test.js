@@ -2,6 +2,7 @@ import Paddle from '../js/Paddle.js';
 import Input from '../js/Input.js';
 
 describe('Paddle class tests', () => {
+  window.HTMLMediaElement.prototype.play = () => {};
   describe('Constructor', () => {
     test('Paddle creation', () => {
       const paddle = new Paddle();

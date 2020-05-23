@@ -1,6 +1,7 @@
 import PongGame from '../js/PongGame.js';
 
 describe('PongGame class', () => {
+  window.HTMLMediaElement.prototype.play = () => {};
   describe('constructor', () => {
     test('Create pong game', () => {
       const canvas = document.createElement('canvas');
