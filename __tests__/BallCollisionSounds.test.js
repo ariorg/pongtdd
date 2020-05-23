@@ -26,5 +26,20 @@ describe('Ball collision sound tests', () => {
       ball.update(paddle);
       expect(PongSounds.mock.instances[0].ballCollidesWithPaddle).toHaveBeenCalledTimes(1);
     });
+    it('no collision within the paddle should not play sound', () => {
+      const ctx = document.createElement('canvas').getContext('2d');
+      ctx.canvas.width = 800;
+      ctx.canvas.height = 600;
+      const ball = new Ball(ctx, 5);
+      const paddle = new Paddle(ball._ctx, new Input(), 121, 15);
+      paddle.resetGame();
+      paddle.Y = 100;
+      paddle.X = 50;
+      ball.YDirection = 1;
+      ball.Speed = 1;
+      ball.YBottom = paddle.YTop - 10;
+      ball.update(paddle);
+      expect(PongSounds.mock.instances[0].ballCollidesWithPaddle).toHaveBeenCalledTimes(0);
+    });
   });
 });

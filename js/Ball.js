@@ -34,7 +34,6 @@ export default class Ball extends MovingGameElement {
   update(paddle) {
     this._detectCollisionAndSetDirection(paddle);
     super.update();
-    this._pongSounds.ballCollidesWithPaddle();
   }
 
   draw() {
@@ -51,17 +50,19 @@ export default class Ball extends MovingGameElement {
       (this.YBottom >= paddle.YTop - 1 &&
         this.XLeft >= paddle.XRight - this.Radius &&
         this.XLeft <= paddle.XRight)
-    )
+    ) {
       this.XDirection = 1;
-
+      //this._pongSounds.ballCollidesWithPaddle();
+    }
     if (
       this.XRight >= this._ctx.canvas.width - 1 ||
       (this.YBottom >= paddle.YTop - 1 &&
         this.XRight <= paddle.XLeft + this.Radius &&
         this.XRight >= paddle.XLeft)
-    )
+    ){
       this.XDirection = -1;
-
+      //this._pongSounds.ballCollidesWithPaddle();
+    }
     if (this.YTop <= 0) this.YDirection = 1;
 
     if (
@@ -69,7 +70,9 @@ export default class Ball extends MovingGameElement {
       (this.YBottom >= paddle.YTop - 1 &&
         this.XRight >= paddle.XLeft &&
         this.XLeft <= paddle.XRight)
-    )
+    ){
       this.YDirection = -1;
+      this._pongSounds.ballCollidesWithPaddle();
+    }
   }
 }
