@@ -12,7 +12,7 @@ export default class SoundPlayer {
 
   play(soundFileName, volume) {
     if (volume) this.Volume = volume;
-    const snd = new Audio('media/'+soundFileName);
+    const snd = new Audio('media/' + soundFileName);
     snd.volume = this.Volume;
     snd.play();
   }
