@@ -1,6 +1,7 @@
 export default class SoundPlayer {
-  constructor(volume) {
+  constructor(volume, soundFilePath) {
     this.Volume = volume || 1.0;
+    this._soundFilePath = soundFilePath || '/media';
   }
 
   set Volume(value) {
@@ -10,9 +11,16 @@ export default class SoundPlayer {
     return this._volume;
   }
 
+  set SoundFilePath(value) {
+    this._soundFilePath = value;
+  }
+  get SoundFilePath() {
+    return this._soundFilePath;
+  }
+
   play(soundFileName, volume) {
     if (volume) this.Volume = volume;
-    const snd = new Audio('media/' + soundFileName);
+    const snd = new Audio(this.SoundFilePath + soundFileName);
     snd.volume = this.Volume;
     snd.play();
   }
