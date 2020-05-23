@@ -21,5 +21,5 @@ export default class SoundPlayer {
 export const PongSounds = {
   COLLISION_BALL_WALL: 'file.wav',
   COLLISION_BALL_PADDLE: 'file2.mp3',
-  GAME_OVER: 'file3.wav',
+  GAME_OVER: 'gameover.wav',
 };
