@@ -54,11 +54,25 @@ describe('Ball collision sound tests', () => {
     it('should play sound when ball collides with top border', () => {
       const ball = _newBall();
       ball.X = 400;
-      ball.Speed = 2;
+      ball.Speed = 1;
       ball.YDirection = -1;
       ball.Y = ball.Radius;
       ball.update(_newPaddle(ball));
       expect(ball.YDirection).toBe(1);
+      expect(PongSounds.mock.instances[0].ballCollidesWithBorder).toHaveBeenCalledTimes(1);
+    });
+
+    it('should play sound when ball collides with side borders', () => {
+      const ball = _newBall();
+      ball.update(_newPaddle(ball));
+      ball.Y = 300;
+      ball.Speed = 1;
+      ball.XDirection = -1;
+      ball.X = ball.Radius;
+      ball.update(_newPaddle(ball));
+      expect(PongSounds.mock.instances[0].ballCollidesWithBorder).toHaveBeenCalledTimes(1);
+      ball.X = ball._ctx.canvas.width - ball.Radius;
+      ball.update(_newPaddle(ball));
       expect(PongSounds.mock.instances[0].ballCollidesWithBorder).toHaveBeenCalledTimes(1);
     });
   });
