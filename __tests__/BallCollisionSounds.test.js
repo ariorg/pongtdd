@@ -37,7 +37,6 @@ describe('Ball collision sound tests', () => {
       ball.YBottom = paddle.YTop - 1;
       ball.update(paddle);
       expect(PongSounds.mock.instances[0].ballCollidesWithPaddle).toHaveBeenCalledTimes(1);
-      expect(PongSounds.mock.instances[0].ballCollidesWithPaddle).toHaveBeenCalledTimes(1);
     });
 
     it('not colliding with paddle should not play sound', () => {
@@ -52,6 +51,15 @@ describe('Ball collision sound tests', () => {
       expect(PongSounds.mock.instances[0].ballCollidesWithPaddle).toHaveBeenCalledTimes(0);
     });
 
-    it.todo('should play sound when ball collides with canvas border');
+    it('should play sound when ball collides with top border', () => {
+      const ball = _newBall();
+      ball.X = 400;
+      ball.Speed = 2;
+      ball.YDirection = -1;
+      ball.Y = ball.Radius;
+      ball.update(_newPaddle(ball));
+      expect(ball.YDirection).toBe(1);
+      expect(PongSounds.mock.instances[0].ballCollidesWithBorder).toHaveBeenCalledTimes(1);
+    });
   });
 });

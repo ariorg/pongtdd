@@ -61,7 +61,10 @@ export default class Ball extends MovingGameElement {
     ){
       this.XDirection = -1;
     }
-    if (this.YTop <= 0) this.YDirection = 1;
+    if (this.YTop <= 0) {
+        this.YDirection = 1;
+        this._pongSounds.ballCollidesWithBorder();
+    }
 
     if (
       this.YBottom >= this._ctx.canvas.height - 1 ||
