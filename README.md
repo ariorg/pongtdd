@@ -13,7 +13,3 @@ First from vidari
 ### Todo
 * Scoring
 * End game
-
-
-### And here is another change
-Change on the master branch
