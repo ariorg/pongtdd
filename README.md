@@ -14,3 +14,4 @@ First from vidari
 * Scoring
 * End game
 * Sounds
+* Canvas abstraction
