@@ -13,3 +13,4 @@ First from vidari
 ### Todo
 * Scoring
 * End game
+* Sounds
