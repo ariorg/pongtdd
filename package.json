@@ -37,14 +37,14 @@
   "author": "Ari Johannesson",
   "license": "ISC",
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
     "canvas": "^2.6.1",
     "jest": "^25.5.4",
-    "jest-canvas-mock": "^2.2.0",
-    "lite-server": "^2.5.4"
+    "jest-canvas-mock": "^2.3.0",
+    "lite-server": "^2.6.1"
   },
   "dependencies": {
-    "prettier": "^2.0.5"
+    "prettier": "^2.2.1"
   }
 }
