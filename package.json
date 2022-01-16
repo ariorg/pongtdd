@@ -26,7 +26,7 @@
   },
   "scripts": {
     "start": "lite-server",
-    "test": "jest",
+    "test": "jest --env=jsdom",
     "testv": "jest --verbose",
     "testw": "jest --watch"
   },
@@ -37,14 +37,14 @@
   "author": "Ari Johannesson",
   "license": "ISC",
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
-    "canvas": "^2.6.1",
-    "jest": "^25.5.4",
-    "jest-canvas-mock": "^2.3.0",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
+    "jest": "^27.4.7",
+    "jest-canvas-mock": "^2.3.1",
+    "jsdom": "^19.0.0",
     "lite-server": "^2.6.1"
   },
   "dependencies": {
-    "prettier": "^2.2.1"
+    "prettier": "^2.5.1"
   }
 }
