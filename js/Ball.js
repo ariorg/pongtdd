@@ -27,7 +27,8 @@ export default class Ball extends MovingGameElement {
     this.X = leftXLimit + Math.floor(Math.random() * randomXPlacementDeltaLimit);
     this.YDirection = -1;
     this.XDirection = Math.random() < 0.5 ? -1 : 1;
-    this.Speed = 2;
+    this.XSpeed = this._randomInteger(1, 3);
+    this.YSpeed = this._randomInteger(1, 3);
     this.draw();
   }
 
@@ -52,8 +53,11 @@ export default class Ball extends MovingGameElement {
         this.XLeft <= paddle.XRight)
     ) {
       this.XDirection = 1;
+      this.XSpeed += this._getRandomZeroPlusMinusOne(); 
+      this.YSpeed += this._getRandomZeroPlusMinusOne(); 
       this._pongSounds.ballCollidesWithBorder();
     }
+
     if (
       this.XRight >= this._ctx.canvas.width - 1 ||
       (this.YBottom >= paddle.YTop - 1 &&
@@ -61,10 +65,15 @@ export default class Ball extends MovingGameElement {
         this.XRight >= paddle.XLeft)
     ) {
       this.XDirection = -1;
+      this.XSpeed += this._getRandomZeroPlusMinusOne(); 
+      this.YSpeed += this._getRandomZeroPlusMinusOne(); 
       this._pongSounds.ballCollidesWithBorder();
     }
+
     if (this.YTop <= 0) {
       this.YDirection = 1;
+      this.XSpeed += this._getRandomZeroPlusMinusOne(); 
+      this.YSpeed += this._getRandomZeroPlusMinusOne(); 
       this._pongSounds.ballCollidesWithBorder();
     }
 
@@ -75,7 +84,17 @@ export default class Ball extends MovingGameElement {
         this.XLeft <= paddle.XRight)
     ) {
       this.YDirection = -1;
+      this.XSpeed += this._getRandomZeroPlusMinusOne(); 
+      this.YSpeed += this._getRandomZeroPlusMinusOne(); 
       this._pongSounds.ballCollidesWithPaddle();
     }
+  }
+
+  _getRandomZeroPlusMinusOne() {
+    return Math.floor(Math.random() * 3) - 1;
+  }
+  
+  _randomInteger(from, to) {
+    return Math.floor(Math.random() * (to - from) + from);
   }
 }

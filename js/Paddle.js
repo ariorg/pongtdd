@@ -7,18 +7,17 @@ export default class Paddle extends MovingGameElement {
   }
 
   update() {
-    this.X -= this._input.IsLeftKeyPressed ? this.Speed : 0;
-    this.X += this._input.IsRightKeyPressed ? this.Speed : 0;
+    this.X -= this._input.IsLeftKeyPressed ? this.XSpeed : 0;
+    this.X += this._input.IsRightKeyPressed ? this.XSpeed : 0;
     if (this.XLeft < 0) this.XLeft = 0;
     if (this.XRight > this._ctx.canvas.width - 1) this.XRight = this._ctx.canvas.width-1;
   }
 
   resetGame() {
     this.Y = this._ctx.canvas.height - 1 - this.HeightRadius;
-    this.X =
-      this.WidthRadius +
-      Math.floor(Math.random() * (this._ctx.canvas.width - 2 * this.WidthRadius));
-    this.Speed = 4;
+    this.X = this.WidthRadius + 
+             Math.floor(Math.random() * (this._ctx.canvas.width - 2 * this.WidthRadius));
+    this.XSpeed = 4;
     this.draw();
   }
 }

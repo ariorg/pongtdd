@@ -18,7 +18,7 @@ describe('Ball collision sound tests', () => {
     const ball = new Ball(ctx, 5);
     ball.X = Math.floor(ctx.canvas.width / 2);
     ball.Y = Math.floor(ctx.canvas.height / 2);
-    ball.Speed = 1;
+    ball.XSpeed = ball.YSpeed = 1;
     ball.YDirection = 1;
     return ball;
   }
@@ -52,7 +52,7 @@ describe('Ball collision sound tests', () => {
   it('should play sound when ball collides with top border', () => {
     const ball = _newBallInMiddleOfCanvas();
     ball.X = 400;
-    ball.Speed = 1;
+    ball.XSpeed = ball.YSpeed = 1;
     ball.YDirection = -1;
     ball.Y = ball.Radius;
     ball.update(_newPaddleBelowBall(ball));
@@ -62,7 +62,7 @@ describe('Ball collision sound tests', () => {
 
   it('should play sound when ball collides with left side borders', () => {
     const ball = _newBallInMiddleOfCanvas();
-    ball.Speed = 1;
+    ball.XSpeed = ball.YSpeed = 1;
     ball.XDirection = -1;
     ball.X = ball.Radius;
     ball.update(_newPaddleBelowBall(ball));
@@ -71,7 +71,7 @@ describe('Ball collision sound tests', () => {
   
   it('should play sound when ball collides with right side borders', () => {
     const ball = _newBallInMiddleOfCanvas();
-    ball.Speed = 1;
+    ball.XSpeed = ball.YSpeed = 1;
     ball.XDirection = 1;
     ball.X = ball._ctx.canvas.width - ball.Radius;
     ball.update(_newPaddleBelowBall(ball));

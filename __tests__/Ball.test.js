@@ -156,12 +156,12 @@ describe("Ball class tests", () => {
         ball.moveTo(400, 300);
         expect(ball.Y).toBe(300);
 
-        ball.XDirection = ball.YDirection = ball.Speed = 1;
+        ball.XDirection = ball.YDirection = ball.XSpeed = ball.YSpeed = 1;
         ball.update(_newPaddle(ball));
         expect(ball.X).toBe(401);
         expect(ball.Y).toBe(301);
 
-        ball.Speed = 2;
+        ball.XSpeed = ball.YSpeed = 2;
         ball.update(_newPaddle(ball));
         expect(ball.X).toBe(403);
         expect(ball.Y).toBe(303);
@@ -170,54 +170,57 @@ describe("Ball class tests", () => {
       test("Ball collision with top of screen should set YDirection to 1", () => {
         const ball = _newBall();
         ball.X = 400;
-        ball.Speed = 2;
+        ball.XSpeed = ball.YSpeed = 2;
         ball.YDirection = -1;
         let yBeforeUpdate = ball.Y = ball.Radius;
         ball.update(_newPaddle(ball));
         expect(ball.YDirection).toBe(1);
-        expect(ball.Y).toBe(yBeforeUpdate + ball.YDirection * ball.Speed);
+        expect(ball.Y).toBe(yBeforeUpdate + ball.YDirection * ball.YSpeed);
       });
 
       test("Ball collision with bottom of screen should set YDirection to -1", () => {
         const ball = _newBall();
         ball.X = 400;
-        ball.Speed = 3;
+        ball.XSpeed = ball.YSpeed = 3;
         ball.YDirection = 1;
         let yBeforeUpdate = ball.Y = ball._ctx.canvas.height - ball.Radius;
         ball.update(_newPaddle(ball));
         expect(ball.YDirection).toBe(-1);
-        expect(ball.Speed).toBe(3);
-        expect(ball.Y).toBe(yBeforeUpdate + ball.YDirection * ball.Speed);
+        expect(ball.YSpeed).toBeGreaterThanOrEqual(2);
+        expect(ball.YSpeed).toBeLessThanOrEqual(4);
+        expect(ball.Y).toBe(yBeforeUpdate + ball.YDirection * ball.YSpeed);
       });
 
       test("Ball collision with left edge should reverse XDirection of ball", () => {
         const ball = _newBall();
         ball.Y = 300;
-        ball.Speed = 2;
+        ball.XSpeed = ball.YSpeed = 3;
         ball.XDirection = -1;
         let xBeforeUpdate = ball.X = ball.Radius;
         ball.update(_newPaddle(ball));
         expect(ball.XDirection).toBe(1);
-        expect(ball.Speed).toBe(2);
-        expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
+        expect(ball.XSpeed).toBeGreaterThanOrEqual(2);
+        expect(ball.XSpeed).toBeLessThanOrEqual(4);
+        expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.XSpeed);
       });
 
       test("ball collision with right edge should reverse XDirection of ball", () => {
         const ball = _newBall();
         ball.Y = 300;
-        ball.Speed = 2;
+        ball.XSpeed = ball.YSpeed = 3;
         ball.XDirection = 1;
         let xBeforeUpdate = ball.X = ball._ctx.canvas.width - ball.Radius;
         ball.update(_newPaddle(ball));
         expect(ball.XDirection).toBe(-1);
-        expect(ball.Speed).toBe(2);
-        expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.Speed);
+        expect(ball.XSpeed).toBeGreaterThanOrEqual(2);
+        expect(ball.XSpeed).toBeLessThanOrEqual(4);
+        expect(ball.X).toBe(xBeforeUpdate + ball.XDirection * ball.XSpeed);
       });
     });
 
     describe('Collision detection with paddle', () => {
       const ball = _newBall();
-      ball.Speed = 2;
+      ball.XSpeed = ball.YSpeed = 2;
       const paddle = new Paddle(ball._ctx, _input, 121, 15)
       paddle.Y = 100;
       paddle.X = 50;

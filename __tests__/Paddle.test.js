@@ -79,7 +79,7 @@ describe('Paddle class tests', () => {
     test('Paddle.update with no key pressed should not move', () => {
       const p = _newPaddle();
       const orgX = 200;
-      p.Speed = 2;
+      p.XSpeed = 2;
       p.X = orgX;
       p.update();
       expect(p.X).toBe(orgX);
@@ -88,27 +88,27 @@ describe('Paddle class tests', () => {
     test('should move left one speed if leftkey is pressed', () => {
       const p = _newPaddle();
       const orgX = 100;
-      p.Speed = 2;
+      p.XSpeed = 2;
       p.X = orgX;
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 37 }));
       p.update();
-      expect(p.X).toBe(orgX - p.Speed);
+      expect(p.X).toBe(orgX - p.XSpeed);
     });
 
     test('should move right one speed if rightkey is pressed', () => {
       const p = _newPaddle();
       const orgX = 200;
-      p.Speed = 2;
+      p.XSpeed = 2;
       p.X = orgX;
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 39 }));
       p.update();
-      expect(p.X).toBe(orgX + p.Speed);
+      expect(p.X).toBe(orgX + p.XSpeed);
     });
 
     test('should not move beyond left canvas edge', () => {
       const p = _newPaddle();
       p.XLeft = 1;
-      p.Speed = 3;
+      p.XSpeed = 3;
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 37 }));
       p.update();
       expect(p.XLeft).toBe(0);
@@ -118,7 +118,7 @@ describe('Paddle class tests', () => {
       const canvasWidth = 500;
       const p = _newPaddle(canvasWidth, 300);
       p.XRight = canvasWidth - 2;
-      p.Speed = 4;
+      p.XSpeed = 4;
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode: 39 }));
       p.update();
       expect(p.XRight).toBe(canvasWidth - 1);
